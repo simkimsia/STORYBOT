@@ -83,7 +83,7 @@ package org.storybot.tests.cases
 		}
 		
 		[Test(async)]
-		//[Ignore]
+		[Ignore]
 		public function testPublishStory():void
 		{
 			this.serviceDispatcher.addEventListener( PublishStoryEvent.SERVER_CONFIRM_UPLOAD_COMPLETE, 
