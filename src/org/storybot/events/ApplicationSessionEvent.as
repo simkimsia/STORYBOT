@@ -1,11 +1,11 @@
-package com.kim.events
+package org.storybot.events
 {
 	import flash.events.Event;
 	
 	public class ApplicationSessionEvent extends Event
 	{
-		public static const LOGGED_IN:String='com.kim.events.ApplicationSessionEvent.LOGGED_IN';
-		public static const LOGGED_OUT:String='com.kim.events.ApplicationSessionEvent.LOGGED_OUT';
+		public static const LOGGED_IN:String='org.storybot.events.ApplicationSessionEvent.LOGGED_IN';
+		public static const LOGGED_OUT:String='org.storybot.events.ApplicationSessionEvent.LOGGED_OUT';
 		
 		public function ApplicationSessionEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false)
 		{

@@ -1,4 +1,4 @@
-package com.kim.events
+package org.storybot.events
 {
 	
 	import flash.events.Event;
@@ -6,7 +6,7 @@ package com.kim.events
 	
 	public class FileCreatedEvent extends Event
 	{
-		public static const FILE_CREATED:String='com.kim.events.FileCreatedEvent.FILE_CREATED';
+		public static const FILE_CREATED:String='org.storybot.events.FileCreatedEvent.FILE_CREATED';
 		protected var _file:File;
 		
 		public function FileCreatedEvent(type:String, file:File, bubbles:Boolean=false, cancelable:Boolean=false)

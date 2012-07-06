@@ -1,6 +1,6 @@
-package com.kim.events
+package org.storybot.events
 {
-	import com.kim.collections.ErrorCollection;
+	import org.storybot.collections.ErrorCollection;
 	
 	import flash.events.Event;
 	import flash.filesystem.File;
@@ -8,9 +8,9 @@ package com.kim.events
 	
 	public class FormSubmitEvent extends Event
 	{
-		public static const SUBMIT:String='com.kim.events.LoginFormSubmitEvent.SUBMIT';
-		public static const SUCCESS:String='com.kim.events.LoginFormSubmitEvent.SUCCESS';
-		public static const FAIL:String='com.kim.events.LoginFormSubmitEvent.FAIL';
+		public static const SUBMIT:String='org.storybot.events.LoginFormSubmitEvent.SUBMIT';
+		public static const SUCCESS:String='org.storybot.events.LoginFormSubmitEvent.SUCCESS';
+		public static const FAIL:String='org.storybot.events.LoginFormSubmitEvent.FAIL';
 		
 		
 		protected var _result:String;

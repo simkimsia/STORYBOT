@@ -1,13 +1,13 @@
-package com.kim.events
+package org.storybot.events
 {
-	import com.kim.collections.FileCollection;
+	import org.storybot.collections.FileCollection;
 	
 	import flash.events.Event;
 	import flash.filesystem.File;
 	
 	public class FileDropEvent extends Event
 	{
-		public static const FILE_DROP:String='com.kim.events.FileDropEvent.FILE_DROP'
+		public static const FILE_DROP:String='org.storybot.events.FileDropEvent.FILE_DROP'
 		protected var _files:FileCollection;
 		protected var _currentStoryFolder:String;
 		

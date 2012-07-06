@@ -1,11 +1,11 @@
-package com.kim.events
+package org.storybot.events
 {
 	
 	import flash.events.Event;
 	
 	public class UnsuccessfulFileCreatedEvent extends Event
 	{
-		public static const FILE_CREATE_FAIL:String='com.kim.events.UnsuccessfulFileCreatedEvent.FILE_CREATE_FAIL';
+		public static const FILE_CREATE_FAIL:String='org.storybot.events.UnsuccessfulFileCreatedEvent.FILE_CREATE_FAIL';
 		protected var _error:Error;
 		
 		public function UnsuccessfulFileCreatedEvent(type:String, error:Error, bubbles:Boolean=false, cancelable:Boolean=false)
