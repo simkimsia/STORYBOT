@@ -1,5 +1,6 @@
 package org.storybot.service.publish
 {
+	import org.robotlegs.oil.async.Promise;
 	
 	import org.storybot.service.publish.helpers.IPublishResultParser;
 	
@@ -9,7 +10,7 @@ package org.storybot.service.publish
 	public interface IPublishService 
 	{
 		// function inside the StoryzerPublishService
-		function publishStory(file:File):void;
+		function publishStory(file:File):Promise;
 		
 		function sampleMethod():void;
 		
