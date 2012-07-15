@@ -1,4 +1,4 @@
-package org.storybot.service
+package org.storybot.service.compressfile
 {
 	import org.storybot.collections.FileCollection;
 	import org.storybot.utils.Utils;

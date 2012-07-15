@@ -1,4 +1,4 @@
-package org.storybot.service.helpers
+package org.storybot.service.publish.helpers
 {
 	public class StoryzerPublishResultParser implements IPublishResultParser
 	{

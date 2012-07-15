@@ -1,4 +1,4 @@
-package org.storybot.service.events
+package org.storybot.service.publish.events
 {
 	import flash.events.Event;
 	

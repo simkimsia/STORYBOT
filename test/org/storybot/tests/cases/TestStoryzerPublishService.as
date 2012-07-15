@@ -1,11 +1,11 @@
 package org.storybot.tests.cases
 {
 	import org.storybot.events.PublishStoryEvent;
-	import org.storybot.service.IPublishService;
-	import org.storybot.service.StoryzerPublishService;
-	import org.storybot.service.events.PublishResultEvent;
-	import org.storybot.service.helpers.IPublishResultParser;
-	import org.storybot.service.helpers.StoryzerPublishResultParser;
+	import org.storybot.service.publish.IPublishService;
+	import org.storybot.service.publish.StoryzerPublishService;
+	import org.storybot.service.publish.events.PublishResultEvent;
+	import org.storybot.service.publish.helpers.IPublishResultParser;
+	import org.storybot.service.publish.helpers.StoryzerPublishResultParser;
 	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;

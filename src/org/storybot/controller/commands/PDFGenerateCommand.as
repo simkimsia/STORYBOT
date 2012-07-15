@@ -1,7 +1,7 @@
 package org.storybot.controller.commands
 {
 	import org.storybot.events.FileDropEvent;
-	import org.storybot.service.PDFGenerationService;
+	import org.storybot.service.compressfile.PDFGenerationService;
 	
 	import org.robotlegs.mvcs.Command;
 	

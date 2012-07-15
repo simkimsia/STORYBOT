@@ -1,7 +1,7 @@
 package org.storybot.controller.commands
 {
 	import org.storybot.events.FileDropEvent;
-	import org.storybot.service.CBZGenerationService;
+	import org.storybot.service.compressfile.CBZGenerationService;
 	
 	import org.robotlegs.mvcs.Command;
 	

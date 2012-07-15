@@ -1,8 +1,8 @@
-package org.storybot.service
+package org.storybot.service.publish
 {
 	import org.storybot.Globals;
-	import org.storybot.service.events.PublishResultEvent;
-	import org.storybot.service.helpers.IPublishResultParser;
+	import org.storybot.service.publish.events.PublishResultEvent;
+	import org.storybot.service.publish.helpers.IPublishResultParser;
 	
 	import flash.events.DataEvent;
 	import flash.events.Event;

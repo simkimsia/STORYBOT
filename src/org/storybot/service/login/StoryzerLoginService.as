@@ -1,4 +1,4 @@
-package org.storybot.service
+package org.storybot.service.login
 {
 	
 	import org.storybot.Constants;

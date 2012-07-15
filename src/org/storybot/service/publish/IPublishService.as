@@ -1,7 +1,7 @@
-package org.storybot.service
+package org.storybot.service.publish
 {
 	
-	import org.storybot.service.helpers.IPublishResultParser;
+	import org.storybot.service.publish.helpers.IPublishResultParser;
 	
 	import flash.events.IEventDispatcher;
 	import flash.filesystem.File;

@@ -2,7 +2,7 @@ package org.storybot.controller.commands
 {
 	
 	import org.storybot.events.FormSubmitEvent;
-	import org.storybot.service.StoryzerLoginService;
+	import org.storybot.service.login.StoryzerLoginService;
 	
 	import org.robotlegs.mvcs.Command;
 
