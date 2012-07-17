@@ -105,7 +105,6 @@ package org.storybot.tests.cases
 		}
 		
 		[Test(async)]
-		[Ignore]
 		public function testSample():void {
 			Async.proceedOnEvent(this, service.eventDispatcher, PublishResultEvent.RECEIVED, 2000);
 			

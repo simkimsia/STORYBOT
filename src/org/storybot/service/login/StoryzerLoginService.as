@@ -1,7 +1,8 @@
 package org.storybot.service.login
 {
 	
-	import org.storybot.Constants;
+	import org.storybot.config.Constants;
+	import org.storybot.config.Configure;
 	import org.storybot.Globals;
 	import org.storybot.events.ApplicationSessionEvent;
 	
@@ -12,8 +13,6 @@ package org.storybot.service.login
 	import flash.net.URLRequestHeader;
 	import flash.net.URLRequestMethod;
 	
-	import jsonrest.model.JsonRequestContent;
-	import jsonrest.model.JsonRestRequest;
 	
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
@@ -24,7 +23,6 @@ package org.storybot.service.login
 	
 	public class StoryzerLoginService extends Actor
 	{
-		protected var _jsonRequest:JsonRestRequest;
 		
 		public static const LOGIN_URI:String = Constants.HTTP + Constants.STORYZER_DOMAIN + '/oauth/token?grant_type=password';
 		public function StoryzerLoginService()
@@ -62,7 +60,7 @@ package org.storybot.service.login
 		 * 
 		 *  since the OAuth library code assume $_POST or $_GET so no point doing JSON for the login
 		 * */
-		public function loginusinghttpservicejson(params:Object):void 
+		private function loginusinghttpservicejson(params:Object):void 
 		{
 			params["client_id"] = Constants.CLIENT_ID;
 			params["client_secret"] = Constants.CLIENT_SECRET;
@@ -90,7 +88,7 @@ package org.storybot.service.login
 
 		}
 		
-		public function loginusingurlrequest(params:Object):void {
+		private function loginusingurlrequest(params:Object):void {
 			params["client_id"] = Constants.CLIENT_ID;
 			params["client_secret"] = Constants.CLIENT_SECRET;
 			
@@ -141,8 +139,11 @@ package org.storybot.service.login
 		protected function handleResponse(evt:Event):void
 		{
 			var jsonresponse:Object = JSON.parse(_loader.data);
-			Globals.ACCESS_TOKEN = jsonresponse.access_token;
-			Globals.REFRESH_TOKEN = jsonresponse.refresh_token;
+			
+			
+			Configure.write('access_token', jsonresponse.access_token);
+			Configure.write('refresh_token', jsonresponse.refresh_token);
+			//Globals.REFRESH_TOKEN = jsonresponse.refresh_token;
 			trace(_loader.data);
 			var event:ApplicationSessionEvent = new ApplicationSessionEvent(ApplicationSessionEvent.LOGGED_IN);
 			dispatch(event);

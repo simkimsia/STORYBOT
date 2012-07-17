@@ -8,7 +8,10 @@ package org.storybot.service.publish
 	
 	import org.robotlegs.mvcs.Actor;
 	import org.robotlegs.oil.async.Promise;
-	import org.storybot.Constants;
+	
+	import org.storybot.config.Constants;
+	import org.storybot.config.Configure;
+	
 	import org.storybot.Globals;
 	import org.storybot.service.helpers.IFileUploadClient;
 	import org.storybot.service.publish.IPublishService;
@@ -73,7 +76,7 @@ package org.storybot.service.publish
 			
 			var acceptHeader:URLRequestHeader = new URLRequestHeader("Accept", "application/json");
 			urlRequest.requestHeaders.push(acceptHeader);
-			var authorizationHeader:URLRequestHeader = new URLRequestHeader("Authorization", 'Bearer '/* + Globals.ACCESS_TOKEN*/);
+			var authorizationHeader:URLRequestHeader = new URLRequestHeader("Authorization", 'Bearer ' + Configure.read('access_token'));
 			urlRequest.requestHeaders.push(authorizationHeader);
 			
 			urlRequest.data = prepareParams();
