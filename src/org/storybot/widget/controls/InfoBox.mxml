@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 rollOver="group1_rollOverHandler(event)"
+		 rollOut="group1_rollOutHandler(event)"
+		 click="group1_clickHandler(event)"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="63" height="63">
+	<s:states>
+		<s:State name="up"/>
+		<s:State name="over"/>
+		<s:State name="selected"/>
+	</s:states>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Image 
+		source.over="@Embed('../assets/info-box-over.png')"
+		source.selected="@Embed('../assets/info-box-selected.png')"
+		source.up="@Embed('../assets/info-box-up.png')"/>
+	<s:Image 
+		id="imgIcon" 
+		top="10" 
+		source="{_iconSource}" 
+		source.selected="{_iconSelectedSource}"
+		horizontalCenter="0"/>
+	<s:Label 
+		id="lblInfo" 
+		right="10" 
+		bottom="3" 
+		color="#FFFFFF"
+		color.selected="#FFC20E"
+		fontSize="14" 
+		fontWeight="bold"
+		text="{_info}"/>
+	
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var _iconSource:Object;
+			
+			[Bindable]
+			private var _iconSelectedSource:Object;
+			
+			[Bindable]
+			private var _info:String;
+			
+			private var _isSelected:Boolean = false;
+			
+			public function set iconSource(value:Object):void{
+				_iconSource = value;
+			}
+			
+			public function get iconSource():Object{
+				return _iconSource;
+			}
+			
+			public function set iconSelectedSource(value:Object):void{
+				_iconSelectedSource = value;
+			}
+			
+			public function get iconSelectedSource():Object{
+				return _iconSelectedSource;
+			}
+			
+			public function set info(value:String):void{
+				_info = value;
+			}
+			
+			public function get info():String{
+				return _info;
+			}
+			
+			protected function group1_rollOverHandler(event:MouseEvent):void
+			{
+				if(!_isSelected) currentState = "over";
+			}
+			
+			protected function group1_rollOutHandler(event:MouseEvent):void
+			{
+				if(!_isSelected) currentState = "up";
+			}
+			
+			protected function group1_clickHandler(event:MouseEvent):void
+			{
+				if(_isSelected){
+					_isSelected = false;
+					currentState = "up";
+				}else{
+					_isSelected = true;
+					currentState = "selected";
+				}
+			}
+			
+		]]>
+	</fx:Script>
+</s:Group>
