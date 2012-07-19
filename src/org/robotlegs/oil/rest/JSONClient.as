@@ -7,21 +7,11 @@
 
 package org.robotlegs.oil.rest
 {
-	import com.adobe.serializers.json.JSONDecoder;
-	import com.adobe.serializers.json.JSONEncoder;
 	import flash.utils.describeType;
 	import mx.collections.ArrayCollection;
 
 	public class JSONClient extends RestClientBase
 	{
-
-		/*============================================================================*/
-		/* Protected Properties                                                       */
-		/*============================================================================*/
-
-		protected var _decoder:JSONDecoder = new JSONDecoder();
-
-		protected var _encoder:JSONEncoder = new JSONEncoder();
 
 		/*============================================================================*/
 		/* Constructor                                                                */
@@ -62,7 +52,7 @@ package org.robotlegs.oil.rest
 				return { value: source };
 
 			if (source is Array)
-				return { value: _encoder.encode(source)};
+				return { value: JSON.stringify(source)};
 
 			source = source.valueOf();
 
@@ -77,7 +67,7 @@ package org.robotlegs.oil.rest
 					value = source[property];
 					if (value is Function || isPrimitive(value))
 						continue;
-					source[property] = _encoder.encode(value);
+					source[property] = JSON.stringify(value);
 				}
 			}
 			else
@@ -97,7 +87,7 @@ package org.robotlegs.oil.rest
 					value = source[v.@name];
 					if (value is Function || isPrimitive(value))
 						continue;
-					source[property] = _encoder.encode(value);
+					source[property] = JSON.stringify(value);
 				}
 
 			}
@@ -118,7 +108,7 @@ package org.robotlegs.oil.rest
 				callback(null, null);
 				return;
 			}
-			callback(null, _decoder.decode(String(data)));
+			callback(null, JSON.parse(String(data)));
 		}
 	}
 }

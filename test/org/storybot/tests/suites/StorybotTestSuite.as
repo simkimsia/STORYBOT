@@ -1,7 +1,7 @@
 package org.storybot.tests.suites
 {
-	import org.storybot.tests.cases.TestStoryzerLoginService;
-	import org.storybot.tests.cases.TestStoryzerPublishService;
+	import org.storybot.tests.cases.services.TestStoryzerLoginService;
+	import org.storybot.tests.cases.services.TestStoryzerPublishService;
 	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]

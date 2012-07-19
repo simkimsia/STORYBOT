@@ -2,7 +2,7 @@ package org.storybot.service.login.events
 {
 	import flash.events.Event;
 	
-	public class LoginErrorEvent
+	public class LoginErrorEvent extends Event
 	{
 		public static const FAILED:String = "loginFailed";
 		
