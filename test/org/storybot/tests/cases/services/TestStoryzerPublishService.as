@@ -1,19 +1,8 @@
 package org.storybot.tests.cases.services
 {
-	import org.storybot.events.PublishStoryEvent;
-	import org.storybot.service.publish.IPublishService;
-	import org.storybot.service.publish.StoryzerPublishService;
-	import org.storybot.service.publish.events.PublishResultEvent;
-	import org.storybot.service.publish.helpers.IPublishResultParser;
-	import org.storybot.service.publish.helpers.StoryzerPublishResultParser;
-	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	import flash.filesystem.File;
-	
-	import org.storybot.tests.mocks.MockEventDispatcher;
-	import org.storybot.tests.mocks.MockFailureFileUploadClient;
-	import org.storybot.tests.mocks.MockSuccessFileUploadClient;
 	
 	import flexunit.framework.TestCase;
 	
@@ -25,87 +14,71 @@ package org.storybot.tests.cases.services
 	import mockolate.verify;
 	
 	import org.flexunit.Assert;
+	import org.flexunit.assertThat;
 	import org.flexunit.async.Async;
+	
 	import org.hamcrest.core.not;
 	import org.hamcrest.object.equalTo;
-	import org.hamcrest.object.hasPropertyWithValue;
-	import org.hamcrest.object.nullValue;
-	import org.swiftsuspenders.Injector;
+	import org.hamcrest.collection.hasItem;
 	
-	MockolateRunner; 
+	import org.storybot.events.PublishStoryEvent;
+	
+	import org.storybot.service.publish.IPublishService;
+	import org.storybot.service.publish.StoryzerPublishService;
+	import org.storybot.service.publish.events.PublishResultEvent;
+	import org.storybot.service.publish.events.PublishErrorEvent;
+	
+	import org.storybot.service.publish.helpers.IPublishResultParser;
+	import org.storybot.service.publish.helpers.StoryzerPublishResultParser;
+	
+	import org.storybot.tests.mocks.MockEventDispatcher;
+	import org.storybot.tests.mocks.MockFailureFileUploadClient;
+	import org.storybot.tests.mocks.MockSuccessFileUploadClient;
+	import org.swiftsuspenders.Injector; 
 	
 	[RunWith("mockolate.runner.MockolateRunner")]
 	public class TestStoryzerPublishService extends TestCase
 	{
-		//private var _injector:Injector;
-		
-		//private var _service:IPublishService;
+	
 		private var service:StoryzerPublishService;
-		private var serviceDispatcher:EventDispatcher = new EventDispatcher();
+		private var mockEventDispatcher:MockEventDispatcher;
 		
-		//public var mockStoryFile:File;
-		[Mock] public var mockStoryFile:File;
-		
-		//private static const CBZ_FILE:String = "test.cbz";
-		private static const CBZ_FILE:String = "/Users/user/Desktop/mexxik/Documents/projects/skinning/Adobe-AIR-App-Skinning/test/org/storybot/tests/suites/StorybotTestSuite.as";
-		
-		public function TestStoryzerPublishService() {
-			//_injector = new Injector();
-			
-			/*_injector.mapSingleton(EventDispatcher);
-			_injector.mapSingletonOf(IPublishResultParser, StoryzerPublishResultParser);
-			_injector.mapSingletonOf(IPublishService, StoryzerPublishService);
-			
-			_service = _injector.getInstance(IPublishService);*/
-			
-		}
+		[Mock] 
+		public var mockStoryFile:File;
 		
 		[Before]
-		override public function setUp():void
+		public function create():void
 		{
-			serviceDispatcher = new EventDispatcher();
 			service = new StoryzerPublishService();
-			service.eventDispatcher = serviceDispatcher;
+			mockEventDispatcher = new MockEventDispatcher();
 			
-			//mockStoryFile = new File(CBZ_FILE);
+			service.eventDispatcher = mockEventDispatcher;
 			
-			mockStoryFile = nice(File);
-			
-			stub(mockStoryFile).getter("name").returns(CBZ_FILE);
-			// stubbing the mockStoryFile 
-			//stub(mockStoryFile).getter("name").returns(CBZ_FILE);
-			//stub(mockStoryFile).getter("size").returns(1);
 		}
 		
-		[After]
-		override public function tearDown():void
-		{
-			this.serviceDispatcher = null;
-			this.service = null;
+		[Test]
+		public function publishStory_successfulUpload_fileUploadClientReceivedFile():void {
+			var fileUploadClient:MockSuccessFileUploadClient = new MockSuccessFileUploadClient();
+			service.fileUploadClient = fileUploadClient;
 			
-			//mockStoryFile = null;
+			service.publishStory(mockStoryFile);
+			assertThat(mockStoryFile, equalTo(fileUploadClient.lastFileUploaded));
 		}
 		
-		[Test(async)]
-		[Ignore]
-		public function testPublishStory():void
-		{
-			this.serviceDispatcher.addEventListener( PublishStoryEvent.SERVER_CONFIRM_UPLOAD_COMPLETE, 
-				Async.asyncHandler(this, handleStoryPublished, 8000, null, 
-					handleServiceTimeout), false, 0, true);
+		[Test]
+		public function publishStory_successfulUpload_dispatchedEventSuccess():void {
+			service.fileUploadClient = new MockSuccessFileUploadClient();
 			
-			this.service.publishStory(mockStoryFile);
+			service.publishStory(mockStoryFile);
+			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(PublishResultEvent.RECEIVED));
 		}
 		
-		protected function handleServiceTimeout( object:Object ):void
-		{
-			Assert.fail('Pending Event Never Occurred');
-		}
-		
-		protected function handleStoryPublished(event:PublishStoryEvent, object:Object):void
-		{
-			Assert.assertEquals("The story should be valid: ", 
-				event.story.id > 0, true)	
+		[Test]
+		public function publishStory_failedUpload_dispatchedEventFailed():void {
+			service.fileUploadClient = new MockFailureFileUploadClient();
+			
+			service.publishStory(mockStoryFile);
+			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(PublishErrorEvent.FAILED));
 		}
 		
 		[Test(async)]

@@ -1,14 +1,16 @@
 package org.storybot.tests.cases.services
 {
-	import org.storybot.service.login.ILoginService
+	import org.storybot.service.login.ILoginService;
+		
 	import org.storybot.service.login.StoryzerLoginService;
 	import org.storybot.service.login.events.LoginResultEvent;
+	import org.storybot.service.login.events.LoginErrorEvent;
+	
 	import org.storybot.service.login.helpers.ILoginResultParser;
 	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
 	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
-	import flash.filesystem.File;
 	
 	import flexunit.framework.TestCase;
 	
@@ -20,11 +22,15 @@ package org.storybot.tests.cases.services
 	import mockolate.verify;
 	
 	import org.flexunit.Assert;
+	import org.flexunit.assertThat;
 	import org.flexunit.async.Async;
+	
 	import org.hamcrest.core.not;
 	import org.hamcrest.object.equalTo;
-	import org.hamcrest.object.hasPropertyWithValue;
-	import org.hamcrest.object.nullValue;
+	import org.hamcrest.collection.hasItem;
+	
+	import org.storybot.tests.mocks.MockEventDispatcher;
+	
 	import org.swiftsuspenders.Injector;
 	
 	MockolateRunner; 
@@ -33,32 +39,27 @@ package org.storybot.tests.cases.services
 	public class TestStoryzerLoginService extends TestCase
 	{
 		private var service:StoryzerLoginService;
-		private var serviceDispatcher:EventDispatcher = new EventDispatcher();
+		private var mockEventDispatcher:MockEventDispatcher;
 		
-		private var loginParams:Object = {}; // we expect a hashmap Object aka associative array
-		
-		
-		public function TestStoryzerLoginService()
-		{
-		}
+		[Mock] 
+		public var loginParams:Object;// we expect a hashmap Object aka associative array
 		
 		[Before]
-		override public function setUp():void
+		public function create():void
 		{
-			serviceDispatcher = new EventDispatcher();
 			service = new StoryzerLoginService();
-			service.eventDispatcher = serviceDispatcher;
+			mockEventDispatcher = new MockEventDispatcher();
+			
+			service.eventDispatcher = mockEventDispatcher;
 			
 			loginParams["username"] = 'kimsia@storyzer.com';
 			loginParams['password'] = 'password';
 		}
 		
 		[After]
-		override public function tearDown():void
+		public function destroy():void
 		{
-			this.serviceDispatcher = null;
-			this.service = null;
-			this.loginParams = {};
+			
 		}
 		
 		[Test(async)]

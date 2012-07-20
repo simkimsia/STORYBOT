@@ -12,7 +12,7 @@ import flash.net.URLRequest;
 
 	import org.robotlegs.oil.async.Promise;
 	
-	import org.storybot.service.*;
+	import org.storybot.service.helpers.IFileUploadClient;
 	
 	public class MockFailureFileUploadClient extends BaseMockFileUploadClient implements IFileUploadClient
 	{
