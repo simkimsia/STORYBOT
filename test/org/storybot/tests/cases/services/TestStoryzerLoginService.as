@@ -64,7 +64,10 @@ package org.storybot.tests.cases.services
 		[After]
 		public function destroy():void
 		{
+			service = null;
+			mockEventDispatcher = null;
 			
+			loginParams = {};
 		}
 		
 		// we probably need 2 tests for testing the expected results from the login
