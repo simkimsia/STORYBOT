@@ -1,0 +1,73 @@
+/**
+ * Created with IntelliJ IDEA.
+ * User: simkimsia
+ * Date: 09.07.12
+ * Time: 11:45
+ * To change this template use File | Settings | File Templates.
+ */
+package org.storybot.tests.mocks
+{
+	import org.robotlegs.oil.async.Promise;
+	import org.robotlegs.oil.rest.IRestClient;
+	
+	
+	
+	public class BaseMockRestClient implements IRestClient
+	{
+		public var lastUploadRequest:String;
+		
+		protected var paramTransforms:Array = [];
+		
+		protected var resultProcessors:Array = [];
+
+		
+		public function post(url:String, params:Object = null):Promise
+		{
+			lastUploadRequest = url;
+			
+			var promise:Promise = new Promise();
+			promise.handleResult([]);//todo: something that you're expecting in the result
+			return promise;
+		}
+		
+		public function get(url:String, params:Object = null):Promise
+		{
+			lastUploadRequest = url;
+			
+			var promise:Promise = new Promise();
+			promise.handleResult([]);//todo: something that you're expecting in the result
+			return promise;
+		}
+		
+		public function put(url:String, params:Object = null):Promise
+		{
+			lastUploadRequest = url;
+			
+			var promise:Promise = new Promise();
+			promise.handleResult([]);//todo: something that you're expecting in the result
+			return promise;
+		}
+		
+		public function del(url:String, params:Object = null):Promise
+		{
+			lastUploadRequest = url;
+			
+			var promise:Promise = new Promise();
+			promise.handleResult([]);//todo: something that you're expecting in the result
+			return promise;
+		}
+		
+		public function addParamsTransform(transform:Function):IRestClient
+		{
+			paramTransforms.push(transform);
+			return this;
+		}
+		
+		public function addResultProcessor(processor:Function):IRestClient
+		{
+			resultProcessors.push(processor);
+			return this;
+		}
+
+	}
+}
