@@ -33,6 +33,9 @@ package org.storybot.tests.cases.services
 	
 	import org.swiftsuspenders.Injector;
 	
+	import org.storybot.tests.mocks.MockSuccessLoginClient;
+	import org.storybot.tests.mocks.MockFailureLoginClient;
+	
 	MockolateRunner; 
 	
 	[RunWith("mockolate.runner.MockolateRunner")]
@@ -52,6 +55,8 @@ package org.storybot.tests.cases.services
 			
 			service.eventDispatcher = mockEventDispatcher;
 			
+			loginParams = {};// expect hashmap object aka associative array
+			
 			loginParams["username"] = 'kimsia@storyzer.com';
 			loginParams['password'] = 'password';
 		}
@@ -62,12 +67,26 @@ package org.storybot.tests.cases.services
 			
 		}
 		
-		[Test(async)]
-		public function testStoryzerLogin():void
-		{
-			Async.proceedOnEvent(this, service.eventDispatcher, LoginResultEvent.RECEIVED, 2000);
+		// we probably need 2 tests for testing the expected results from the login
+		// 1 for successful
+		// 1 for error 
+		
+		[Test]
+		public function testStoryzerSuccessfulLoginDispatchSuccessEvent():void {
+			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
+			service.restClient = successRestClient;
 			
 			service.login(loginParams);
+			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(LoginResultEvent.RECEIVED));
+		}
+		
+		[Test]
+		public function testStoryzerFailureLoginDispatchFailureEvent():void {
+			var failureRestClient:MockFailureLoginClient = new MockFailureLoginClient();
+			service.restClient = failureRestClient;
+			
+			service.login(loginParams);
+			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(LoginErrorEvent.FAILED));
 		}
 		
 	}

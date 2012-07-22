@@ -30,7 +30,7 @@ package org.storybot.service.login
 		public static const LOGIN_URI:String = Constants.HTTP + Constants.STORYZER_DOMAIN + '/oauth/token?grant_type=password';
 		
 		[Inject]
-		protected var restClient:IRestClient;
+		public var restClient:IRestClient;
 		
 		private var _parser:ILoginResultParser;
 		
