@@ -75,7 +75,7 @@ package org.storybot.tests.cases.services
 		// 1 for error 
 		
 		[Test]
-		public function testStoryzerSuccessfulLoginDispatchSuccessEvent():void {
+		public function login_successfulLogin_dispatchedEventSuccess():void {
 			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
 			service.restClient = successRestClient;
 			
@@ -84,7 +84,7 @@ package org.storybot.tests.cases.services
 		}
 		
 		[Test]
-		public function testStoryzerFailureLoginDispatchFailureEvent():void {
+		public function login_failedLogin_dispatchedEventFailed():void {
 			var failureRestClient:MockFailureLoginClient = new MockFailureLoginClient();
 			service.restClient = failureRestClient;
 			
