@@ -14,7 +14,7 @@ package org.storybot.tests.mocks
 	
 	public class BaseMockRestClient implements IRestClient
 	{
-		public var lastUploadRequest:String;
+		public var rootURL:String;
 		
 		protected var paramTransforms:Array = [];
 		
@@ -23,7 +23,7 @@ package org.storybot.tests.mocks
 		
 		public function post(url:String, params:Object = null):Promise
 		{
-			lastUploadRequest = url;
+			rootURL = url;
 			
 			var promise:Promise = new Promise();
 			promise.handleResult([]);//todo: something that you're expecting in the result
@@ -32,7 +32,7 @@ package org.storybot.tests.mocks
 		
 		public function get(url:String, params:Object = null):Promise
 		{
-			lastUploadRequest = url;
+			rootURL = url;
 			
 			var promise:Promise = new Promise();
 			promise.handleResult([]);//todo: something that you're expecting in the result
@@ -41,7 +41,7 @@ package org.storybot.tests.mocks
 		
 		public function put(url:String, params:Object = null):Promise
 		{
-			lastUploadRequest = url;
+			rootURL = url;
 			
 			var promise:Promise = new Promise();
 			promise.handleResult([]);//todo: something that you're expecting in the result
@@ -50,7 +50,7 @@ package org.storybot.tests.mocks
 		
 		public function del(url:String, params:Object = null):Promise
 		{
-			lastUploadRequest = url;
+			rootURL = url;
 			
 			var promise:Promise = new Promise();
 			promise.handleResult([]);//todo: something that you're expecting in the result
