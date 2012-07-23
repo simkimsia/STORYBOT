@@ -1,14 +1,5 @@
 package org.storybot.tests.cases.services
 {
-	import org.storybot.service.login.ILoginService;
-		
-	import org.storybot.service.login.StoryzerLoginService;
-	import org.storybot.service.login.events.LoginResultEvent;
-	import org.storybot.service.login.events.LoginErrorEvent;
-	
-	import org.storybot.service.login.helpers.ILoginResultParser;
-	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
-	
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
 	
@@ -24,17 +15,20 @@ package org.storybot.tests.cases.services
 	import org.flexunit.Assert;
 	import org.flexunit.assertThat;
 	import org.flexunit.async.Async;
-	
+	import org.hamcrest.collection.hasItem;
 	import org.hamcrest.core.not;
 	import org.hamcrest.object.equalTo;
-	import org.hamcrest.collection.hasItem;
-	
+	import org.storybot.service.login.ILoginService;
+	import org.storybot.service.login.StoryzerLoginService;
+	import org.storybot.service.login.events.LoginErrorEvent;
+	import org.storybot.service.login.events.LoginResultEvent;
+	import org.storybot.service.login.helpers.ILoginResultParser;
+	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
 	import org.storybot.tests.mocks.MockEventDispatcher;
-	
-	import org.swiftsuspenders.Injector;
-	
-	import org.storybot.tests.mocks.MockSuccessLoginClient;
 	import org.storybot.tests.mocks.MockFailureLoginClient;
+	import org.storybot.tests.mocks.MockLoginResultParser;
+	import org.storybot.tests.mocks.MockSuccessLoginClient;
+	import org.swiftsuspenders.Injector;
 	
 	MockolateRunner; 
 	
@@ -43,6 +37,7 @@ package org.storybot.tests.cases.services
 	{
 		private var service:StoryzerLoginService;
 		private var mockEventDispatcher:MockEventDispatcher;
+		private var mockLoginResultParser:MockLoginResultParser;
 		
 		[Mock] 
 		public var loginParams:Object;// we expect a hashmap Object aka associative array
@@ -52,8 +47,10 @@ package org.storybot.tests.cases.services
 		{
 			service = new StoryzerLoginService();
 			mockEventDispatcher = new MockEventDispatcher();
+			mockLoginResultParser = new MockLoginResultParser();
 			
 			service.eventDispatcher = mockEventDispatcher;
+			service.parser = mockLoginResultParser;
 			
 			loginParams = {};// expect hashmap object aka associative array
 			
@@ -81,6 +78,16 @@ package org.storybot.tests.cases.services
 			
 			service.login(loginParams);
 			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(LoginResultEvent.RECEIVED));
+			
+		}
+		
+		[Test]
+		public function login_successfulUpload_parser():void {
+			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
+			service.restClient = successRestClient;
+			
+			service.login(loginParams);
+			assertThat(, equalTo(fileUploadClient.lastFileUploaded));
 		}
 		
 		[Test]

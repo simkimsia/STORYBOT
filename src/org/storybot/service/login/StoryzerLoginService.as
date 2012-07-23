@@ -60,7 +60,6 @@ package org.storybot.service.login
 		private function onResultProcessor(result:*):void {
 			//result will be string probably and here you can convert it to JSON
 			var loginResult:Object = _parser.parseLoginResults(String(result));
-			
 		}
 		
 		private function onLoginResult(p:Promise):void {
