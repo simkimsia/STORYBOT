@@ -54,6 +54,11 @@ package org.storybot.service.login
 			_parser = value;
 		}
 		
+		public function get parser():ILoginResultParser 
+		{
+			return _parser;
+		}
+		
 		/**
 		 * handler function on the result retrieved from the REST client post
 		 **/

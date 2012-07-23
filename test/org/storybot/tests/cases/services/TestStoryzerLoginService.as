@@ -18,6 +18,7 @@ package org.storybot.tests.cases.services
 	import org.hamcrest.collection.hasItem;
 	import org.hamcrest.core.not;
 	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.notNullValue;
 	import org.storybot.service.login.ILoginService;
 	import org.storybot.service.login.StoryzerLoginService;
 	import org.storybot.service.login.events.LoginErrorEvent;
@@ -63,6 +64,7 @@ package org.storybot.tests.cases.services
 		{
 			service = null;
 			mockEventDispatcher = null;
+			mockLoginResultParser = null;
 			
 			loginParams = {};
 		}
@@ -87,7 +89,7 @@ package org.storybot.tests.cases.services
 			service.restClient = successRestClient;
 			
 			service.login(loginParams);
-			assertThat(, equalTo(fileUploadClient.lastFileUploaded));
+			assertThat(mockLoginResultParser.lastKnownResults, notNullValue());
 		}
 		
 		[Test]
