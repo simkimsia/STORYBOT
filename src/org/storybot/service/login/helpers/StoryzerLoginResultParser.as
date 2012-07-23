@@ -3,11 +3,14 @@ package org.storybot.service.login.helpers
 	
 	public class StoryzerLoginResultParser implements ILoginResultParser
 	{
-		public function parseLoginResults(results:Object):Array
+		
+		public var lastKnownResults:String;
+		
+		public function parseLoginResults(results:String):Object
 		{
-			var jsonStringResults:String = JSON.stringify(results)
+			var jsonStringResults:Object = JSON.parse(results)
 			
-			return new Array() ;
+			return jsonStringResults;
 		}
 	}
 }

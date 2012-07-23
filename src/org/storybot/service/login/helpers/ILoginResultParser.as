@@ -2,6 +2,6 @@ package org.storybot.service.login.helpers
 {
 	public interface ILoginResultParser
 	{
-		function parseLoginResults(results:Object):Array;
+		function parseLoginResults(results:String):Object;
 	}
 }

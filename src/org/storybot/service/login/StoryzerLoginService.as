@@ -54,9 +54,13 @@ package org.storybot.service.login
 			_parser = value;
 		}
 		
-		private function onResultProcessor(result:*):* {
+		/**
+		 * handler function on the result retrieved from the REST client post
+		 **/
+		private function onResultProcessor(result:*):void {
 			//result will be string probably and here you can convert it to JSON
-			return JSON.parse(result);
+			var loginResult:Object = _parser.parseLoginResults(String(result));
+			
 		}
 		
 		private function onLoginResult(p:Promise):void {
