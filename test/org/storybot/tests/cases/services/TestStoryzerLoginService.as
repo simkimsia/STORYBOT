@@ -72,6 +72,15 @@ package org.storybot.tests.cases.services
 		// we probably need 2 tests for testing the expected results from the login
 		// 1 for successful
 		// 1 for error 
+		[Test]
+		public function login_successfulUpload_parser():void {
+			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
+			service.restClient = successRestClient;
+			
+			service.login(loginParams);
+			assertThat(mockLoginResultParser.lastKnownResults, notNullValue());
+		}
+		
 		
 		[Test]
 		public function login_successfulLogin_dispatchedEventSuccess():void {
@@ -83,14 +92,7 @@ package org.storybot.tests.cases.services
 			
 		}
 		
-		[Test]
-		public function login_successfulUpload_parser():void {
-			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
-			service.restClient = successRestClient;
-			
-			service.login(loginParams);
-			assertThat(mockLoginResultParser.lastKnownResults, notNullValue());
-		}
+		
 		
 		[Test]
 		public function login_failedLogin_dispatchedEventFailed():void {
