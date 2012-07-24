@@ -1,4 +1,4 @@
-package org.storybot.tests.cases.services
+package org.storybot.tests.cases.parsers
 {
 	import flash.events.EventDispatcher;
 	import flash.events.IEventDispatcher;
@@ -24,11 +24,8 @@ package org.storybot.tests.cases.services
 	import org.storybot.service.login.helpers.ILoginResultParser;
 	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
 	
-	import org.storybot.tests.mocks.MockAsyncSuccessRestClient;
-	import org.storybot.tests.mocks.MockEventDispatcher;
-	import org.storybot.tests.mocks.MockFailureRestClient;
-	import org.storybot.tests.mocks.MockLoginResultParser;
-	import org.storybot.tests.mocks.MockSuccessRestClient;
+	import org.storybot.tests.mocks.parser.MockLoginResultParser;
+	
 	import org.swiftsuspenders.Injector;
 	
 	MockolateRunner; 
