@@ -20,6 +20,13 @@ package org.storybot.tests.mocks
 		
 		protected var resultProcessors:Array = [];
 
+		public var results:String; // this is because we expect all service calls to return JSON strings
+		
+		public function MockFailureRestClient(results:String = ""):void 
+		{
+			this.results = results;
+			
+		}
 		
 		public function post(url:String, params:Object = null):Promise
 		{

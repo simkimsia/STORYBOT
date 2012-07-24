@@ -22,9 +22,9 @@ package org.storybot.tests.mocks
 		
 		protected var resultProcessors:Array = [];
 		
-		public var results:Object;
+		public var results:String;
 		
-		public function MockAsyncSuccessRestClient(results:Object) 
+		public function MockAsyncSuccessRestClient(results:String = "") 
 		{
 			this.results = results;
 		}
