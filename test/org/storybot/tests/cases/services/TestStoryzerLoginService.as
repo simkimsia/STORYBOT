@@ -27,11 +27,11 @@ package org.storybot.tests.cases.services
 	import org.storybot.service.login.helpers.ILoginResultParser;
 	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
 	
-	import org.storybot.tests.mocks.MockAsyncSuccessLoginClient;
+	import org.storybot.tests.mocks.MockAsyncSuccessRestClient;
 	import org.storybot.tests.mocks.MockEventDispatcher;
-	import org.storybot.tests.mocks.MockFailureLoginClient;
+	import org.storybot.tests.mocks.MockFailureRestClient;
 	import org.storybot.tests.mocks.MockLoginResultParser;
-	import org.storybot.tests.mocks.MockSuccessLoginClient;
+	import org.storybot.tests.mocks.MockSuccessRestClient;
 	import org.swiftsuspenders.Injector;
 	
 	MockolateRunner; 
@@ -78,7 +78,7 @@ package org.storybot.tests.cases.services
 		
 		[Test]
 		public function login_successfulLogin_dispatchedEventSuccess():void {
-			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
+			var successRestClient:MockSuccessRestClient = new MockSuccessRestClient();
 			service.restClient = successRestClient;
 			
 			service.login(loginParams);
@@ -88,7 +88,7 @@ package org.storybot.tests.cases.services
 		
 		[Test(async)]
 		public function login_successfulUpload_parser():void {
-			var successRestClient:MockAsyncSuccessLoginClient = new MockAsyncSuccessLoginClient();
+			var successRestClient:MockAsyncSuccessRestClient = new MockAsyncSuccessRestClient();
 			service.restClient = successRestClient;
 			service.login(loginParams);
 			Async.delayCall(this, onParserCheck, 2);
@@ -100,7 +100,7 @@ package org.storybot.tests.cases.services
 		
 		[Test]
 		public function login_failedLogin_dispatchedEventFailed():void {
-			var failureRestClient:MockFailureLoginClient = new MockFailureLoginClient();
+			var failureRestClient:MockFailureRestClient = new MockFailureRestClient();
 			service.restClient = failureRestClient;
 			
 			service.login(loginParams);

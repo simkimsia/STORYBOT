@@ -12,7 +12,7 @@ package org.storybot.tests.mocks
 	
 	
 	
-	public class BaseMockRestClient implements IRestClient
+	public class MockFailureRestClient implements IRestClient
 	{
 		public var rootURL:String;
 		
@@ -26,7 +26,7 @@ package org.storybot.tests.mocks
 			rootURL = url;
 			
 			var promise:Promise = new Promise();
-			promise.handleResult([]);//todo: something that you're expecting in the result
+			promise.handleError('Error');
 			return promise;
 		}
 		
@@ -35,7 +35,7 @@ package org.storybot.tests.mocks
 			rootURL = url;
 			
 			var promise:Promise = new Promise();
-			promise.handleResult([]);//todo: something that you're expecting in the result
+			promise.handleError('Error');
 			return promise;
 		}
 		
@@ -44,7 +44,7 @@ package org.storybot.tests.mocks
 			rootURL = url;
 			
 			var promise:Promise = new Promise();
-			promise.handleResult([]);//todo: something that you're expecting in the result
+			promise.handleError('Error');
 			return promise;
 		}
 		
@@ -53,7 +53,7 @@ package org.storybot.tests.mocks
 			rootURL = url;
 			
 			var promise:Promise = new Promise();
-			promise.handleResult([]);//todo: something that you're expecting in the result
+			promise.handleError('Error');
 			return promise;
 		}
 		
