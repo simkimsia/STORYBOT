@@ -87,7 +87,7 @@ package org.storybot.tests.cases.services
 		}
 		
 		[Test(async)]
-		public function login_successfulUpload_parser():void {
+		public function login_successfulLogin_parserActivated():void {
 			var successRestClient:MockAsyncSuccessRestClient = new MockAsyncSuccessRestClient();
 			service.restClient = successRestClient;
 			service.login(loginParams);
