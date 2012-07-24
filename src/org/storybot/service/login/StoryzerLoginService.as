@@ -70,6 +70,8 @@ package org.storybot.service.login
 			 	"scope":null,
 				"refresh_token":"45d1faec9dfdf9fd94da1e2e72c56bce8cc34909"}
 			**/
+			// here we catch for any possible error JSON strings
+			// @TODO add in code to catch for errors
 			//loginResult goes from parser
 			var loginResult:Object = _parser.parseLoginResults(String(data));
 			//use handle to pass the results (null - for error param, loginResult for data param)

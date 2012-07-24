@@ -72,9 +72,10 @@ package org.storybot.tests.cases.services
 			loginParams = {};
 		}
 		
-		// we probably need 2 tests for testing the expected results from the login
-		// 1 for successful
-		// 1 for error 
+		// 3 tests
+		// 1 for testing successful event dispatched
+		// 1 for testing failure event dispatched
+		// 1 for testing parser was correctly called for successful event
 		
 		[Test]
 		public function login_successfulLogin_dispatchedEventSuccess():void {
