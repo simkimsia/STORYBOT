@@ -3,10 +3,15 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:widget="org.storybot.widget.*"
+					   xmlns:view="org.storybot.view.*"
+					   xmlns:storybot="org.storybot.*"
 					   backgroundColor="#FF5500">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<!-- declare StorybotContext as the context to use -->
+		<storybot:StorybotContext contextView="{this}" />
 	</fx:Declarations>
 	<widget:Widget x="772" y="10">
 	</widget:Widget>
+	<view:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />
 </s:WindowedApplication>
