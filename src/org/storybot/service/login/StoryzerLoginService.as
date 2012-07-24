@@ -63,6 +63,13 @@ package org.storybot.service.login
 		 * handler function on the result retrieved from the REST client post
 		 **/
 		private function onResultProcessor(data:*, handle:Function):void {
+			// data expected is in the form of
+			/**
+			 *  {"access_token":"0ee034ea293a35f887bb8c556b5dcc34fa1cbca9",
+				"expires_in":3600,"token_type":"bearer",
+			 	"scope":null,
+				"refresh_token":"45d1faec9dfdf9fd94da1e2e72c56bce8cc34909"}
+			**/
 			//loginResult goes from parser
 			var loginResult:Object = _parser.parseLoginResults(String(data));
 			//use handle to pass the results (null - for error param, loginResult for data param)

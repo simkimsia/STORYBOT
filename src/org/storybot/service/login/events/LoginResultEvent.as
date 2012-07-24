@@ -7,12 +7,12 @@ package org.storybot.service.login.events
 		public static const RECEIVED:String = "loginResultsReceived";
 		
 		
-		private var _results:Array;
-		public function get results():Array {
+		private var _results:Object;
+		public function get results():Object {
 			return _results;
 		}
 		
-		public function LoginResultEvent(type:String, results:Array = null) {
+		public function LoginResultEvent(type:String, results:Object = null) {
 			super(type, bubbles, cancelable);
 			_results = results;
 		}

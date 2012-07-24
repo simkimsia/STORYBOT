@@ -16,9 +16,7 @@ package org.storybot.controller.commands
 		
 		override public function execute():void {
 			service.login(event.params);
-			trace(event.params);
 		}
-
 
 	}
 }
