@@ -72,6 +72,8 @@ package org.storybot.service.login
 			**/
 			// here we catch for any possible error JSON strings
 			// @TODO add in code to catch for errors
+			// apparently no need... because for login any failure willl result in IoError
+			// and this message Error #2032: Stream Error. URL: http://storyzer.localhost/oauth/token.json
 			//loginResult goes from parser
 			var loginResult:Object = _parser.parseLoginResults(String(data));
 			//use handle to pass the results (null - for error param, loginResult for data param)
@@ -84,8 +86,9 @@ package org.storybot.service.login
 		}
 		
 		private function onLoginError(p:Promise):void {
+			
 			//here you can handle error
-			eventDispatcher.dispatchEvent(new LoginErrorEvent(LoginErrorEvent.FAILED, p.error));
+			eventDispatcher.dispatchEvent(new LoginErrorEvent(LoginErrorEvent.FAILED, 'Login Fail.'));
 		}
 		
 		/**
