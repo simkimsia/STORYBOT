@@ -19,6 +19,7 @@ package org.storybot.tests.cases.services
 	import org.hamcrest.core.not;
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.notNullValue;
+
 	import org.storybot.service.login.ILoginService;
 	import org.storybot.service.login.StoryzerLoginService;
 	import org.storybot.service.login.events.LoginErrorEvent;
