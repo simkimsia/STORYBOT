@@ -1,4 +1,4 @@
-package org.storybot.tests.mocks
+package org.storybot.tests.mocks.common
 {
 import flash.events.Event;
 import flash.events.EventDispatcher;

@@ -1,4 +1,4 @@
-package org.storybot.tests.mocks
+package org.storybot.tests.mocks.parser
 {
 	public class BaseMockResultParser
 	{

@@ -1,4 +1,4 @@
-package org.storybot.tests.mocks
+package org.storybot.tests.mocks.parser
 {
 	import org.storybot.service.login.helpers.ILoginResultParser;
 

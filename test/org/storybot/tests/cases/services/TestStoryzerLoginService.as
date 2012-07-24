@@ -27,11 +27,11 @@ package org.storybot.tests.cases.services
 	import org.storybot.service.login.helpers.ILoginResultParser;
 	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
 	
-	import org.storybot.tests.mocks.MockAsyncSuccessRestClient;
-	import org.storybot.tests.mocks.MockEventDispatcher;
-	import org.storybot.tests.mocks.MockFailureRestClient;
-	import org.storybot.tests.mocks.MockLoginResultParser;
-	import org.storybot.tests.mocks.MockSuccessRestClient;
+	import org.storybot.tests.mocks.rest.MockAsyncSuccessRestClient;
+	import org.storybot.tests.mocks.common.MockEventDispatcher;
+	import org.storybot.tests.mocks.rest.MockFailureRestClient;
+	import org.storybot.tests.mocks.parser.MockLoginResultParser;
+	import org.storybot.tests.mocks.rest.MockSuccessRestClient;
 	import org.swiftsuspenders.Injector;
 	
 	MockolateRunner; 

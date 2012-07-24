@@ -5,7 +5,7 @@
  * Time: 11:45
  * To change this template use File | Settings | File Templates.
  */
-package org.storybot.tests.mocks
+package org.storybot.tests.mocks.fileupload
 {
 import flash.net.FileReference;
 import flash.net.URLRequest;

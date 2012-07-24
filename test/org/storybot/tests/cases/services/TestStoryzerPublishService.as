@@ -31,9 +31,9 @@ package org.storybot.tests.cases.services
 	import org.storybot.service.publish.helpers.IPublishResultParser;
 	import org.storybot.service.publish.helpers.StoryzerPublishResultParser;
 	
-	import org.storybot.tests.mocks.MockEventDispatcher;
-	import org.storybot.tests.mocks.MockFailureFileUploadClient;
-	import org.storybot.tests.mocks.MockSuccessFileUploadClient;
+	import org.storybot.tests.mocks.common.MockEventDispatcher;
+	import org.storybot.tests.mocks.fileupload.MockFailureFileUploadClient;
+	import org.storybot.tests.mocks.fileupload.MockSuccessFileUploadClient;
 	import org.swiftsuspenders.Injector; 
 	
 	[RunWith("mockolate.runner.MockolateRunner")]

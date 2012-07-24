@@ -5,7 +5,7 @@
  * Time: 11:35
  * To change this template use File | Settings | File Templates.
  */
-package org.storybot.tests.mocks
+package org.storybot.tests.mocks.rest
 {
 	import flash.utils.setTimeout;
 	
