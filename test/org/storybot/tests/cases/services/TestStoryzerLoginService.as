@@ -25,7 +25,8 @@ package org.storybot.tests.cases.services
 	import org.storybot.service.login.events.LoginResultEvent;
 	import org.storybot.service.login.helpers.ILoginResultParser;
 	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
-	import org.storybot.tests.mocks.MockEventDispatcher;
+import org.storybot.tests.mocks.MockAsyncSuccessLoginClient;
+import org.storybot.tests.mocks.MockEventDispatcher;
 	import org.storybot.tests.mocks.MockFailureLoginClient;
 	import org.storybot.tests.mocks.MockLoginResultParser;
 	import org.storybot.tests.mocks.MockSuccessLoginClient;
@@ -72,15 +73,6 @@ package org.storybot.tests.cases.services
 		// we probably need 2 tests for testing the expected results from the login
 		// 1 for successful
 		// 1 for error 
-		[Test]
-		public function login_successfulUpload_parser():void {
-			var successRestClient:MockSuccessLoginClient = new MockSuccessLoginClient();
-			service.restClient = successRestClient;
-			
-			service.login(loginParams);
-			assertThat(mockLoginResultParser.lastKnownResults, notNullValue());
-		}
-		
 		
 		[Test]
 		public function login_successfulLogin_dispatchedEventSuccess():void {
@@ -92,7 +84,17 @@ package org.storybot.tests.cases.services
 			
 		}
 		
-		
+		[Test(async)]
+		public function login_successfulUpload_parser():void {
+			var successRestClient:MockAsyncSuccessLoginClient = new MockAsyncSuccessLoginClient();
+			service.restClient = successRestClient;
+			service.login(loginParams);
+			Async.delayCall(this, onParserCheck, 2);
+		}
+
+		private function onParserCheck():void {
+			assertThat(mockLoginResultParser.lastKnownResults, notNullValue());
+		}
 		
 		[Test]
 		public function login_failedLogin_dispatchedEventFailed():void {
