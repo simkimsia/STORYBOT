@@ -72,12 +72,22 @@ package org.robotlegs.oil.rest
 			return post(url, params);
 		}
 
-		public function get(url:String, params:Object = null):Promise
+		public function get(url:String, params:Object = null, headers:Array = null):Promise
 		{
 			params = transform(params, paramTransforms);
 			if (params)
 				url += createQueryString(copyAllProperties(params));
 			const req:URLRequest = new URLRequest(fullUrl(url));
+			
+			/**
+			 * add request headers
+			 * */
+			if (headers) {
+				for each (var header:URLRequestHeader in headers) {
+					req.requestHeaders.push(header);	
+				}
+			}
+			
 			return request(req);
 		}
 

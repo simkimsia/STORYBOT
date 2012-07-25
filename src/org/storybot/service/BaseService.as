@@ -8,15 +8,16 @@ package org.storybot.service
 
 	public class BaseService extends Actor
 	{
-		protected var authorizationHeader:URLRequestHeader;
+		protected var headers:Array = [];
 		
-		protected var addOAuthAccessTokenToHeader():Boolean {
+		protected function createOAuthAuthorizationHeader():URLRequestHeader {
 			var oAuth:LoginData = Configure.read('OAuth');
 			if (oAuth) {
-				authorizationHeader = new URLRequestHeader("Authorization", 'Bearer ' + oAuth.access_token);
-				return true;
+				var authorizationHeader:URLRequestHeader = new URLRequestHeader("Authorization", 'Bearer ' + oAuth.access_token);
+				headers.push(authorizationHeader);
+				return authorizationHeader;
 			}
-			return false;
+			return null;
 		}
 	}
 }

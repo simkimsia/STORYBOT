@@ -6,12 +6,12 @@ package org.storybot.service.user.events
 	{
 		public static const RECEIVED:String = "pullUserResultsReceived";
 		
-		private var _results:Array;
-		public function get results():Array {
+		private var _results:Object;
+		public function get results():Object {
 			return _results;
 		}
 		
-		public function PullUserResultEvent(type:String, results:Array = null) {
+		public function PullUserResultEvent(type:String, results:Object = null) {
 			super(type, bubbles, cancelable);
 			_results = results;
 		}

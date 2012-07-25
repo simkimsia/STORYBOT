@@ -4,9 +4,9 @@ package org.storybot.model
 	
 	public class User
 	{
-		public var name:String;
+		public var username:String;
 		public var id:int;
-		public var loginData:LoginData
+		public var email:String;
 		
 	}
 }

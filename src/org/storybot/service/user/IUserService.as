@@ -12,9 +12,11 @@ package org.storybot.service.user
 		// function inside the StoryzerPublishService
 		function pullLoggedInUser():Promise;
 		
-		function pushLoggedInUser(user:User):Promise;
+		//function pushLoggedInUser(user:User):Promise;
 		
 		// set the parser
 		function set parser(value:IUserResultParser):void;
+		
+		function get parser():IUserResultParser;
 	}
 }

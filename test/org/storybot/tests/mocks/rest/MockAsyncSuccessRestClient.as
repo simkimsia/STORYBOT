@@ -41,7 +41,7 @@ package org.storybot.tests.mocks.rest
 			_promise.handleResult([]);
 		}
 
-		public function get(url:String, params:Object = null):Promise
+		public function get(url:String, params:Object = null, headers:Array = null):Promise
 		{
 			rootURL = url;
 			

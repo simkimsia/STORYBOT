@@ -6,7 +6,6 @@ package org.storybot.service.login.events
 	{
 		public static const RECEIVED:String = "loginResultsReceived";
 		
-		
 		private var _results:Object;
 		public function get results():Object {
 			return _results;

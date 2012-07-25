@@ -5,7 +5,7 @@ package org.storybot.utils
 	// copy from cakephp the Hash class
 	public class Hash
 	{
-		public static function get(data:Dictionary, path:String):* 
+		public static function get(data:*, path:String):* 
 		{
 			if (!data || !path) {
 				return null;
@@ -15,8 +15,8 @@ package org.storybot.utils
 			var parts:Array = path.split('.');
 			
 			for each (var key:String in parts) {
-				if (data is Dictionary && data.hasOwnProperty(key)) {
-					data = data[key];
+				if (data.hasOwnProperty(key)) {
+					data = data[key];	
 				} else {
 					return null;
 				}
@@ -66,10 +66,10 @@ package org.storybot.utils
 		 *
 		 * @param array $data The data to insert into.
 		 * @param string $path The path to insert at.
-		 * @param array $values The values to insert.
+		 * @param mixed $values The values to insert.
 		 * @return array The data with $values inserted.
 		 */
-		public static function insert(data:Dictionary, path:String, values:Array = null):Dictionary {
+		public static function insert(data:Dictionary, path:String, values:* = null):Dictionary {
 			var tokens:Array = path.split('.');
 			var noCurlyBraceInPath:Boolean = (path.indexOf('{') == -1);
 			
@@ -130,8 +130,7 @@ package org.storybot.utils
 			var last:int = count - 1;
 			
 			for (var k:Object in path) {
-				var value:* = path[k];
-				var key:* = k;
+				var key:* = path[k];
 
 				var keyIsNumeric:Boolean = (!isNaN(Number(key)));
 				
@@ -141,7 +140,7 @@ package org.storybot.utils
 			
 				if (op === 'insert') {
 					
-					if (key === last) {
+					if (k === last) {
 						_list[key] = values;
 						return data;
 					}
@@ -156,7 +155,7 @@ package org.storybot.utils
 					}
 					
 				} else if (op === 'remove') {
-					if (key === last) {
+					if (k === last) {
 						delete _list[key];
 						return data;
 					}
