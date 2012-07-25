@@ -20,11 +20,14 @@ package org.storybot.tests.cases.parsers
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.hasProperties;
 	import org.hamcrest.object.notNullValue;
+	import org.hamcrest.object.instanceOf;
 	import org.storybot.service.login.ILoginService;
 	import org.storybot.service.login.helpers.ILoginResultParser;
 	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
 	import org.storybot.tests.mocks.parser.MockLoginResultParser;
 	import org.swiftsuspenders.Injector;
+	
+	import org.storybot.model.vo.LoginData;
 	
 	MockolateRunner; 
 	
@@ -48,11 +51,17 @@ package org.storybot.tests.cases.parsers
 		[Test]
 		public function parserCorrectlyParsing():void {
 			var correctInput:String = '{"access_token":"0ee034ea293a35f887bb8c556b5dcc34fa1cbca9","expires_in":3600,"token_type":"bearer","scope":null,"refresh_token":"45d1faec9dfdf9fd94da1e2e72c56bce8cc34909"}';
-			var expectedOutput:Object = {"access_token":"0ee034ea293a35f887bb8c556b5dcc34fa1cbca9","token_type":"bearer","scope":null,"refresh_token":"45d1faec9dfdf9fd94da1e2e72c56bce8cc34909"};
+			
+			var expectedOutput:LoginData = new LoginData(); 
+			expectedOutput.access_token = "0ee034ea293a35f887bb8c556b5dcc34fa1cbca9";
+			expectedOutput.token_type = "bearer";
+			expectedOutput.scope = null;
+			expectedOutput.refresh_token = "45d1faec9dfdf9fd94da1e2e72c56bce8cc34909";
 			
 			var actualOutput:Object = parser.parseLoginResults(correctInput);
 			
 			assertThat(actualOutput, hasProperties(expectedOutput));
+			assertThat(actualOutput, instanceOf(LoginData));
 			
 		}
 

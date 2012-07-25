@@ -14,6 +14,7 @@ package org.robotlegs.oil.rest
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
+	import flash.net.URLRequestHeader;
 	import flash.net.URLVariables;
 	import flash.utils.Dictionary;
 	import org.robotlegs.oil.async.Promise;
@@ -80,7 +81,7 @@ package org.robotlegs.oil.rest
 			return request(req);
 		}
 
-		public function post(url:String, params:Object = null):Promise
+		public function post(url:String, params:Object = null, headers:Array = null):Promise
 		{
 			const req:URLRequest = new URLRequest(fullUrl(url));
 			req.method = URLRequestMethod.POST;
@@ -90,6 +91,16 @@ package org.robotlegs.oil.rest
 			if (!params)
 				params = {forcePost: true};
 			req.data = copyAllProperties(params, new URLVariables());
+			
+			/**
+			 * add request headers
+			 * */
+			if (headers) {
+				for each (var header:URLRequestHeader in headers) {
+					req.requestHeaders.push(header);	
+				}
+			}
+			
 			return request(req);
 		}
 

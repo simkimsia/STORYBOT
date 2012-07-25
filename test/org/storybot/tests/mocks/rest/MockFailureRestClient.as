@@ -28,7 +28,7 @@ package org.storybot.tests.mocks.rest
 			
 		}
 		
-		public function post(url:String, params:Object = null):Promise
+		public function post(url:String, params:Object = null, headers:Array = null):Promise
 		{
 			rootURL = url;
 			

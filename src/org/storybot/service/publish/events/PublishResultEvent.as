@@ -5,7 +5,6 @@ package org.storybot.service.publish.events
 	public class PublishResultEvent extends Event
 	{
 		public static const RECEIVED:String = "publishResultsReceived";
-		
 	
 		private var _results:Array;
 		public function get results():Array {

@@ -19,7 +19,6 @@ package org.storybot.service.publish
 	import org.storybot.service.publish.events.PublishResultEvent;
 	import org.storybot.service.publish.helpers.IPublishResultParser;
 	
-	
 	public class StoryzerPublishService extends Actor implements IPublishService
 	{
 		[Inject]
@@ -41,10 +40,6 @@ package org.storybot.service.publish
 				.addResultProcessor(onResultProcessor)
 				.addResultHandler(onStoryPublishResult)
 				.addErrorHandler(onStoryPublishError);
-		}
-		
-		public function sampleMethod():void {
-			dispatch(new PublishResultEvent(PublishResultEvent.RECEIVED));	
 		}
 		
 		[Inject]

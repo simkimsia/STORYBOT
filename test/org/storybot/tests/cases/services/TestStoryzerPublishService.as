@@ -81,13 +81,5 @@ package org.storybot.tests.cases.services
 			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(PublishErrorEvent.FAILED));
 		}
 		
-		[Test(async)]
-		public function testSample():void {
-			Async.proceedOnEvent(this, service.eventDispatcher, PublishResultEvent.RECEIVED, 2000);
-			
-			service.sampleMethod();
-		}
-		
-		
 	}
 }

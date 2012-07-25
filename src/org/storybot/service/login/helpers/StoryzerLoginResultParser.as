@@ -1,12 +1,14 @@
 package org.storybot.service.login.helpers
 {
 	
+	import org.storybot.model.vo.LoginData;
+	
 	public class StoryzerLoginResultParser implements ILoginResultParser
 	{
 		
 		public var lastKnownResults:String;
 		
-		public function parseLoginResults(results:String):Object
+		public function parseLoginResults(results:String):LoginData
 		{
 			/**
 			 * should be parsing the string below
@@ -17,7 +19,17 @@ package org.storybot.service.login.helpers
 			 **/
 			var jsonStringResults:Object = JSON.parse(results)
 				
-			return jsonStringResults;
+			var loginData:LoginData = new LoginData();
+			
+			// @TODO how to ensure that jsonStringResults have the following properties
+			// defensive programming issues
+			loginData.access_token = jsonStringResults.access_token;
+			loginData.refresh_token = jsonStringResults.refresh_token;
+			loginData.expires_in = jsonStringResults.expires_in;
+			loginData.scope = jsonStringResults.scope;
+			loginData.token_type = jsonStringResults.token_type;
+				
+			return loginData;
 		}
 	}
 }

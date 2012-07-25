@@ -19,6 +19,7 @@ package org.storybot.service.login
 	import org.storybot.Globals;
 	import org.storybot.config.Configure;
 	import org.storybot.config.Constants;
+	import org.storybot.model.vo.LoginData;
 	import org.storybot.service.login.ILoginService;
 	import org.storybot.service.login.events.LoginErrorEvent;
 	import org.storybot.service.login.events.LoginResultEvent;
@@ -35,6 +36,7 @@ package org.storybot.service.login
 		private var _parser:ILoginResultParser;
 		
 		private const STORYZER_LOGIN_URL:String = "http://storyzer.localhost/oauth/token.json";
+		private const STORYZER_USER_URL:String = "https://api.storyzer.localhost/users/";
 
 		public function login(params:Object):Promise
 		{
@@ -48,6 +50,7 @@ package org.storybot.service.login
 				.addErrorHandler(onLoginError);
 		}
 		
+				
 		[Inject]
 		public function set parser(value:ILoginResultParser):void
 		{
@@ -75,7 +78,10 @@ package org.storybot.service.login
 			// apparently no need... because for login any failure willl result in IoError
 			// and this message Error #2032: Stream Error. URL: http://storyzer.localhost/oauth/token.json
 			//loginResult goes from parser
-			var loginResult:Object = _parser.parseLoginResults(String(data));
+			var loginResult:LoginData = _parser.parseLoginResults(String(data));
+			
+			Configure.write('OAuth', loginResult);
+			
 			//use handle to pass the results (null - for error param, loginResult for data param)
 			handle(null, loginResult);
 		}
@@ -86,7 +92,7 @@ package org.storybot.service.login
 		}
 		
 		private function onLoginError(p:Promise):void {
-			
+			// we always get this message Error #2032: Stream Error. URL: http://storyzer.localhost/oauth/token.json
 			//here you can handle error
 			eventDispatcher.dispatchEvent(new LoginErrorEvent(LoginErrorEvent.FAILED, 'Login Fail.'));
 		}
@@ -107,38 +113,6 @@ package org.storybot.service.login
 		}
 		
 				
-		//wrote this function
-		private function handleFaultError( event:FaultEvent ):void
-		{
-			trace( "got you.!!! " + event.toString() );
-			trace(event.message.body);
-		}
-		
-		//wrote this function
-		private function handleResult( event:ResultEvent ):void
-		{
-			trace( "got you.!!! " + event.toString() );
-			trace(event.result);
-		}
-		
-		//wrote this function
-		private function handleError( event:IOErrorEvent ):void
-		{
-			trace( "got you.!!! " + event.toString() );
-		}
-		
-		protected function handleResponse(evt:Event):void
-		{
-			/*
-			var jsonresponse:Object = JSON.parse(_loader.data);
-			
-			
-			Configure.write('access_token', jsonresponse.access_token);
-			Configure.write('refresh_token', jsonresponse.refresh_token);
-			//Globals.REFRESH_TOKEN = jsonresponse.refresh_token;
-			trace(_loader.data);
-			*/
-		}
-		
+				
 	}
 }

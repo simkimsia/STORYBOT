@@ -12,8 +12,6 @@ package org.storybot.service.publish
 		// function inside the StoryzerPublishService
 		function publishStory(file:File):Promise;
 		
-		function sampleMethod():void;
-		
 		// set the parser something??
 		function set parser(value:IPublishResultParser):void;
 	}
