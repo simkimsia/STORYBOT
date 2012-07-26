@@ -1,10 +1,5 @@
 package org.storybot.service.compressfile
 {
-	import org.storybot.collections.FileCollection;
-	import org.storybot.events.FileCreatedEvent;
-	import org.storybot.events.UnsuccessfulFileCreatedEvent;
-
-	
 	import deng.fzip.FZip;
 	
 	import flash.events.Event;
@@ -14,20 +9,28 @@ package org.storybot.service.compressfile
 	import flash.utils.ByteArray;
 	
 	import org.robotlegs.mvcs.Actor;
+	import org.storybot.collections.FileCollection;
+	import org.storybot.events.FileCreatedEvent;
+	import org.storybot.events.UnsuccessfulFileCreatedEvent;
 	
-	public class CBZGenerationService extends BaseGenerationService
+	public class CBZGenerationService extends BaseGenerationService implements ICBZGenerationService
 	{
 		private var _zip:FZip;
 		
-		override public function generate(files:FileCollection):void{
+		override public function generate(files:FileCollection, filename:String=null):void{
 			_zip = new FZip();
-			_newPath = (new Date()).milliseconds.toString() + ".cbz";
+			
+			if (filename == null) {
+				_newPath = (new Date()).milliseconds.toString() + ".cbz";	
+			} else {
+				_newPath = filename;
+			}
+			
 			
 			super.generate(files);
-			
 		}
 		
-		override protected function createPage(byteArray:ByteArray):void{
+		override protected function createPage(byteArray:ByteArray):void {
 			_zip.addFile(_currentFile.name, byteArray);
 			
 			_destinationFile = File.applicationStorageDirectory.resolvePath(_newPath);
@@ -41,11 +44,6 @@ package org.storybot.service.compressfile
 		override protected function writeToFile():void{
 			_zip.filesList = null;
 			_zip.filesDict = null;
-			dispatch(new FileCreatedEvent(FileCreatedEvent.FILE_CREATED, _destinationFile));
-		}
-		
-		private function dispatchFileCreatedEvent(event:Event):void {
-			trace(_destinationFile);
 			dispatch(new FileCreatedEvent(FileCreatedEvent.FILE_CREATED, _destinationFile));
 		}
 		

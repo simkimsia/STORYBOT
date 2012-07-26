@@ -5,6 +5,7 @@ package org.storybot.tests.suites
 	import org.storybot.tests.cases.services.TestStoryzerLoginService;
 	import org.storybot.tests.cases.services.TestStoryzerPublishService;
 	import org.storybot.tests.cases.services.TestStoryzerUserService;
+	import org.storybot.tests.cases.services.TestCBZGenerationService;
 	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
@@ -15,5 +16,6 @@ package org.storybot.tests.suites
 		public var testStoryzerLoginResultParser:TestStoryzerLoginResultParser;
 		public var testStoryzerUserService:TestStoryzerUserService;
 		public var testStoryzerUserResultParser:TestStoryzerUserResultParser;
+		public var testStoryzerCBZGenerateService:TestCBZGenerationService;
 	}
 }

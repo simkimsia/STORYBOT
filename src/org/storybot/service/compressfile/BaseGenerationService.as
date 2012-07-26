@@ -1,10 +1,5 @@
 package org.storybot.service.compressfile
 {
-	import org.storybot.collections.FileCollection;
-	import org.storybot.events.FileCreatedEvent;
-	import org.storybot.events.UnsuccessfulFileCreatedEvent;
-	import org.storybot.utils.Utils;
-	
 	import flash.events.Event;
 	import flash.filesystem.File;
 	import flash.filesystem.FileMode;
@@ -12,6 +7,10 @@ package org.storybot.service.compressfile
 	import flash.utils.ByteArray;
 	
 	import org.robotlegs.mvcs.Actor;
+	import org.storybot.collections.FileCollection;
+	import org.storybot.events.FileCreatedEvent;
+	import org.storybot.events.UnsuccessfulFileCreatedEvent;
+	import org.storybot.utils.Utils;
 	
 	import spark.collections.Sort;
 	import spark.collections.SortField;
@@ -23,7 +22,7 @@ package org.storybot.service.compressfile
 		protected var _newPath:String;
 		protected var _destinationFile:File;
 		protected var _fs:FileStream;
-		public function generate(files:FileCollection):void{
+		public function generate(files:FileCollection, filename:String=null):void{
 			
 			//Filter files before use
 			var filteredFiles:FileCollection = Utils.filterFiles(files, ["png", "jpg", "jpeg"]);
