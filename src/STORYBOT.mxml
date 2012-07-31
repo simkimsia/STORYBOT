@@ -3,10 +3,14 @@
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:widget="org.storybot.widget.*"
-					   backgroundColor="#FF5500">
+					   xmlns:controls="org.flexunit.flexui.controls.*"
+					   xmlns:leftPanel="org.storybot.leftPanel.*"
+					   backgroundColor="#FF5500" xmlns:views="org.storybot.views.*">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<widget:Widget x="772" y="10">
-	</widget:Widget>
+	<views:Widget x="772" y="10">
+	</views:Widget>
+	<views:LeftPanel left="10" top="40" bottom="40" width="340">
+	</views:LeftPanel>
 </s:WindowedApplication>

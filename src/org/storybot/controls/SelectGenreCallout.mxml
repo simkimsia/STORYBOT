@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Callout xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		   xmlns:s="library://ns.adobe.com/flex/spark" 
+		   skinClass="org.storybot.skins.callout.GenreCalloutSkin"
+		   contentBackgroundAppearance="flat"
+		   initialize="callout1_initializeHandler(event)"
+		   backgroundColor="0xffffff" width="442" height="240"
+		   xmlns:mx="library://ns.adobe.com/flex/mx">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var dpGenre:ArrayCollection;
+			
+			protected function callout1_initializeHandler(event:FlexEvent):void
+			{
+				dpGenre = new ArrayCollection();
+				dpGenre.addItem("Action");
+				dpGenre.addItem("Drama");
+				dpGenre.addItem("Historical");
+				dpGenre.addItem("Mecha");
+				dpGenre.addItem("School Life");
+				dpGenre.addItem("Sports");
+				dpGenre.addItem("Adventure");
+				dpGenre.addItem("Fantasy");
+				dpGenre.addItem("Martial Arts");
+				dpGenre.addItem("Mystery");
+				dpGenre.addItem("Sci-Fi");
+				dpGenre.addItem("Superhero");
+				dpGenre.addItem("Comedy");
+				dpGenre.addItem("Horror");
+				dpGenre.addItem("Mature");
+				dpGenre.addItem("Romance");
+				dpGenre.addItem("Slice Of Life");
+				dpGenre.addItem("Supernatural");
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:Label 
+		text="SELECT GENRE (1/5)" 
+		horizontalCenter="0"
+		color="0xBCBEC0"
+		top="10"
+		fontFamily="Century Gothic"
+		fontSize="13"
+		fontWeight="bold" />
+	
+	<s:List 
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"
+		id="lstGenre" 
+		itemRenderer="org.storybot.controls.renderer.GenreItemRenderer"
+		dataProvider="{dpGenre}" 
+		left="15" 
+		right="15" 
+		top="30" 
+		bottom="50">
+		<s:layout>
+			<s:TileLayout columnWidth="120" requestedRowCount="6" requestedColumnCount="3" />
+		</s:layout> 
+	</s:List>
+
+	<s:Line bottom="45" left="10" right="10" alpha="0.5">
+		<s:stroke>
+			<s:SolidColorStroke color="0xDCDDDE" weight="0.5" />
+		</s:stroke>
+	</s:Line>
+	
+	<s:Button 
+		skinClass="org.storybot.skins.button.RoundedButtonSkin"
+		horizontalCenter="0"
+		bottom="10"
+		label="DONE" 
+		click="close()" />
+	
+</s:Callout>

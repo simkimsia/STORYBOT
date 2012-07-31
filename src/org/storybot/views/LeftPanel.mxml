@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+					  xmlns:s="library://ns.adobe.com/flex/spark"
+					  xmlns:mx="library://ns.adobe.com/flex/mx"
+					  xmlns:controls="org.storybot.controls.*"
+					  width="340" minHeight="800" skinClass="org.storybot.skins.container.BasePanelSkin">
+
+	<s:Scroller 
+		left="15" top="5" right="5" bottom="70" 
+		skinClass="org.storybot.skins.scroller.ScrollerSkin">
+		<s:VGroup width="310" height="100%" gap="2">
+			<controls:Covers />
+			<controls:Sneaks />
+			<controls:WorkInfo />
+			<controls:Genre />
+			<controls:View />
+			<controls:Price width="100%" />
+		</s:VGroup>
+	</s:Scroller>	
+	<s:Group left="15" right="15" bottom="10" height="50" >
+		<s:Image left="0" source="@Embed('../assets/author-icon.png')" verticalCenter="0"/>
+		<s:Label x="38" y="11" color="#FFC20E" fontSize="18" fontWeight="bold" text="Name of Author"/>
+		<s:Label x="38" y="30" color="#B3B3B3" fontSize="10" text="© 2012 · ALL RIGHTS RESERVED"/>
+	</s:Group>
+</s:SkinnableContainer>
