@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 skinClass="org.storybot.skins.container.LeftPanelSkinnableContainerSkin"
+		 height="300" width="100%" xmlns:buttons="org.storybot.controls.buttons.*">
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			private var _charsLeft:String = "9,999";
+			
+		]]>
+	</fx:Script>
+	
+	<s:Rect left="0" right="2" top="60" bottom="25">
+		<s:stroke>
+			<s:SolidColorStroke color="0x58595B" weight="0.5" />
+		</s:stroke>
+	</s:Rect>
+	
+	<s:Label y="10" color="#BCBEC0" fontFamily="Century Gothic" fontSize="13" fontWeight="bold"
+			 text="INFO"/>
+	<buttons:InfoButton y="7" right="0"/>
+	<s:TextInput 
+		id="txtWorkTitle" 
+		skinClass="org.storybot.skins.text.WorkTitleTextInputSkin"
+		focusAlpha="0"
+		left="0" right="2" top="30" prompt="Title of Work..."/>
+	<s:TextArea 
+		focusAlpha="0"
+		skinClass="org.storybot.skins.text.WorkDetailsTextAreaSkin"
+		borderVisible="false"
+		id="txtWordDetails" 
+		left="1" right="3" top="61" bottom="51"
+		prompt="Write something about your work..."/>
+	<s:Label 
+		right="10" bottom="30" 
+		color="#939598" 
+		text="{_charsLeft} characters left"/>
+	<s:RadioButton 
+		left="0" bottom="0" 
+		skinClass="org.storybot.skins.radiobutton.RadioButtonSkin"
+		label="Comment Enabled" />
+</s:SkinnableContainer>

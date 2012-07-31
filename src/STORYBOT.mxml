@@ -2,16 +2,21 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
-					   xmlns:widget="org.storybot.widget.*"
-					   xmlns:view="org.storybot.view.*"
+					   xmlns:views="org.storybot.views.*"
 					   xmlns:storybot="org.storybot.*"
+					   xmlns:controls="org.flexunit.flexui.controls.*"
+					   
 					   backgroundColor="#FF5500">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<!-- declare StorybotContext as the context to use -->
 		<storybot:StorybotContext contextView="{this}" />
 	</fx:Declarations>
-	<widget:Widget x="772" y="10">
-	</widget:Widget>
-	<view:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />
+	<views:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />
+
+	<views:Widget x="772" y="10">
+	</views:Widget>
+	<views:LeftPanel left="10" top="40" bottom="40" width="340">
+	</views:LeftPanel>
+
 </s:WindowedApplication>

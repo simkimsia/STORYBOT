@@ -26,8 +26,8 @@ package org.storybot
 	import org.storybot.service.publish.StoryzerPublishService;
 	import org.storybot.service.publish.helpers.IPublishResultParser;
 	import org.storybot.service.publish.helpers.StoryzerPublishResultParser;
-	import org.storybot.view.LoginForm;
-	import org.storybot.view.LoginFormMediator;
+	import org.storybot.views.LoginForm;
+	import org.storybot.views.LoginFormMediator;
 
 	public class StorybotContext extends Context
 	{
