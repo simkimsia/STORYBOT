@@ -5,13 +5,49 @@
 					   xmlns:widget="org.storybot.widget.*"
 					   xmlns:controls="org.flexunit.flexui.controls.*"
 					   xmlns:leftPanel="org.storybot.leftPanel.*"
-					   backgroundColor="#FF5500" xmlns:views="org.storybot.views.*">
+					   xmlns:views="org.storybot.views.*"
+					   xmlns:controls2="org.storybot.controls.*"
+					   showStatusBar="false"
+					   skinClass="org.storybot.skins.StorybotWindowedApplication">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+			
+			protected function toolbar1_closeHandler(event:Event):void
+			{
+				this.close();
+			}
+			
+			protected function toolbar1_restoreHandler(event:Event):void
+			{
+				this.restore();
+			}
+			
+			protected function toolbar1_minimizeHandler(event:Event):void
+			{
+				this.minimize();	
+			}
+			
+			protected function toolbar1_maximizeHandler(event:Event):void
+			{
+				this.maximize();	
+			}
+			
+		]]>
+	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	
+	<views:Toolbar 
+		close="toolbar1_closeHandler(event)"
+		restore="toolbar1_restoreHandler(event)"
+		minimize="toolbar1_minimizeHandler(event)"
+		maximize="toolbar1_maximizeHandler(event)"
+		top="0" left="0" right="0" />
 	<views:LeftPanel left="10" top="40" bottom="40" width="340" />
 	<views:RightPanel left="360" top="40" bottom="40" right="10" />
 	
-	<views:Widget x="772" y="10" />
+	<views:Widget x="788" y="220" />
+	<controls2:StatusBar y="752" left="0" right="0" bottom="0">
+	</controls2:StatusBar>
 </s:WindowedApplication>
