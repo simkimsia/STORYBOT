@@ -23,7 +23,7 @@ in accordance with the terms of the license agreement accompanying it.
 <s:SparkButtonSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
 				   xmlns:s="library://ns.adobe.com/flex/spark" 
 				   xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
-				   width="70" height="100" 
+				   width="150" height="212" 
 				   alpha.disabled="0.5">
 	
 	<fx:Metadata>
@@ -31,17 +31,30 @@ in accordance with the terms of the license agreement accompanying it.
 		/** 
 		* @copy spark.skins.spark.ApplicationSkin#hostComponent
 		*/
-		[HostComponent("spark.components.Button")]
+		[HostComponent("org.storybot.controls.buttons.PageButton")]
 		]]>
 	</fx:Metadata>
 	
 	<fx:Script fb:purpose="styling">
 		<![CDATA[         
-			import spark.components.Group;
+			import org.storybot.PageButtonImageEvent;
+			import org.storybot.controls.buttons.PageButton;
+			
 			/* Define the skin elements that should not be colorized. 
 			For button, the graphics are colorized but the label is not. */
 			static private const exclusions:Array = ["labelDisplay"];
 			
+			[Bindable]
+			protected var _imageUp:Object;
+			
+			[Bindable]
+			protected var _imageOver:Object;
+			
+			[Bindable]
+			protected var _imageDown:Object;
+			
+			[Bindable]
+			protected var _imageDisabled:Object;
 			/** 
 			 * @private
 			 */     
@@ -54,8 +67,41 @@ in accordance with the terms of the license agreement accompanying it.
 			{
 				useChromeColor = true;
 				super.initializationComplete();
+				hostComponent.addEventListener(PageButtonImageEvent.UP_IMAGE_CHANGED, handle_imageSourceChanged, false, 0, true);
+				hostComponent.addEventListener(PageButtonImageEvent.OVER_IMAGE_CHANGED, handle_imageSourceChanged, false, 0, true);
+				hostComponent.addEventListener(PageButtonImageEvent.DOWN_IMAGE_CHANGED, handle_imageSourceChanged, false, 0, true);
+				hostComponent.addEventListener(PageButtonImageEvent.DISABLED_IMAGE_CHANGED, handle_imageSourceChanged, false, 0, true);
 			}  
 			
+			protected function handle_imageSourceChanged(event:PageButtonImageEvent):void{
+				switch(event.type)
+				{
+					case PageButtonImageEvent.UP_IMAGE_CHANGED:
+					{
+						_imageUp = event.imageSource;
+						break;
+					}
+						
+					case PageButtonImageEvent.OVER_IMAGE_CHANGED:
+					{
+						_imageOver = event.imageSource;
+						break;
+					}
+						
+					case PageButtonImageEvent.DOWN_IMAGE_CHANGED:
+					{
+						_imageDown = event.imageSource;	
+						break;
+					}
+						
+					case PageButtonImageEvent.DISABLED_IMAGE_CHANGED:
+					{
+						_imageDisabled = event.imageSource;
+						break;
+					}
+						
+				}
+			}
 		]]>        
 	</fx:Script>
 	
@@ -67,13 +113,15 @@ in accordance with the terms of the license agreement accompanying it.
 		<s:State name="disabled" />
 	</s:states>
 	
-	<s:Image horizontalCenter = "0" verticalCenter="0" 
-			 source.up="@Embed('../assets/sneak-cover-up.png')"
-			 source.over="@Embed('../assets/sneak-cover-over.png')"
-			 source.down="@Embed('../assets/sneak-cover-up.png')"
-			 source.disabled="@Embed('../assets/sneak-cover-up.png')"
-			 alpha.disabled="0.5"
-			 />
+	<s:Image 
+		id="imgButton" 
+		horizontalCenter = "0" verticalCenter="0" 
+		source.up="{_imageUp}"
+		source.over="{_imageOver}"
+		source.down="{_imageDown}"
+		source.disabled="{_imageDisabled}"
+		alpha.disabled="0.5"
+		/>
 	
 	<!-- layer 8: text -->
 	<!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay  -->

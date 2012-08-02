@@ -9,8 +9,9 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<views:Widget x="772" y="10">
-	</views:Widget>
-	<views:LeftPanel left="10" top="40" bottom="40" width="340">
-	</views:LeftPanel>
+	
+	<views:LeftPanel left="10" top="40" bottom="40" width="340" />
+	<views:RightPanel left="360" top="40" bottom="40" right="10" />
+	
+	<views:Widget x="772" y="10" />
 </s:WindowedApplication>

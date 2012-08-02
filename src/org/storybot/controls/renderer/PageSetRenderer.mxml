@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer 
+	xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	xmlns:s="library://ns.adobe.com/flex/spark" 
+	xmlns:mx="library://ns.adobe.com/flex/mx" 
+	autoDrawBackground="false" 
+	width="376" height="320"
+	xmlns:controls="org.storybot.controls.*">
+	<fx:Script>
+		<![CDATA[
+			override public function set data(value:Object):void{
+				if(itemIndex == 0){
+					pageOne.isCover = true;
+				}
+			}
+		]]>
+	</fx:Script>
+	<controls:Page  id="pageOne" /> 
+	<controls:Page x="193" id="pageTwo" />
+
+</s:ItemRenderer>
