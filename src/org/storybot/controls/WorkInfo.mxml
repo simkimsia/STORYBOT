@@ -6,8 +6,24 @@
 		 height="300" width="100%" xmlns:buttons="org.storybot.controls.buttons.*">
 	<fx:Script>
 		<![CDATA[
+			import spark.events.TextOperationEvent;
 			[Bindable]
-			private var _charsLeft:String = "9,999";
+			private var _charsLeft:int = 9999;
+			private var _charsLeftDisplay:String = '9,999';
+			
+			protected function txtWordDetails_changeHandler(event:TextOperationEvent):void
+			{
+				// TODO Auto-generated method stub
+				var currentLength:int = txtWordDetails.text.length;
+				var currentCharsLength:int = _charsLeft - currentLength;
+				if (currentCharsLength > 1000) {
+					_charsLeftDisplay = (currentCharsLength / 1000).toPrecision(1) + ',' + (currentCharsLength % 1000).toString(); 
+				} else {
+					_charsLeftDisplay = currentCharsLength.toString();
+				}
+				infoLabel.text = _charsLeftDisplay + " characters left";				
+			}
+
 			
 		]]>
 	</fx:Script>
@@ -26,17 +42,15 @@
 		skinClass="org.storybot.skins.text.WorkTitleTextInputSkin"
 		focusAlpha="0"
 		left="0" right="2" top="30" prompt="Title of Work..."/>
-	<s:TextArea 
-		focusAlpha="0"
-		skinClass="org.storybot.skins.text.WorkDetailsTextAreaSkin"
-		borderVisible="false"
-		id="txtWordDetails" 
-		left="1" right="3" top="61" bottom="51"
-		prompt="Write something about your work..."/>
+	<s:TextArea id="txtWordDetails" left="1" right="3" top="61" bottom="51" borderVisible="false"
+				change="txtWordDetails_changeHandler(event)" focusAlpha="0"
+				prompt="Write something about your work..."
+				skinClass="org.storybot.skins.text.WorkDetailsTextAreaSkin"/>
 	<s:Label 
 		right="10" bottom="30" 
 		color="#939598" 
-		text="{_charsLeft} characters left"/>
+		id = "infoLabel"
+		text="{_charsLeftDisplay} characters left"/>
 	<s:RadioButton 
 		left="0" bottom="0" 
 		skinClass="org.storybot.skins.radiobutton.RadioButtonSkin"
