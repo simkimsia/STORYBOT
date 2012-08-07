@@ -1,31 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+<s:Window xmlns:fx="http://ns.adobe.com/mxml/2009"
 		 xmlns:s="library://ns.adobe.com/flex/spark"
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 xmlns:widget="org.storybot.widget.*"
+		 systemChrome="none"
+		 transparent="true"
+		 backgroundAlpha="0"
+		 maximizable="false"
+		 minimizable="false"
+		 resizable="false"
+		 showStatusBar="false"
 		 xmlns:controls="org.storybot.widget.controls.*"
 		 creationComplete="group1_creationCompleteHandler(event)"
-		 width="217" height="190" xmlns:buttons="org.storybot.controls.buttons.*" xmlns:controls1="org.storybot.controls.*" xmlns:widget1="org.storybot.controls.widget.*">
+		 width="217" height="190" xmlns:buttons="org.storybot.controls.buttons.*" 
+		 xmlns:controls1="org.storybot.controls.*" 
+		 xmlns:widget1="org.storybot.controls.widget.*">
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
 			
+			import org.purepdf.elements.images.ImgCCITT;
+			
+			private var _mouseDown:Boolean = false;
+			
+			//For Windows system tray
+			[Embed(source="../assets/storybot-icon-16.png")]
+			private var Icon16Class:Class;
+			private var _icon16:Bitmap = new Icon16Class as Bitmap;
+			
+			//For Mac dock
+			[Embed(source="../assets/storybot-icon-128.png")]
+			private var Icon128Class:Class;
+			private var _icon128:Bitmap = new Icon128Class as Bitmap;
+			
+			//System tray icon
+			private var _trayIcon:Bitmap;
+			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
 				addEventListener(MouseEvent.MOUSE_DOWN, handle_mouseDown, false, 0, true);
+				
+				if(NativeApplication.supportsDockIcon){
+					_trayIcon = _icon128;
+					var dockIcon:DockIcon = NativeApplication.nativeApplication.icon as DockIcon;
+					NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, undock);
+				} else if (NativeApplication.supportsSystemTrayIcon){
+					_trayIcon = _icon16;
+					var sysTrayIcon:SystemTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
+					sysTrayIcon.tooltip = "Storybot";
+					sysTrayIcon.addEventListener(MouseEvent.CLICK,undock);
+				}
+				
+				//Default position the window on top right
+				var mainScreen:Screen = Screen.mainScreen;
+				var screenBounds:Rectangle = mainScreen.bounds;
+
+				stage.nativeWindow.x = screenBounds.width - (width + 10);
+				stage.nativeWindow.y = 10;
+			}
+			
+			//hides widget and shows icon in system tray
+			public function dock(event:Event = null):void{
+				stage.nativeWindow.visible = false;
+				NativeApplication.nativeApplication.icon.bitmaps = [getBitmapData()];
+			}
+			
+			//unhides widget and removes icon from system tray
+			public function undock(event:Event = null):void{
+				stage.nativeWindow.visible = true;
+				NativeApplication.nativeApplication.icon.bitmaps = [];
+			}
+			
+			private function getBitmapData():BitmapData{
+				var bmpData:BitmapData = new BitmapData(_trayIcon.width,_trayIcon.height, true,0x00ffffff);
+				bmpData.draw(_trayIcon);
+				
+				return bmpData;
 			}
 			
 			protected function handle_mouseDown(event:MouseEvent):void{
-				stage.addEventListener(MouseEvent.MOUSE_UP, handle_mouseUp, false, 0, true);
-				var rect:Rectangle = stage.getBounds(stage);
-				rect.width -= width;
-				rect.height -= height;
-				startDrag(false, rect);
+				//Allow moving widget when clicked on the face Or Widget areas
+				//Clicking on the buttons or within the text field (Search) should not make the widge movable
+				if(event.target == contentGroup || event.target == imgStorybot.skin){
+					_mouseDown = true;
+					stage.addEventListener(MouseEvent.MOUSE_MOVE, handle_mouseMove, false, 0, true);
+					stage.addEventListener(MouseEvent.MOUSE_UP, handle_mouseUp, false, 0, true);
+				}
+			}
+			
+			protected function handle_mouseMove(event:MouseEvent):void{
+				if(_mouseDown){
+					stage.nativeWindow.startMove();
+				}
 			}
 			
 			protected function handle_mouseUp(event:MouseEvent):void{
-				stopDrag();
+				stage.removeEventListener(MouseEvent.MOUSE_MOVE, handle_mouseMove);
+				stage.removeEventListener(MouseEvent.MOUSE_UP, handle_mouseUp);
+				_mouseDown = false;
 			}
+			
 			
 		]]>
 	</fx:Script>
@@ -40,7 +114,7 @@
 			<s:SolidColorStroke color="0xffffff" weight="0.5" alpha="0.75" pixelHinting="true" />
 		</s:stroke>
 	</s:Rect>
-	<s:Image left="7" top="7" source="@Embed('../assets/storybot-face.png')"/>
+	<s:Image id="imgStorybot" left="7" top="7" source="@Embed('../assets/storybot-face.png')"/>
 	<controls1:BalanceIndicator x="65" y="18">
 	</controls1:BalanceIndicator>
 	<controls1:Search y="65" horizontalCenter="-1">
@@ -86,4 +160,4 @@
 		right="10" 
 		bottom="5"/>
 	<buttons:LoginButton id="btnLogin" y="18" right="10"/>
-</s:Group>
+</s:Window>
