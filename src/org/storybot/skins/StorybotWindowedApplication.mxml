@@ -118,8 +118,8 @@
          */
         override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number) : void
         {
-            backgroundFill.color = getStyle("backgroundColor");
-            backgroundFill.alpha = 0.25;// getStyle("backgroundAlpha");
+            backgroundFill.color = 0xd5d7d8;//getStyle("backgroundColor");
+            backgroundFill.alpha = 0.85;// getStyle("backgroundAlpha");
             super.updateDisplayList(unscaledWidth, unscaledHeight);
         }
     </fx:Script>
