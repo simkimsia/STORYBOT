@@ -108,10 +108,10 @@
 	</fx:Declarations>
 	<s:Rect left="0" top="0" right="0" bottom="0" radiusX="4" radiusY="4">
 		<s:fill>
-			<s:SolidColor color="0xffffff" alpha="0.5" />
+			<s:SolidColor color="0xd5d7d8" alpha="0.85" />
 		</s:fill>
 		<s:stroke>
-			<s:SolidColorStroke color="0xffffff" weight="0.5" alpha="0.75" pixelHinting="true" />
+			<s:SolidColorStroke color="0xd5d7d8" weight="0.5" pixelHinting="true" />
 		</s:stroke>
 	</s:Rect>
 	<s:Image id="imgStorybot" left="7" top="7" source="@Embed('../assets/storybot-face.png')"/>
