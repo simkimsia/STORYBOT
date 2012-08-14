@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark"
 		 xmlns:mx="library://ns.adobe.com/flex/mx"
 		 skinClass="org.storybot.skins.container.LeftPanelSkinnableContainerSkin"
-		 minHeight="100" height="100%" width="100%" xmlns:buttons="org.storybot.controls.buttons.*">
+		 minHeight="175" height="100%" width="100%" xmlns:buttons="org.storybot.controls.buttons.*">
 	<fx:Script>
 		<![CDATA[
 			[Bindable]
