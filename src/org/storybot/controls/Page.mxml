@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 xmlns:buttons="org.storybot.controls.buttons.*"
+		 stateChangeComplete="group1_stateChangeCompleteHandler(event)"
+		 initialize="group1_initializeHandler(event)"
+		 width="183" height="320">
+	<s:states>
+		<s:State name="page"/>
+		<s:State name="cover"/>
+	</s:states>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			private var _isCover:Boolean = false;
+			
+			[Embed(source="../assets/cover-page.png")]
+			protected var imageCoverPage:Class;
+			
+			[Embed(source="../assets/simple-page.png")]
+			protected var imageSimplePage:Class;
+			
+			public function set isCover(value:Boolean):void{
+				_isCover = value;
+				if(_isCover){
+					currentState = "cover";
+				}
+			}
+			
+			public function get isCover():Boolean{
+				return _isCover;
+			}
+			
+			protected function group1_initializeHandler(event:FlexEvent):void
+			{
+				pageButton.imageUp = imageSimplePage;
+				pageButton.imageOver = imageSimplePage;
+				pageButton.imageDown = imageSimplePage;
+				pageButton.imageDisabled = imageSimplePage;
+			}
+			
+			protected function group1_stateChangeCompleteHandler(event:FlexEvent):void
+			{
+				if(currentState == "cover"){
+					pageButton.imageUp = imageCoverPage;
+					pageButton.imageOver = imageCoverPage;
+					pageButton.imageDown = imageCoverPage;
+					pageButton.imageDisabled = imageCoverPage;
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<buttons:PageButton
+		id="pageButton"
+		width="183" 
+		height="258" 
+		horizontalCenter="0"/>
+	<s:Label y="268" color="#BDBEC1" fontFamily="Arial" fontSize="12" horizontalCenter="0"
+			 text="BACK OF FRONT COVER"
+			 y.page="290" color.page="#939598" horizontalCenter.page="0" text.page="P1"/>
+	<s:Label includeIn="page" y="268" color="#939598" fontFamily="Arial" fontSize="15"
+			 fontWeight="bold" horizontalCenter="0" text="File name"/>
+</s:Group>

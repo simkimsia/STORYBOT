@@ -5,18 +5,91 @@
 					   xmlns:views="org.storybot.views.*"
 					   xmlns:storybot="org.storybot.*"
 					   xmlns:controls="org.flexunit.flexui.controls.*"
-					   
-					   backgroundColor="#FF5500">
+					   backgroundColor="#FF5500"
+					   xmlns:leftPanel="org.storybot.leftPanel.*"
+					   xmlns:controls2="org.storybot.controls.*"
+					   showStatusBar="false"
+					   resize="windowedapplication1_resizeHandler(event)"
+					   creationComplete="handle_creationComplete(event)"
+					   skinClass="org.storybot.skins.StorybotWindowedApplication">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
+			
+			import org.storybot.views.Widget;
+			
+			private var _widget:Widget;
+			
+			override protected function createChildren():void{
+				super.createChildren();
+				_widget = new Widget();//No need to add to displaylist. 
+			}
+			
+			protected function toolbar1_closeHandler(event:Event):void
+			{
+				this.close();
+				_widget.close();
+			}
+			
+			protected function toolbar1_restoreHandler(event:Event):void
+			{
+				this.restore();
+			}
+			
+			protected function toolbar1_minimizeHandler(event:Event):void
+			{
+				this.minimize();	
+			}
+			
+			protected function toolbar1_maximizeHandler(event:Event):void
+			{
+				this.maximize();	
+			}
+			
+			protected function handle_creationComplete(event:FlexEvent):void
+			{
+				_widget.open(true);//Open the widget window
+			}
+			
+			protected function windowedapplication1_resizeHandler(event:ResizeEvent):void
+			{
+				if(stage){
+					if(stage.nativeWindow.displayState == "maximized"){
+						_widget.dock();
+					}else{
+						_widget.undock();
+					}
+				}
+			}
+			
+		]]>
+	</fx:Script>
+
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<!-- declare StorybotContext as the context to use -->
 		<storybot:StorybotContext contextView="{this}" />
 	</fx:Declarations>
-	<views:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />
+
+	<!--<views:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />-->
 
 	<views:Widget x="772" y="10">
 	</views:Widget>
 	<views:LeftPanel left="10" top="40" bottom="40" width="340">
 	</views:LeftPanel>
+
+
+	<views:Toolbar 
+		close="toolbar1_closeHandler(event)"
+		restore="toolbar1_restoreHandler(event)"
+		minimize="toolbar1_minimizeHandler(event)"
+		maximize="toolbar1_maximizeHandler(event)"
+		top="0" left="0" right="0" />
+	<views:LeftPanel left="10" top="40" bottom="40" width="340" />
+	<views:RightPanel left="360" top="40" bottom="40" right="10" />
+	<controls2:StatusBar y="752" left="0" right="0" bottom="0">
+	</controls2:StatusBar>
 
 </s:WindowedApplication>

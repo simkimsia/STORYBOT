@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<buttons:PageButton xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:buttons = "org.storybot.controls.buttons.*"
+		 initialize="pagebutton1_initializeHandler(event)"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="150" height="212">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			[Embed(source="../assets/cover-up.png")]
+			protected var imageUpSource:Class;
+			[Embed(source="../assets/cover-over.png")]
+			protected var imageOverSource:Class;
+			[Embed(source="../assets/cover-up.png")]
+			protected var imageDownSource:Class;
+
+			protected function pagebutton1_initializeHandler(event:FlexEvent):void
+			{
+				imageUp = imageUpSource;
+				imageDown = imageDownSource;
+				imageOver = imageOverSource;
+				imageDisabled = imageUpSource;
+			}
+			
+		]]>
+	</fx:Script>
+</buttons:PageButton>

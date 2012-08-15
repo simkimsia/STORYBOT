@@ -3,7 +3,7 @@
 					  xmlns:s="library://ns.adobe.com/flex/spark"
 					  xmlns:mx="library://ns.adobe.com/flex/mx"
 					  xmlns:controls="org.storybot.controls.*"
-					  width="340" minHeight="800" skinClass="org.storybot.skins.container.BasePanelSkin">
+					  width="340" skinClass="org.storybot.skins.container.BasePanelSkin">
 
 	<s:Scroller 
 		left="15" top="5" right="5" bottom="70" 
