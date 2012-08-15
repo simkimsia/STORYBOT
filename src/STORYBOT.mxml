@@ -2,11 +2,11 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
-					   xmlns:views="org.storybot.views.*"
 					   xmlns:storybot="org.storybot.*"
+					   xmlns:widget="org.storybot.widget.*"
 					   xmlns:controls="org.flexunit.flexui.controls.*"
-					   backgroundColor="#FF5500"
 					   xmlns:leftPanel="org.storybot.leftPanel.*"
+					   xmlns:views="org.storybot.views.*"
 					   xmlns:controls2="org.storybot.controls.*"
 					   showStatusBar="false"
 					   resize="windowedapplication1_resizeHandler(event)"
@@ -66,21 +66,12 @@
 			
 		]]>
 	</fx:Script>
-
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 		<!-- declare StorybotContext as the context to use -->
 		<storybot:StorybotContext contextView="{this}" />
 	</fx:Declarations>
-
 	<!--<views:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />-->
-
-	<views:Widget x="772" y="10">
-	</views:Widget>
-	<views:LeftPanel left="10" top="40" bottom="40" width="340">
-	</views:LeftPanel>
-
-
 	<views:Toolbar 
 		close="toolbar1_closeHandler(event)"
 		restore="toolbar1_restoreHandler(event)"
@@ -91,5 +82,4 @@
 	<views:RightPanel left="360" top="40" bottom="40" right="10" />
 	<controls2:StatusBar y="752" left="0" right="0" bottom="0">
 	</controls2:StatusBar>
-
 </s:WindowedApplication>
