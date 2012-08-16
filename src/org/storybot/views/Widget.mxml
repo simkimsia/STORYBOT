@@ -14,7 +14,9 @@
 		 creationComplete="group1_creationCompleteHandler(event)"
 		 width="217" height="190" xmlns:buttons="org.storybot.controls.buttons.*" 
 		 xmlns:controls1="org.storybot.controls.*" 
-		 xmlns:widget1="org.storybot.controls.widget.*">
+		 xmlns:widget1="org.storybot.controls.widget.*"
+		 xmlns:callouts="org.storybot.controls.callouts.*"
+		 >
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
@@ -100,11 +102,20 @@
 				_mouseDown = false;
 			}
 			
+			import spark.components.Application;
+			import spark.components.Callout;
+			protected function btnAdd_clickHandler(event:MouseEvent):void
+			{
+				  plusNewCallout.open(btnActionAddNew, true);
+			}
 			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<callouts:PlusNewCallout id="plusNewCallout" >
+			
+		</callouts:PlusNewCallout>
 	</fx:Declarations>
 	<s:Rect left="0" top="0" right="0" bottom="0" radiusX="4" radiusY="4">
 		<s:fill>
@@ -146,7 +157,9 @@
 	<buttons:ActionButton 
 		id="btnActionAddNew"
 		left="10" bottom="5"
-		skinClass="org.storybot.skins.widget.AddActionButtonSkin"/>
+		skinClass="org.storybot.skins.widget.AddActionButtonSkin"
+	 	click="btnAdd_clickHandler(event)"
+		/>
 	<buttons:ActionButton 
 		id="btnActionSettings"
 		left="33" bottom="5"
