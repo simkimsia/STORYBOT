@@ -1,0 +1,112 @@
+package org.storybot.tests.cases.services
+{
+	import flash.events.EventDispatcher;
+	import flash.events.IEventDispatcher;
+	
+	import flexunit.framework.TestCase;
+	
+	import mockolate.errors.VerificationError;
+	import mockolate.nice;
+	import mockolate.prepare;
+	import mockolate.runner.MockolateRunner;
+	import mockolate.stub;
+	import mockolate.verify;
+	
+	import org.flexunit.Assert;
+	import org.flexunit.assertThat;
+	import org.flexunit.async.Async;
+	import org.hamcrest.collection.hasItem;
+	import org.hamcrest.core.not;
+	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.notNullValue;
+
+	import org.storybot.service.login.ILoginService;
+	import org.storybot.service.login.StoryzerLoginService;
+	import org.storybot.service.login.events.LoginErrorEvent;
+	import org.storybot.service.login.events.LoginResultEvent;
+	import org.storybot.service.login.helpers.ILoginResultParser;
+	import org.storybot.service.login.helpers.StoryzerLoginResultParser;
+	
+	import org.storybot.tests.mocks.rest.MockAsyncSuccessRestClient;
+	import org.storybot.tests.mocks.common.MockEventDispatcher;
+	import org.storybot.tests.mocks.rest.MockFailureRestClient;
+	import org.storybot.tests.mocks.parser.MockLoginResultParser;
+	import org.storybot.tests.mocks.rest.MockSuccessRestClient;
+	import org.swiftsuspenders.Injector;
+	
+	MockolateRunner; 
+	
+	[RunWith("mockolate.runner.MockolateRunner")]
+	public class TestStoryzerLoginService extends TestCase
+	{
+		private var service:StoryzerLoginService;
+		private var mockEventDispatcher:MockEventDispatcher;
+		private var mockLoginResultParser:MockLoginResultParser;
+		
+		[Mock] 
+		public var loginParams:Object;// we expect a hashmap Object aka associative array
+		
+		[Before]
+		public function create():void
+		{
+			service = new StoryzerLoginService();
+			mockEventDispatcher = new MockEventDispatcher();
+			mockLoginResultParser = new MockLoginResultParser();
+			
+			service.eventDispatcher = mockEventDispatcher;
+			service.parser = mockLoginResultParser;
+			
+			loginParams = {};// expect hashmap object aka associative array
+			
+			loginParams["username"] = 'kimsia@storyzer.com';
+			loginParams['password'] = 'password';
+		}
+		
+		[After]
+		public function destroy():void
+		{
+			service = null;
+			mockEventDispatcher = null;
+			mockLoginResultParser = null;
+			
+			loginParams = {};
+		}
+		
+		// 3 tests
+		// 1 for testing successful event dispatched
+		// 1 for testing failure event dispatched
+		// 1 for testing parser was correctly called for successful event
+		
+		[Test]
+		public function login_successfulLogin_dispatchedEventSuccess():void {
+			var successRestClient:MockSuccessRestClient = new MockSuccessRestClient();
+			service.restClient = successRestClient;
+			
+			service.login(loginParams);
+			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(LoginResultEvent.RECEIVED));
+			
+		}
+		
+		[Test(async)]
+		public function login_successfulLogin_parserActivated():void {
+			var successRestClient:MockAsyncSuccessRestClient = new MockAsyncSuccessRestClient();
+			service.restClient = successRestClient;
+			service.login(loginParams);
+			Async.delayCall(this, onParserCheck, 2);
+		}
+
+		private function onParserCheck():void {
+			assertThat(mockLoginResultParser.lastKnownResults, notNullValue());
+		}
+		
+		[Test]
+		public function login_failedLogin_dispatchedEventFailed():void {
+			var failureRestClient:MockFailureRestClient = new MockFailureRestClient();
+			service.restClient = failureRestClient;
+			
+			service.login(loginParams);
+			assertThat(mockEventDispatcher.dispatchedEventTypes, hasItem(LoginErrorEvent.FAILED));
+		}
+		
+	}
+}

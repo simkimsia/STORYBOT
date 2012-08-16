@@ -20,7 +20,7 @@
 			import org.flexunit.listeners.UIListener;
 			import org.flexunit.runner.FlexUnitCore;
 
-			import org.storybot.tests.cases.TestStoryzerPublishService;
+			import org.storybot.tests.cases.services.TestStoryzerPublishService;
 			import org.storybot.tests.suites.StorybotTestSuite;
 			
 			private var core:FlexUnitCore;

@@ -6,7 +6,6 @@
 		   initialize="callout1_initializeHandler(event)"
 		   backgroundColor="0xffffff" width="442" height="240"
 		   xmlns:mx="library://ns.adobe.com/flex/mx">
-	
 	<fx:Script>
 		<![CDATA[
 			import mx.collections.ArrayCollection;

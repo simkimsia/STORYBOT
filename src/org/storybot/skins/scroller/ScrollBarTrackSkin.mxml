@@ -50,26 +50,4 @@
             <s:SolidColor color="0xffffff" />
         </s:fill>
     </s:Rect>
-
-    <!-- shadow -->
-    <!--<s:Rect left="1" top="1" bottom="1" width="1">
-        <s:fill>
-            <s:SolidColor color="0x000000" alpha="0.24" />
-        </s:fill>
-    </s:Rect>
-    <s:Rect left="2" top="1" bottom="1" width="1">
-        <s:fill>
-            <s:SolidColor color="0x000000" alpha="0.12" />
-        </s:fill>
-    </s:Rect>
-    <s:Rect left="2" right="1" top="1" height="2">
-        <s:fill>
-            <s:SolidColor color="0x000000" alpha="0.12" />
-        </s:fill>
-    </s:Rect>
-    <s:Rect left="2" right="1" bottom="1" height="3">
-        <s:fill>
-            <s:SolidColor color="0x000000" alpha="0.12" />
-        </s:fill>
-    </s:Rect>-->
 </s:SparkSkin>

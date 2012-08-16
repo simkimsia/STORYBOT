@@ -52,18 +52,10 @@ in accordance with the terms of the license agreement accompanying it.
 	
 	<!-- background -->
 	<s:Rect left="1" top="4" right="2" bottom="2" minWidth="10" minHeight="10"
-			topLeftRadiusX="5" 
-			topLeftRadiusY="5"
-			topRightRadiusX="5"
-			topRightRadiusY="5"
-			bottomLeftRadiusX="5"
-			bottomLeftRadiusY="5"
-			bottomRightRadiusX="5"
-			bottomRightRadiusY="5"
-			>
+			radiusX="5" radiusY="5">
 
 		<s:fill>
-			<s:SolidColor color="0xC6C8CA" />
+			<s:SolidColor color="0xE6E7E8" color.over="0xC6C8CA" color.down="0xC6C8CA" />
 		</s:fill>
 	</s:Rect>
 </s:SparkSkin>

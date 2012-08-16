@@ -2,6 +2,7 @@
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
 					   xmlns:s="library://ns.adobe.com/flex/spark"
 					   xmlns:mx="library://ns.adobe.com/flex/mx"
+					   xmlns:storybot="org.storybot.*"
 					   xmlns:widget="org.storybot.widget.*"
 					   xmlns:controls="org.flexunit.flexui.controls.*"
 					   xmlns:leftPanel="org.storybot.leftPanel.*"
@@ -67,7 +68,10 @@
 	</fx:Script>
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<!-- declare StorybotContext as the context to use -->
+		<storybot:StorybotContext contextView="{this}" />
 	</fx:Declarations>
+	<!--<views:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />-->
 	<views:Toolbar 
 		close="toolbar1_closeHandler(event)"
 		restore="toolbar1_restoreHandler(event)"

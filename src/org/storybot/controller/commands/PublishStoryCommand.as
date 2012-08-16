@@ -1,8 +1,8 @@
 package org.storybot.controller.commands
 {
 	import org.storybot.events.FileCreatedEvent;
-	import org.storybot.service.StoryzerPublishService;
-	import org.storybot.service.IPublishService;
+	import org.storybot.service.publish.StoryzerPublishService;
+	import org.storybot.service.publish.IPublishService;
 	
 	import org.robotlegs.mvcs.Command;
 	

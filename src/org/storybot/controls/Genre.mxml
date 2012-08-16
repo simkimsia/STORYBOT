@@ -10,7 +10,7 @@
 			import spark.components.Callout;
 			protected function btnEdit_clickHandler(event:MouseEvent):void
 			{
-				selectGenre.open(btnEdit);
+				selectGenre.open(btnEdit, true);
 			}
 		]]>
 	</fx:Script>
