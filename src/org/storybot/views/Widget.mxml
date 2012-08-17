@@ -24,6 +24,8 @@
 			import org.purepdf.elements.images.ImgCCITT;
 			
 			private var _mouseDown:Boolean = false;
+			import org.storybot.views.notification.AddButtonNotificationWindowHandler;
+			private var handler : AddButtonNotificationWindowHandler;
 			
 			//For Windows system tray
 			[Embed(source="../assets/storybot-icon-16.png")]
@@ -59,6 +61,10 @@
 
 				stage.nativeWindow.x = screenBounds.width - (width + 10);
 				stage.nativeWindow.y = 10;
+				
+				
+				handler = new AddButtonNotificationWindowHandler( stage.nativeWindow, btnActionAddNew, new Point( -10, height + 10 ), 'lb' );
+				
 			}
 			
 			//hides widget and shows icon in system tray
@@ -158,7 +164,7 @@
 		id="btnActionAddNew"
 		left="10" bottom="5"
 		skinClass="org.storybot.skins.widget.AddActionButtonSkin"
-	 	click="btnAdd_clickHandler(event)"
+	 	
 		/>
 	<buttons:ActionButton 
 		id="btnActionSettings"
