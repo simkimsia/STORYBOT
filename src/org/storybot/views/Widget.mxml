@@ -24,8 +24,6 @@
 			import org.purepdf.elements.images.ImgCCITT;
 			
 			private var _mouseDown:Boolean = false;
-			import org.storybot.views.notification.AddButtonNotificationWindowHandler;
-			private var handler : AddButtonNotificationWindowHandler;
 			
 			//For Windows system tray
 			[Embed(source="../assets/storybot-icon-16.png")]

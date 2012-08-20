@@ -3,7 +3,7 @@
 		 xmlns:s="library://ns.adobe.com/flex/spark" 
 		 xmlns:mx="library://ns.adobe.com/flex/mx" 
 		 skinClass="org.storybot.skins.container.LeftPanelSkinnableContainerSkin"
-		 width="100%" xmlns:buttons="org.storybot.controls.buttons.*" xmlns:controls="org.storybot.controls.*">
+		 width="100%" xmlns:buttons="org.storybot.controls.buttons.*" xmlns:controls="org.storybot.controls.*" xmlns:callouts="org.storybot.controls.callouts.*">
 	<fx:Script>
 		<![CDATA[
 			import spark.components.Application;
@@ -16,7 +16,7 @@
 	</fx:Script>
 	
 	<fx:Declarations>
-		<controls:SelectGenreCallout id="selectGenre" />
+		<callouts:SelectGenreCallout id="selectGenre" />
 	</fx:Declarations>
 	<s:Label y="10" color="#BCBEC0" fontFamily="Century Gothic" fontSize="13" fontWeight="bold"
 			 text="GENRE"/>
