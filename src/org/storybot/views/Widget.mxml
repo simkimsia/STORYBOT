@@ -39,6 +39,7 @@
 			
 			//System tray icon
 			private var _trayIcon:Bitmap;
+			private var _screenBounds:Rectangle;
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
@@ -55,16 +56,12 @@
 					sysTrayIcon.addEventListener(MouseEvent.CLICK,undock);
 				}
 				
-				//Default position the window on top right
 				var mainScreen:Screen = Screen.mainScreen;
-				var screenBounds:Rectangle = mainScreen.bounds;
-
-				stage.nativeWindow.x = screenBounds.width - (width + 10);
-				stage.nativeWindow.y = 10;
+				_screenBounds = mainScreen.bounds;
 				
-				
-				handler = new AddButtonNotificationWindowHandler( stage.nativeWindow, btnActionAddNew, new Point( -10, height + 10 ), 'lb' );
-				
+				//This is important. Maximizing the window ensures we get full screen real estate to display the callouts
+				//And since the transparent property is set to true, it does not interfere interacting with other windows.
+				nativeWindow.maximize();
 			}
 			
 			//hides widget and shows icon in system tray
@@ -89,7 +86,7 @@
 			protected function handle_mouseDown(event:MouseEvent):void{
 				//Allow moving widget when clicked on the face Or Widget areas
 				//Clicking on the buttons or within the text field (Search) should not make the widge movable
-				if(event.target == contentGroup || event.target == imgStorybot.skin){
+				if(event.target == widgetContainer || event.target == imgStorybot.skin){
 					_mouseDown = true;
 					stage.addEventListener(MouseEvent.MOUSE_MOVE, handle_mouseMove, false, 0, true);
 					stage.addEventListener(MouseEvent.MOUSE_UP, handle_mouseUp, false, 0, true);
@@ -98,7 +95,8 @@
 			
 			protected function handle_mouseMove(event:MouseEvent):void{
 				if(_mouseDown){
-					stage.nativeWindow.startMove();
+					//stage.nativeWindow.startMove();
+					widgetContainer.startDrag(false,_screenBounds);
 				}
 			}
 			
@@ -106,13 +104,14 @@
 				stage.removeEventListener(MouseEvent.MOUSE_MOVE, handle_mouseMove);
 				stage.removeEventListener(MouseEvent.MOUSE_UP, handle_mouseUp);
 				_mouseDown = false;
+				widgetContainer.stopDrag();
 			}
 			
 			import spark.components.Application;
 			import spark.components.Callout;
 			protected function btnAdd_clickHandler(event:MouseEvent):void
 			{
-				  plusNewCallout.open(btnActionAddNew, true);
+				plusNewCallout.open(btnActionAddNew, true);
 			}
 			
 		]]>
@@ -123,60 +122,63 @@
 			
 		</callouts:PlusNewCallout>
 	</fx:Declarations>
-	<s:Rect left="0" top="0" right="0" bottom="0" radiusX="4" radiusY="4">
-		<s:fill>
-			<s:SolidColor color="0xd5d7d8" alpha="0.85" />
-		</s:fill>
-		<s:stroke>
-			<s:SolidColorStroke color="0xd5d7d8" weight="0.5" pixelHinting="true" />
-		</s:stroke>
-	</s:Rect>
-	<s:Image id="imgStorybot" left="7" top="7" source="@Embed('../assets/storybot-face.png')"/>
-	<controls1:BalanceIndicator x="65" y="18">
-	</controls1:BalanceIndicator>
-	<controls1:Search y="65" horizontalCenter="-1">
-	</controls1:Search>
-	<controls1:InfoBox 
-		id="infoLibrary"
-		x="9" 
-		y="100" 
-		info="09"
-		iconSelectedSource="@Embed('../assets/widget-library-icon-selected.png')"
-		iconSource="@Embed('../assets/widget-library-icon.png')">
-	</controls1:InfoBox>
-	<controls1:InfoBox 
-		id="infoWorks"
-		x="77" 
-		y="100"
-		info="10"
-		iconSelectedSource="@Embed('../assets/widget-work-icon-selected.png')"
-		iconSource="@Embed('../assets/widget-work-icon.png')">
-	</controls1:InfoBox>
-	<controls1:InfoBox 
-		id="infoFolio"
-		x="145" 
-		y="100"
-		info="999+"
-		iconSelectedSource="@Embed('../assets/widget-folio-icon-selected.png')"
-		iconSource="@Embed('../assets/widget-folio-icon.png')">
-	</controls1:InfoBox>
-	<buttons:ActionButton 
-		id="btnActionAddNew"
-		left="10" bottom="5"
-		skinClass="org.storybot.skins.widget.AddActionButtonSkin"
-	 	
-		/>
-	<buttons:ActionButton 
-		id="btnActionSettings"
-		left="33" bottom="5"
-		skinClass="org.storybot.skins.widget.SettingsActionButtonSkin"/>
-	<buttons:ActionButton 
-		id="btnActionSynch"
-		left="56" bottom="5"
-		skinClass="org.storybot.skins.widget.SynchActionButtonSkin"/>
-	<buttons:StoryzerButton 
-		id="btnApp"
-		right="10" 
-		bottom="5"/>
-	<buttons:LoginButton id="btnLogin" y="18" right="10"/>
+	<s:Group id="widgetContainer" width="217" height="190" right="10" top="10" >
+		<s:Rect left="0" top="0" right="0" bottom="0" radiusX="4" radiusY="4">
+			<s:fill>
+				<s:SolidColor color="0xd5d7d8" alpha="0.85" />
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke color="0xd5d7d8" weight="0.5" pixelHinting="true" />
+			</s:stroke>
+		</s:Rect>
+		<s:Image id="imgStorybot" left="7" top="7" source="@Embed('../assets/storybot-face.png')"/>
+		<controls1:BalanceIndicator x="65" y="18">
+		</controls1:BalanceIndicator>
+		<controls1:Search y="65" horizontalCenter="-1">
+		</controls1:Search>
+		<controls1:InfoBox 
+			id="infoLibrary"
+			x="9" 
+			y="100" 
+			info="09"
+			iconSelectedSource="@Embed('../assets/widget-library-icon-selected.png')"
+			iconSource="@Embed('../assets/widget-library-icon.png')">
+		</controls1:InfoBox>
+		<controls1:InfoBox 
+			id="infoWorks"
+			x="77" 
+			y="100"
+			info="10"
+			iconSelectedSource="@Embed('../assets/widget-work-icon-selected.png')"
+			iconSource="@Embed('../assets/widget-work-icon.png')">
+		</controls1:InfoBox>
+		<controls1:InfoBox 
+			id="infoFolio"
+			x="145" 
+			y="100"
+			info="999+"
+			iconSelectedSource="@Embed('../assets/widget-folio-icon-selected.png')"
+			iconSource="@Embed('../assets/widget-folio-icon.png')">
+		</controls1:InfoBox>
+		<buttons:ActionButton 
+			id="btnActionAddNew"
+			click="btnAdd_clickHandler(event)"
+			left="10" bottom="5"
+			skinClass="org.storybot.skins.widget.AddActionButtonSkin"
+		 	
+			/>
+		<buttons:ActionButton 
+			id="btnActionSettings"
+			left="33" bottom="5"
+			skinClass="org.storybot.skins.widget.SettingsActionButtonSkin"/>
+		<buttons:ActionButton 
+			id="btnActionSynch"
+			left="56" bottom="5"
+			skinClass="org.storybot.skins.widget.SynchActionButtonSkin"/>
+		<buttons:StoryzerButton 
+			id="btnApp"
+			right="10" 
+			bottom="5"/>
+		<buttons:LoginButton id="btnLogin" y="18" right="10"/>
+	</s:Group>
 </s:Window>

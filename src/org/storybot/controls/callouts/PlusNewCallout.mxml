@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Callout xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		   xmlns:s="library://ns.adobe.com/flex/spark" 
-		   xmlns:mx="library://ns.adobe.com/flex/mx" width="400" height="300"
+		   xmlns:mx="library://ns.adobe.com/flex/mx" width="442" height="240"
 		   skinClass="org.storybot.skins.callout.GenreCalloutSkin"
+		   backgroundColor="0xffffff"
 		   contentBackgroundAppearance="flat"
-		   
 		   >
+
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+	
+	<s:Button 
+		skinClass="org.storybot.skins.button.RoundedButtonSkin"
+		horizontalCenter="0"
+		bottom="10"
+		label="DONE" 
+		click="close()" />
 </s:Callout>
