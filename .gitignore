@@ -10,3 +10,7 @@ bin-release/
 .flexProperties
 .settings/
 .project
+
+# ignore Intellij IDEA files
+*.idea/*
+STORYBOT.iml

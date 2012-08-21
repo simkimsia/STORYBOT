@@ -160,7 +160,8 @@
 		</controls1:InfoBox>
 		<buttons:ActionButton 
 			id="btnActionAddNew"
-			click="btnAdd_clickHandler(event)"
+			mouseOver="btnAdd_clickHandler(event)"
+			
 			left="10" bottom="5"
 			skinClass="org.storybot.skins.widget.AddActionButtonSkin"
 		 	
