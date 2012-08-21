@@ -54,7 +54,7 @@ package org.storybot.tests.cases.services
 			removeTest123();
 		}
 		
-		private function prepareFilesForZipping() {
+		private static function prepareFilesForZipping():FileCollection {
 			var file1:File = File.applicationDirectory.resolvePath('org/storybot/tests/mocks/compressfile/files/page01.png');
 			var file2:File = File.applicationDirectory.resolvePath('org/storybot/tests/mocks/compressfile/files/page02.png');
 			var file3:File = File.applicationDirectory.resolvePath('org/storybot/tests/mocks/compressfile/files/page03.png');
@@ -67,10 +67,11 @@ package org.storybot.tests.cases.services
 			return new FileCollection(fileArray);
 		}
 		
-		private function removeTest123() {
+		private static function removeTest123():void {
 			var file:File = File.applicationStorageDirectory.resolvePath('test123.cbz');
-			
-			file.deleteFile();
+			if (file.exists) {
+                file.deleteFile();
+            }
 		}
 		
 		[Test]
