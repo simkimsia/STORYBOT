@@ -4,12 +4,52 @@
 		   xmlns:mx="library://ns.adobe.com/flex/mx" width="442" height="240"
 		   skinClass="org.storybot.skins.callout.GenreCalloutSkin"
 		   backgroundColor="0xffffff"
+		   initialize="callout1_initializeHandler(event)"
 		   contentBackgroundAppearance="flat"
 		   >
+
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
+			
+			[Bindable]
+			private var actions:ArrayCollection;
+			
+			protected function callout1_initializeHandler(event:FlexEvent):void
+			{
+				actions = new ArrayCollection();
+				actions.addItem("+ NEW WORK");
+				actions.addItem("+ NEW ART");
+			}
+			
+		]]>
+	</fx:Script>
 
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
+	
+	<s:List 
+		verticalScrollPolicy="off"
+		horizontalScrollPolicy="off"
+		id="actionsList" 
+		itemRenderer="org.storybot.controls.renderer.CalloutMenuItemRenderer"
+		dataProvider="{actions}" 
+		left="15" 
+		right="15" 
+		top="30" 
+		bottom="50">
+		<s:layout>
+			<s:TileLayout columnWidth="40" requestedRowCount="2" requestedColumnCount="1" />
+		</s:layout> 
+	</s:List>
+
+	<s:Line bottom="45" left="10" right="10" alpha="0.5">
+		<s:stroke>
+			<s:SolidColorStroke color="0xDCDDDE" weight="0.5" />
+		</s:stroke>
+	</s:Line>
 	
 	<s:Button 
 		skinClass="org.storybot.skins.button.RoundedButtonSkin"
