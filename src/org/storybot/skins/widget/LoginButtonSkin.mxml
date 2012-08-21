@@ -60,14 +60,14 @@ in accordance with the terms of the license agreement accompanying it.
 	</s:states>
 	
 	<s:Image horizontalCenter = "0" verticalCenter="0"
-			 source="@Embed('../assets/rounded-square-32x32.png')"
+			 source="@Embed('/../assets/rounded-square-32x32.png')"
 			 />
 	
 	<s:Image horizontalCenter = "0" verticalCenter="0" 
-			 source.up="@Embed('../assets/button-power-on-up.png')"
-			 source.over="@Embed('../assets/button-power-on-over.png')"
-			 source.down="@Embed('../assets/button-power-on-selected.png')"
-			 source.disabled="@Embed('../assets/button-power-on-up.png')"
+			 source.up="@Embed('/../assets/button-power-on-up.png')"
+			 source.over="@Embed('/../assets/button-power-on-over.png')"
+			 source.down="@Embed('/../assets/button-power-on-selected.png')"
+			 source.disabled="@Embed('/../assets/button-power-on-up.png')"
 			 alpha.disabled="0.5"
 			 />
 	

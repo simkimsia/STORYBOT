@@ -68,10 +68,10 @@
     </s:states>
     
 	<s:Image horizontalCenter = "0" verticalCenter="0" 
-			 source.up="@Embed('../assets/button-done-up.png')"
-			 source.over="@Embed('../assets/button-done-over.png')"
-			 source.down="@Embed('../assets/button-done-selected.png')"
-			 source.disabled="@Embed('../assets/button-done-up.png')"
+			 source.up="@Embed('/../assets/button-done-up.png')"
+			 source.over="@Embed('/../assets/button-done-over.png')"
+			 source.down="@Embed('/../assets/button-done-selected.png')"
+			 source.disabled="@Embed('/../assets/button-done-up.png')"
 			 alpha.disabled="0.5"
 			 />
     

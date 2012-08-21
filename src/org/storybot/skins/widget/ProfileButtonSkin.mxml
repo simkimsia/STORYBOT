@@ -60,11 +60,11 @@ in accordance with the terms of the license agreement accompanying it.
 	</s:states>
 	
 	<s:Image horizontalCenter = "0" verticalCenter="0"
-			 source="@Embed('../assets/rounded-square-32x32.png')"
+			 source="@Embed('/../assets/rounded-square-32x32.png')"
 			 />
 	
 	<s:Image horizontalCenter = "0" verticalCenter="0" 
-			 source = "@Embed('../assets/profile-icon.png')"
+			 source = "@Embed('/../assets/profile-icon.png')"
 			 alpha.disabled="0.5"
 			 />
 	

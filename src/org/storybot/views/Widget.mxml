@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Window xmlns:fx="http://ns.adobe.com/mxml/2009"
 		 xmlns:s="library://ns.adobe.com/flex/spark"
-		 xmlns:mx="library://ns.adobe.com/flex/mx"
-		 xmlns:widget="org.storybot.widget.*"
 		 systemChrome="none"
 		 transparent="true"
 		 backgroundAlpha="0"
@@ -10,28 +8,24 @@
 		 minimizable="false"
 		 resizable="false"
 		 showStatusBar="false"
-		 xmlns:controls="org.storybot.widget.controls.*"
 		 creationComplete="group1_creationCompleteHandler(event)"
 		 width="217" height="190" xmlns:buttons="org.storybot.controls.buttons.*" 
-		 xmlns:controls1="org.storybot.controls.*" 
-		 xmlns:widget1="org.storybot.controls.widget.*"
+		 xmlns:controls1="org.storybot.controls.*"
 		 xmlns:callouts="org.storybot.controls.callouts.*"
 		 >
 	<fx:Script>
 		<![CDATA[
 			import mx.events.FlexEvent;
-			
-			import org.purepdf.elements.images.ImgCCITT;
-			
+
 			private var _mouseDown:Boolean = false;
 			
 			//For Windows system tray
-			[Embed(source="../assets/storybot-icon-16.png")]
+			[Embed(source="/../assets/storybot-icon-16.png")]
 			private var Icon16Class:Class;
 			private var _icon16:Bitmap = new Icon16Class as Bitmap;
 			
 			//For Mac dock
-			[Embed(source="../assets/storybot-icon-128.png")]
+			[Embed(source="/../assets/storybot-icon-128.png")]
 			private var Icon128Class:Class;
 			private var _icon128:Bitmap = new Icon128Class as Bitmap;
 			
@@ -45,7 +39,6 @@
 				
 				if(NativeApplication.supportsDockIcon){
 					_trayIcon = _icon128;
-					var dockIcon:DockIcon = NativeApplication.nativeApplication.icon as DockIcon;
 					NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, undock);
 				} else if (NativeApplication.supportsSystemTrayIcon){
 					_trayIcon = _icon16;
@@ -129,7 +122,7 @@
 				<s:SolidColorStroke color="0xd5d7d8" weight="0.5" pixelHinting="true" />
 			</s:stroke>
 		</s:Rect>
-		<s:Image id="imgStorybot" left="7" top="7" source="@Embed('../assets/storybot-face.png')"/>
+		<s:Image id="imgStorybot" left="7" top="7" source="@Embed('/../assets/storybot-face.png')"/>
 		<controls1:BalanceIndicator x="65" y="18">
 		</controls1:BalanceIndicator>
 		<controls1:Search y="65" horizontalCenter="-1">
@@ -139,24 +132,24 @@
 			x="9" 
 			y="100" 
 			info="09"
-			iconSelectedSource="@Embed('../assets/widget-library-icon-selected.png')"
-			iconSource="@Embed('../assets/widget-library-icon.png')">
+			iconSelectedSource="@Embed('/../assets/widget-library-icon-selected.png')"
+			iconSource="@Embed('/../assets/widget-library-icon.png')">
 		</controls1:InfoBox>
 		<controls1:InfoBox 
 			id="infoWorks"
 			x="77" 
 			y="100"
 			info="10"
-			iconSelectedSource="@Embed('../assets/widget-work-icon-selected.png')"
-			iconSource="@Embed('../assets/widget-work-icon.png')">
+			iconSelectedSource="@Embed('/../assets/widget-work-icon-selected.png')"
+			iconSource="@Embed('/../assets/widget-work-icon.png')">
 		</controls1:InfoBox>
 		<controls1:InfoBox 
 			id="infoFolio"
 			x="145" 
 			y="100"
 			info="999+"
-			iconSelectedSource="@Embed('../assets/widget-folio-icon-selected.png')"
-			iconSource="@Embed('../assets/widget-folio-icon.png')">
+			iconSelectedSource="@Embed('/../assets/widget-folio-icon-selected.png')"
+			iconSource="@Embed('/../assets/widget-folio-icon.png')">
 		</controls1:InfoBox>
 		<buttons:ActionButton 
 			id="btnActionAddNew"

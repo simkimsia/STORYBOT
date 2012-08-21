@@ -60,7 +60,7 @@ in accordance with the terms of the license agreement accompanying it.
 	</s:states>
 	
 	<s:Image horizontalCenter = "0" verticalCenter="0" 
-			 source="@Embed('../assets/search-lens.png')"
+			 source="@Embed('/../assets/search-lens.png')"
 			 alpha.disabled="0.5"
 			 />
 	

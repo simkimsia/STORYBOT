@@ -4,7 +4,7 @@
 		 rollOver="group1_rollOverHandler(event)"
 		 rollOut="group1_rollOutHandler(event)"
 		 click="group1_clickHandler(event)"
-		 xmlns:mx="library://ns.adobe.com/flex/mx" width="63" height="63">
+		 width="63" height="63">
 	<s:states>
 		<s:State name="up"/>
 		<s:State name="over"/>
@@ -14,9 +14,9 @@
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:Image 
-		source.over="@Embed('../assets/info-box-over.png')"
-		source.selected="@Embed('../assets/info-box-selected.png')"
-		source.up="@Embed('../assets/info-box-up.png')"/>
+		source.over="@Embed('/../assets/info-box-over.png')"
+		source.selected="@Embed('/../assets/info-box-selected.png')"
+		source.up="@Embed('/../assets/info-box-up.png')"/>
 	<s:Image 
 		id="imgIcon" 
 		top="10" 
@@ -35,6 +35,7 @@
 	
 	<fx:Script>
 		<![CDATA[
+
 			[Bindable]
 			private var _iconSource:Object;
 			

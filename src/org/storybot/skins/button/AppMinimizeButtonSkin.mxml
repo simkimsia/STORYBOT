@@ -68,10 +68,10 @@ in accordance with the terms of the license agreement accompanying it.
 	</s:states>
 	
 	<s:Image horizontalCenter = "0" verticalCenter="0" 
-			 source.up="@Embed('../assets/button-app-minimize-up.png')"
-			 source.over="@Embed('../assets/button-app-minimize-over-selected.png')"
-			 source.down="@Embed('../assets/button-app-minimize-over-selected.png')"
-			 source.disabled="@Embed('../assets/button-app-minimize-up.png')"
+			 source.up="@Embed('/../assets/button-app-minimize-up.png')"
+			 source.over="@Embed('/../assets/button-app-minimize-over-selected.png')"
+			 source.down="@Embed('/../assets/button-app-minimize-over-selected.png')"
+			 source.disabled="@Embed('/../assets/button-app-minimize-up.png')"
 			 alpha.disabled="0.5"
 			 />
 	

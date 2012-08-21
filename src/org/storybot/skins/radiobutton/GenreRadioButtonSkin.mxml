@@ -34,6 +34,7 @@
     </fx:Metadata> 
     
     <fx:Script fb:purpose="styling">
+
         /* Define the skin elements that should not be colorized. 
            For button, the graphics are colorized but the label is not. */
         static private const exclusions:Array = ["labelDisplay"];
@@ -63,7 +64,7 @@
         /**
          *  @private
          */
-        override public function get focusSkinExclusions():Array { return focusExclusions;};
+        override public function get focusSkinExclusions():Array { return focusExclusions;}
         ]]>
     </fx:Script>
     
@@ -81,14 +82,14 @@
 	<s:Image 
 		verticalCenter="0" 
 		x="0"
-		source.up="@Embed('../assets/radio-button-up.png')"
-		source.over="@Embed('../assets/radio-button-over.png')"
-		source.down="@Embed('../assets/radio-button-selected.png')"
-		source.disabled="@Embed('../assets/radio-button-up.png')"
-		source.upAndSelected="@Embed('../assets/radio-button-selected.png')"
-		source.overAndSelected="@Embed('../assets/radio-button-selected.png')"
-		source.downAndSelected="@Embed('../assets/radio-button-selected.png')"
-		source.disabledAndSelected="@Embed('../assets/radio-button-selected.png')"
+		source.up="@Embed('/../assets/radio-button-up.png')"
+		source.over="@Embed('/../assets/radio-button-over.png')"
+		source.down="@Embed('/../assets/radio-button-selected.png')"
+		source.disabled="@Embed('/../assets/radio-button-up.png')"
+		source.upAndSelected="@Embed('/../assets/radio-button-selected.png')"
+		source.overAndSelected="@Embed('/../assets/radio-button-selected.png')"
+		source.downAndSelected="@Embed('/../assets/radio-button-selected.png')"
+		source.disabledAndSelected="@Embed('/../assets/radio-button-selected.png')"
 		alpha.disabled="0.5"/>
 
 
