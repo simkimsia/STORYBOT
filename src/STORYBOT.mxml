@@ -12,6 +12,8 @@
 					   resize="windowedapplication1_resizeHandler(event)"
 					   creationComplete="handle_creationComplete(event)"
 					   skinClass="org.storybot.skins.StorybotWindowedApplication">
+	
+	<fx:Style source="assets/styles/styles.css" />
 	<fx:Script>
 		<![CDATA[
 			import mx.events.CloseEvent;

@@ -7,6 +7,7 @@
 		 maximizable="false"
 		 minimizable="false"
 		 resizable="false"
+		 windowDeactivate="window1_deactivateHandler(event)"
 		 showStatusBar="false"
 		 creationComplete="group1_creationCompleteHandler(event)"
 		 width="217" height="190" xmlns:buttons="org.storybot.controls.buttons.*" 
@@ -103,6 +104,12 @@
 			protected function btnAdd_clickHandler(event:MouseEvent):void
 			{
 				plusNewCallout.open(btnActionAddNew, true);
+				activate();
+			}
+			
+			protected function window1_deactivateHandler(event:Event):void
+			{
+				plusNewCallout.close();
 			}
 			
 		]]>
