@@ -21,6 +21,7 @@
 			import org.storybot.views.Widget;
 			
 			private var _widget:Widget;
+			private var _compatibleWindowsVerion:Array = ["Windows 7", "Windows Vista", "Windows Server 2008 R2"];
 			
 			override protected function createChildren():void{
 				super.createChildren();
@@ -56,10 +57,53 @@
 			protected function windowedapplication1_resizeHandler(event:ResizeEvent):void
 			{
 				if(stage){
+					resetHeightForWindows();
 					if(stage.nativeWindow.displayState == "maximized"){
 						_widget.dock();
 					}else{
 						_widget.undock();
+					}
+				}
+			}
+			
+			private function resetHeightForWindows():void{
+				if(_compatibleWindowsVerion.indexOf(Capabilities.os) >= 0){
+					if(stage.nativeWindow.displayState == "maximized"){
+						toolBar.setStyle("left",8);
+						toolBar.setStyle("right",8);
+						toolBar.setStyle("top",10);
+						
+						statBar.setStyle("left",8);
+						statBar.setStyle("right",8);
+						statBar.setStyle("bottom",10);
+						
+						leftPanel.setStyle("left",18);
+						leftPanel.setStyle("right",18);						
+						leftPanel.setStyle("top",50);
+						leftPanel.setStyle("bottom",50);
+						
+						rightPanel.setStyle("left",18);
+						rightPanel.setStyle("right",18);
+						rightPanel.setStyle("top",50);
+						rightPanel.setStyle("bottom",50);
+					}else{
+						toolBar.setStyle("left",0);
+						toolBar.setStyle("right",0);
+						toolBar.setStyle("top",0);
+						
+						statBar.setStyle("left",0);
+						statBar.setStyle("right",0);
+						statBar.setStyle("bottom",0);
+						
+						leftPanel.setStyle("left",10);
+						leftPanel.setStyle("right",10);
+						leftPanel.setStyle("top",40);
+						leftPanel.setStyle("bottom",40);
+						
+						rightPanel.setStyle("left",10);
+						rightPanel.setStyle("right",10);
+						rightPanel.setStyle("top",40);
+						rightPanel.setStyle("bottom",40);
 					}
 				}
 			}
@@ -73,13 +117,21 @@
 	</fx:Declarations>
 	<!--<views:LoginForm verticalCenter="0" horizontalCenter="0" id="login" />-->
 	<views:Toolbar 
+		id="toolBar"
 		close="toolbar1_closeHandler(event)"
 		restore="toolbar1_restoreHandler(event)"
 		minimize="toolbar1_minimizeHandler(event)"
 		maximize="toolbar1_maximizeHandler(event)"
 		top="0" left="0" right="0" />
-	<views:LeftPanel left="10" top="40" bottom="40" width="340" />
-	<views:RightPanel left="360" top="40" bottom="40" right="10" />
-	<controls2:StatusBar y="752" left="0" right="0" bottom="0">
+	<views:LeftPanel 
+		id="leftPanel"
+		left="10" top="40" bottom="40" 
+		width="340" />
+	<views:RightPanel 
+		id="rightPanel"
+		left="360" top="40" bottom="40" right="10" />
+	<controls2:StatusBar 
+		id="statBar"
+		left="0" right="0" bottom="0">
 	</controls2:StatusBar>
 </s:WindowedApplication>
