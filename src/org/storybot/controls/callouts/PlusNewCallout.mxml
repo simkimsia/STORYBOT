@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Callout xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		   xmlns:s="library://ns.adobe.com/flex/spark" 
-		   xmlns:mx="library://ns.adobe.com/flex/mx" width="442" height="240"
+		   width="200" height="140"
 		   skinClass="org.storybot.skins.callout.GenreCalloutSkin"
 		   backgroundColor="0xffffff"
 		   initialize="callout1_initializeHandler(event)"
@@ -15,7 +15,39 @@
 			
 			[Bindable]
 			private var actions:ArrayCollection;
-			
+
+            private function onCreationComplete():void {
+                //listen for MouseUp events on the popup, and the stage
+                this.addEventListener(MouseEvent.MOUSE_UP, handleMouseUp);
+                stage.addEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
+            }
+
+            private function handleMouseUp(e:MouseEvent):void {
+                //catch any MouseUp events on the popup,
+                //and prevent them from getting to the stage
+                e.stopPropagation(); //don't let this event get to the stage
+            }
+
+            private function handleStageMouseUp(e:MouseEvent):void {
+                //if the stage fires a MouseUp event, the mouse event
+                //came from outside of the popup, so we can close it
+                closePopup();
+            }
+
+            private function validate():Boolean {
+                //add your validate code here
+                return true;
+            }
+
+            private function closePopup():void {
+                if ( validate() ) {
+                    //clean up event listeners, and close popup
+                    stage.removeEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
+                    //PopUpManager.removePopUp(this);
+                    this.close();
+                }
+            }
+
 			protected function callout1_initializeHandler(event:FlexEvent):void
 			{
 				actions = new ArrayCollection();

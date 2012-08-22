@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		 xmlns:s="library://ns.adobe.com/flex/spark" 
-		 xmlns:mx="library://ns.adobe.com/flex/mx" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
 		 skinClass="org.storybot.skins.container.LeftPanelSkinnableContainerSkin"
 		 width="100%" xmlns:buttons="org.storybot.controls.buttons.*" xmlns:controls="org.storybot.controls.*" xmlns:callouts="org.storybot.controls.callouts.*">
 	<fx:Script>
@@ -10,8 +9,16 @@
 			import spark.components.Callout;
 			protected function btnEdit_clickHandler(event:MouseEvent):void
 			{
-				selectGenre.open(btnEdit, true);
+				selectGenre.open(btnEdit, false);
+
 			}
+
+            public function closeAllCallouts():void
+            {
+                selectGenre.close();
+            }
+
+
 		]]>
 	</fx:Script>
 	

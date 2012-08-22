@@ -90,20 +90,27 @@
 					//stage.nativeWindow.startMove();
 					widgetContainer.startDrag(false,_screenBounds);
 				}
+                closeAllCallouts();
 			}
+
+            private function closeAllCallouts():void
+            {
+                plusNewCallout.close();
+            }
 			
 			protected function handle_mouseUp(event:MouseEvent):void{
 				stage.removeEventListener(MouseEvent.MOUSE_MOVE, handle_mouseMove);
 				stage.removeEventListener(MouseEvent.MOUSE_UP, handle_mouseUp);
 				_mouseDown = false;
 				widgetContainer.stopDrag();
+                closeAllCallouts();
 			}
 			
 			import spark.components.Application;
 			import spark.components.Callout;
 			protected function btnAdd_clickHandler(event:MouseEvent):void
 			{
-				plusNewCallout.open(btnActionAddNew, true);
+				plusNewCallout.open(btnActionAddNew);
 				activate();
 			}
 			

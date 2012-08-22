@@ -2,16 +2,46 @@
 <s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
 					  xmlns:s="library://ns.adobe.com/flex/spark"
 					  xmlns:controls="org.storybot.controls.*"
-					  width="340" skinClass="org.storybot.skins.container.BasePanelSkin">
+					  width="340" skinClass="org.storybot.skins.container.BasePanelSkin"
+                      creationComplete="handle_creationComplete(event)"
+>
 
-	<s:Scroller 
-		left="15" top="5" right="5" bottom="70" 
+    <fx:Script>
+		<![CDATA[
+
+        import mx.events.FlexEvent;
+        import mx.events.PropertyChangeEvent;
+
+        protected function handle_creationComplete(event:FlexEvent):void
+        {
+            scroller.viewport.addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, handle);
+        }
+
+        /**
+         * Handle scroll position changes
+         */
+        private function handle(e:PropertyChangeEvent):void {
+            closeAllCallouts();
+        }
+
+        public function closeAllCallouts():void
+        {
+            genre.closeAllCallouts();
+        }
+
+
+        ]]>
+	</fx:Script>
+
+
+    <s:Scroller
+		left="15" top="5" right="5" bottom="70" id="scroller"
 		skinClass="org.storybot.skins.scroller.ScrollerSkin">
 		<s:VGroup width="310" height="100%" gap="2">
 			<controls:Covers />
 			<controls:Sneaks />
 			<controls:WorkInfo />
-			<controls:Genre />
+			<controls:Genre id="genre" />
 			<controls:View />
 			<controls:Price width="100%" />
 		</s:VGroup>

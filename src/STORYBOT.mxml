@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
 					   xmlns:s="library://ns.adobe.com/flex/spark"
-					   xmlns:mx="library://ns.adobe.com/flex/mx"
 					   xmlns:storybot="org.storybot.*"
-					   xmlns:widget="org.storybot.widget.*"
-					   xmlns:controls="org.flexunit.flexui.controls.*"
-					   xmlns:leftPanel="org.storybot.leftPanel.*"
 					   xmlns:views="org.storybot.views.*"
 					   xmlns:controls2="org.storybot.controls.*"
 					   showStatusBar="false"
@@ -13,7 +9,7 @@
 					   creationComplete="handle_creationComplete(event)"
 					   skinClass="org.storybot.skins.StorybotWindowedApplication">
 	
-	<fx:Style source="assets/styles/styles.css" />
+	<fx:Style source="/../assets/styles/styles.css" />
 	<fx:Script>
 		<![CDATA[
 			import mx.events.CloseEvent;
@@ -54,6 +50,8 @@
 			protected function handle_creationComplete(event:FlexEvent):void
 			{
 				_widget.open(true);//Open the widget window
+                this.addEventListener(MouseEvent.MOUSE_UP, handleMouseUp);
+                this.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseDown);
 			}
 			
 			protected function windowedapplication1_resizeHandler(event:ResizeEvent):void
@@ -109,7 +107,28 @@
 					}
 				}
 			}
-			
+
+            private function handleMouseUp(e:MouseEvent):void {
+
+                closeAllCallouts();
+            }
+
+            private function handleMouseDown(e:MouseEvent):void {
+
+                closeAllCallouts();
+            }
+
+            private function validate():Boolean {
+                //add your validate code here
+                return true;
+            }
+
+            private function closeAllCallouts():void {
+                if ( validate() ) {
+                    leftPanel.closeAllCallouts();
+                }
+            }
+
 		]]>
 	</fx:Script>
 	<fx:Declarations>
