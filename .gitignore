@@ -14,3 +14,4 @@ bin-release/
 # ignore Intellij IDEA files
 *.idea/*
 STORYBOT.iml
+/out/*
