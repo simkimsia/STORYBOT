@@ -12,9 +12,9 @@
 	<fx:Style source="/../assets/styles/styles.css" />
 	<fx:Script>
 		<![CDATA[
-			import mx.events.CloseEvent;
-			import mx.events.FlexEvent;
-			import mx.events.ResizeEvent;
+
+            import mx.events.FlexEvent;
+            import mx.events.ResizeEvent;
 			
 			import org.storybot.views.Widget;
 			
@@ -50,8 +50,8 @@
 			protected function handle_creationComplete(event:FlexEvent):void
 			{
 				_widget.open(true);//Open the widget window
-                this.addEventListener(MouseEvent.MOUSE_UP, handleMouseUp);
-                this.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseDown);
+                this.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseUp);
+
 			}
 			
 			protected function windowedapplication1_resizeHandler(event:ResizeEvent):void
@@ -109,13 +109,8 @@
 			}
 
             private function handleMouseUp(e:MouseEvent):void {
-
                 closeAllCallouts();
-            }
 
-            private function handleMouseDown(e:MouseEvent):void {
-
-                closeAllCallouts();
             }
 
             private function validate():Boolean {
