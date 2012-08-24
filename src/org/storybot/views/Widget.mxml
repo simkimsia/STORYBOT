@@ -188,15 +188,10 @@
             click="btnAdd_clickHandler(event)"
 			left="10" bottom="5"
 			skinClass="org.storybot.skins.widget.AddActionButtonSkin"
-		 	
 			/>
 		<buttons:ActionButton 
-			id="btnActionSettings"
-			left="33" bottom="5"
-			skinClass="org.storybot.skins.widget.SettingsActionButtonSkin"/>
-		<buttons:ActionButton 
 			id="btnActionSynch"
-			left="56" bottom="5"
+			left="33" bottom="5"
 			skinClass="org.storybot.skins.widget.SynchActionButtonSkin"/>
 		<buttons:StoryzerButton 
 			id="btnApp"
