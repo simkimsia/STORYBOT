@@ -15,6 +15,10 @@ public class SelfCloseOnMouseUpHelper {
     private var _targetControl:Callout;
     public function SelfCloseOnMouseUpHelper(target:Callout) {
         this._targetControl = target;
+
+        //listen for MouseUp events on the popup, and the stage
+        _targetControl.addEventListener(MouseEvent.MOUSE_UP, handleMouseUp);
+        _targetControl.stage.addEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
     }
 
     private function handleMouseUp(e:MouseEvent):void {

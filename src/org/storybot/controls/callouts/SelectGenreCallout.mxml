@@ -13,6 +13,8 @@
 			
 			[Bindable]
 			private var dpGenre:ArrayCollection;
+
+            private var _selfCloseHelper:SelfCloseOnMouseUpHelper;
 			
 			protected function callout1_initializeHandler(event:FlexEvent):void
 			{
@@ -37,16 +39,15 @@
 				dpGenre.addItem("Supernatural");
 			}
 
+
             private function onCreationComplete():void {
-                //listen for MouseUp events on the popup, and the stage
-                this.addEventListener(MouseEvent.MOUSE_UP, handleMouseUp);
-                stage.addEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
+                this._selfCloseHelper = new SelfCloseOnMouseUpHelper(this);
             }
 
 
 
 
-			
+
 		]]>
 	</fx:Script>
 	
