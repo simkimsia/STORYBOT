@@ -62,7 +62,7 @@
     <s:Image horizontalCenter = "0" verticalCenter="0" 
 			 source.up="@Embed('/../assets/button-add-new-up.png')"
 			 source.over="@Embed('/../assets/button-add-new-over.png')"
-			 source.down="@Embed('/../assets/button-add-new-selected.png')"
+			 source.down="@Embed('/../assets/button-add-new-over.png')"
 			 source.disabled="@Embed('/../assets/button-add-new-up.png')"
 			 alpha.disabled="0.5"
 			 />

@@ -108,11 +108,20 @@
 			
 			import spark.components.Application;
 			import spark.components.Callout;
-			protected function btnAdd_clickHandler(event:MouseEvent):void
+			protected function btnAdd_HoverHandler(event:MouseEvent):void
 			{
 				plusNewCallout.open(btnActionAddNew);
 				activate();
 			}
+
+
+
+            import mx.core.FlexGlobals;
+            protected function btnAdd_clickHandler(event:MouseEvent):void
+            {
+                // open new window
+                FlexGlobals.topLevelApplication.setVisible(true);
+            }
 			
 			protected function window1_deactivateHandler(event:Event):void
 			{
@@ -174,8 +183,9 @@
 		</controls1:InfoBox>
 		<buttons:ActionButton 
 			id="btnActionAddNew"
-			mouseOver="btnAdd_clickHandler(event)"
-			
+			mouseOver="btnAdd_HoverHandler(event)"
+            mouseOut="window1_deactivateHandler(event)"
+            click="btnAdd_clickHandler(event)"
 			left="10" bottom="5"
 			skinClass="org.storybot.skins.widget.AddActionButtonSkin"
 		 	

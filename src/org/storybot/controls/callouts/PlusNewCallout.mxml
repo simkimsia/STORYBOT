@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Callout xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		   xmlns:s="library://ns.adobe.com/flex/spark" 
-		   width="200" height="140"
+		   width="120" height="40"
 		   skinClass="org.storybot.skins.callout.GenreCalloutSkin"
 		   backgroundColor="0xffffff"
 		   initialize="callout1_initializeHandler(event)"
@@ -52,7 +52,7 @@
 			{
 				actions = new ArrayCollection();
 				actions.addItem("+ NEW WORK");
-				actions.addItem("+ NEW ART");
+
 			}
 			
 		]]>
@@ -68,25 +68,13 @@
 		id="actionsList" 
 		itemRenderer="org.storybot.controls.renderer.CalloutMenuItemRenderer"
 		dataProvider="{actions}" 
-		left="15" 
-		right="15" 
-		top="30" 
-		bottom="50">
+		left="5"
+		right="5"
+		top="10"
+		bottom="10">
 		<s:layout>
 			<s:TileLayout columnWidth="40" requestedRowCount="2" requestedColumnCount="1" />
 		</s:layout> 
 	</s:List>
 
-	<s:Line bottom="45" left="10" right="10" alpha="0.5">
-		<s:stroke>
-			<s:SolidColorStroke color="0xDCDDDE" weight="0.5" />
-		</s:stroke>
-	</s:Line>
-	
-	<s:Button 
-		skinClass="org.storybot.skins.button.RoundedButtonSkin"
-		horizontalCenter="0"
-		bottom="10"
-		label="DONE" 
-		click="close()" />
 </s:Callout>

@@ -29,7 +29,6 @@
 			protected function toolbar1_closeHandler(event:Event):void
 			{
                 this.setVisible(false);
-				//_widget.close();
 			}
 			
 			protected function toolbar1_restoreHandler(event:Event):void
