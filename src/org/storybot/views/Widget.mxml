@@ -33,19 +33,39 @@
 			//System tray icon
 			private var _trayIcon:Bitmap;
 			private var _screenBounds:Rectangle;
+
+            private var showCommand: NativeMenuItem = new NativeMenuItem("Show STORYBOT");
+
+            private function createIconMenu():NativeMenu{
+                var iconMenu:NativeMenu = new NativeMenu();
+
+
+                if(NativeApplication.supportsSystemTrayIcon){
+                    iconMenu.addItem(showCommand);
+                    showCommand.addEventListener(Event.SELECT, undock);
+                    iconMenu.addItem(new NativeMenuItem("", true));//Separator
+                    var exitCommand: NativeMenuItem = iconMenu.addItem(new NativeMenuItem("Exit"));
+                    exitCommand.addEventListener(Event.SELECT, exit);
+                }
+
+                return iconMenu;
+            }
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
 			{
 				addEventListener(MouseEvent.MOUSE_DOWN, handle_mouseDown, false, 0, true);
-				
+
 				if(NativeApplication.supportsDockIcon){
+                    var dockIcon:DockIcon = NativeApplication.nativeApplication.icon as DockIcon;
 					_trayIcon = _icon128;
 					NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, undock);
+                    dockIcon.menu = createIconMenu();
 				} else if (NativeApplication.supportsSystemTrayIcon){
 					_trayIcon = _icon16;
 					var sysTrayIcon:SystemTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
-					sysTrayIcon.tooltip = "Storybot";
+					sysTrayIcon.tooltip = "STORYBOT";
 					sysTrayIcon.addEventListener(MouseEvent.CLICK,undock);
+                    sysTrayIcon.menu = createIconMenu();
 				}
 				
 				var mainScreen:Screen = Screen.mainScreen;
