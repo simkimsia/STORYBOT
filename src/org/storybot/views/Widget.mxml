@@ -50,9 +50,9 @@
                 return iconMenu;
             }
 
-            private function exit(Event):void
+            private function exit(event:Event):void
             {
-                FlexGlobals.topLevelApplication.close();
+                NativeApplication.nativeApplication.exit();
             }
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
@@ -62,16 +62,18 @@
 				if(NativeApplication.supportsDockIcon){
                     var dockIcon:DockIcon = NativeApplication.nativeApplication.icon as DockIcon;
 					_trayIcon = _icon128;
-					NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, undock);
+					//NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, undock);
                     dockIcon.menu = createIconMenu();
 				} else if (NativeApplication.supportsSystemTrayIcon){
 					_trayIcon = _icon16;
 					var sysTrayIcon:SystemTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
 					sysTrayIcon.tooltip = "STORYBOT";
-					sysTrayIcon.addEventListener(MouseEvent.CLICK,undock);
+					//sysTrayIcon.addEventListener(MouseEvent.CLICK,undock);
                     sysTrayIcon.menu = createIconMenu();
 				}
-				
+
+                NativeApplication.nativeApplication.icon.bitmaps = [getBitmapData()];
+
 				var mainScreen:Screen = Screen.mainScreen;
 				_screenBounds = mainScreen.bounds;
 				
@@ -83,13 +85,11 @@
 			//hides widget and shows icon in system tray
 			public function dock(event:Event = null):void{
 				stage.nativeWindow.visible = false;
-				NativeApplication.nativeApplication.icon.bitmaps = [getBitmapData()];
 			}
 			
 			//unhides widget and removes icon from system tray
 			public function undock(event:Event = null):void{
 				stage.nativeWindow.visible = true;
-				NativeApplication.nativeApplication.icon.bitmaps = [];
 			}
 			
 			private function getBitmapData():BitmapData{
