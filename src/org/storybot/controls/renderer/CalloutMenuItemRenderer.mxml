@@ -6,12 +6,14 @@
 	
 	<fx:Script>
 		<![CDATA[
-			private var _selected:Boolean = false;
+        import mx.core.FlexGlobals;
+
+        private var _selected:Boolean = false;
 			protected function rbGenre_clickHandler(event:MouseEvent):void
 			{
 				if (actionLink.label == "+ NEW WORK") {
 					// open new window
-					
+					FlexGlobals.topLevelApplication.setVisible(true);
 				}
 				
 				

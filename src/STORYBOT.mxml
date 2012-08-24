@@ -51,6 +51,7 @@
 			{
 				_widget.open(true);//Open the widget window
                 this.addEventListener(MouseEvent.MOUSE_DOWN, handleMouseUp);
+                this.setVisible(false);
 
 			}
 			
