@@ -37,9 +37,9 @@ public class SelfCloseOnMouseUpHelper {
     private function closePopup():void {
         if ( validate() ) {
             //clean up event listeners, and close popup
-            stage.removeEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
+            _targetControl.stage.removeEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
             //PopUpManager.removePopUp(this);
-            this.close();
+            _targetControl.close();
         }
     }
 }
