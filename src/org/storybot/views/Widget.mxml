@@ -39,7 +39,6 @@
             private function createIconMenu():NativeMenu{
                 var iconMenu:NativeMenu = new NativeMenu();
 
-
                 if(NativeApplication.supportsSystemTrayIcon){
                     iconMenu.addItem(showCommand);
                     showCommand.addEventListener(Event.SELECT, undock);
@@ -49,6 +48,11 @@
                 }
 
                 return iconMenu;
+            }
+
+            private function exit(Event):void
+            {
+                FlexGlobals.topLevelApplication.close();
             }
 			
 			protected function group1_creationCompleteHandler(event:FlexEvent):void
