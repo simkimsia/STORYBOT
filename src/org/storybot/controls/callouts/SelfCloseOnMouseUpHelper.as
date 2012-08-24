@@ -9,11 +9,38 @@ package org.storybot.controls.callouts {
 
 
 import spark.components.Callout;
+import flash.events.MouseEvent;
 
 public class SelfCloseOnMouseUpHelper {
     private var _targetControl:Callout;
     public function SelfCloseOnMouseUpHelper(target:Callout) {
         this._targetControl = target;
+    }
+
+    private function handleMouseUp(e:MouseEvent):void {
+        //catch any MouseUp events on the popup,
+        //and prevent them from getting to the stage
+        e.stopPropagation(); //don't let this event get to the stage
+    }
+
+    private function handleStageMouseUp(e:MouseEvent):void {
+        //if the stage fires a MouseUp event, the mouse event
+        //came from outside of the popup, so we can close it
+        closePopup();
+    }
+
+    private function validate():Boolean {
+        //add your validate code here
+        return true;
+    }
+
+    private function closePopup():void {
+        if ( validate() ) {
+            //clean up event listeners, and close popup
+            stage.removeEventListener(MouseEvent.MOUSE_UP, handleStageMouseUp);
+            //PopUpManager.removePopUp(this);
+            this.close();
+        }
     }
 }
 }
