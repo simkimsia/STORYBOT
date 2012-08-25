@@ -11,6 +11,10 @@ bin-release/
 .settings/
 .project
 
+# dropbox
+*.dropbox
+"Icon\r"
+
 # ignore Intellij IDEA files
 *.idea/*
 STORYBOT.iml
