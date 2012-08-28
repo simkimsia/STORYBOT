@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Storybot" basedir="." default="deploy">
+
+    <property environment="env"/>
+    <property name="flex.dir.home" value="${env.FLEX_HOME}"/>
+    <property name="FLEX_HOME" value="${env.FLEX_HOME}"/>
+
+    <property file="${basedir}/build/build.properties"/>
+
+    <condition property="build.number" value="${env.BUILD_NUMBER}">
+        <isset property="env.BUILD_NUMBER"/>
+    </condition>
+
+    <import file="${buildsupport.dir}/import/air-imports.xml"/>
+
+    <target name="clean" depends="clean-all">
+        <echo message="Storybot :: clean finished."/>
+    </target>
+
+    <target name="build" depends="build-air">
+        <echo message="Storybot :: build finished."/>
+    </target>
+
+    <target name="test" depends="test-air">
+        <echo message="Storybot :: test finished."/>
+    </target>
+
+    <target name="package" depends="package-air">
+        <echo message="Storybot :: package finished."/>
+    </target>
+
+    <target name="deploy" depends="clean, test, build, package">
+        <echo message="Storybot :: deploy finished."/>
+    </target>
+
+</project>

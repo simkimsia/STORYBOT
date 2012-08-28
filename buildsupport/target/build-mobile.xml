@@ -1,0 +1,14 @@
+<project name="target.build.mobile">
+
+  <target name="build-mobile">
+    <copy-config/>
+    <compile-mxmlc 
+      main-file="${app.file.input}" 
+      output-file="${app.file.output}" 
+      config-name="airmobile" 
+      compiler-config="${flex.dir.home}/frameworks/airmobile-config.xml" 
+      compiler-args="${build.dir.output}/generated-compile-config.xml" 
+      flex-dir-home="${flex.dir.home}"/>
+  </target>
+  
+</project>

@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-macros">
+
+  <property environment="env" />
+  
+  <property name="delete.verbose" value="true"/>
+
+  <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${buildsupport.dir}/lib/ant-contrib-1.0b3.jar" />
+
+  <taskdef resource="flexTasks.tasks" classpath="${flex.dir.home}/ant/lib/flexTasks.jar" />
+
+  <taskdef resource="flexUnitTasks.tasks" classpath="${buildsupport.dir}/lib/flexunit/flexUnitTasks-${flexunit.version}.jar" />
+
+  <!--taskdef name="p4label" classname="org.apache.tools.ant.taskdefs.optional.perforce.P4Label" / -->
+
+  <condition property="isMac">
+    <os family="mac" />
+  </condition>
+
+  <condition property="isWindows">
+    <os family="windows" />
+  </condition>
+
+  <macrodef name="copy-config">
+    <attribute name="copy-path" default="${build.dir.output}"/>
+    <attribute name="input-file" default="${compiler.options.default}"/>
+    <attribute name="define-values" default="${compiler.define.values}"/>
+    <sequential>
+      <echo message="copy-config :: attempting to copy and substitute vars in @{input-file}"/>
+      <var name="config.copy" value="@{copy-path}/generated-compile-config.xml"/>
+      <copy file="@{input-file}" tofile="${config.copy}" overwrite="true" verbose="true"/>
+      <replace file="${config.copy}" token="[buildsupport]" value="${buildsupport.dir}"/>
+      <replace file="${config.copy}" token="[project-dir]" value="${project.dir}"/>
+      <replace file="${config.copy}" token="[flex-home]" value="${flex.dir.home}"/>
+      <replace file="${config.copy}" token="[compiler-define-values]" value="@{define-values}"/>
+    </sequential>
+  </macrodef>
+
+
+  <!-- compile using mxmlc -->
+  <macrodef name="compile-mxmlc" description="MXMLC MACRO">
+    <attribute name="main-file"/>
+    <attribute name="output-file"/>
+    <attribute name="flex-dir-home" />
+    <attribute name="config-name" default="flex"/>
+    <attribute name="compiler-config"
+      default="@{flex-dir-home}/frameworks/@{config-name}-config.xml" />
+    <attribute name="compiler-args"/>
+    <attribute name="debug" default="false"/>
+    <sequential>
+      <echo message="compile-mxmlc :: setting FLEX_HOME to @{flex-dir-home}"/>
+      <var name="FLEX_HOME" value="@{flex-dir-home}"/>
+      <mxmlc
+        file="@{main-file}"
+        output="@{output-file}"
+        allow-source-path-overlap="true"
+        headless-server="true"
+        configname="@config-name"
+        debug="@{debug}">
+        <!-- could add license, mostly needed for automation builds -->
+        <!--license
+          product="${flashbuilderVersion}"
+          serial-number="${flashbuilderSerial}" /-->
+        <load-config filename="@{compiler-config}"/>
+        <load-config filename="@{compiler-args}"/>
+      </mxmlc>
+      <echo message="compile-mxmlc :: finished"/>
+    </sequential>
+  </macrodef>
+  
+  
+  <!-- mxmlc call for css to swf compile -->
+  <macrodef name="compile-css-file" >
+    <!-- Compile against config -->
+    <attribute name="input-file-path" default="${css.files.dir}"/>
+    <attribute name="input-file-name" default="${css.file.name}"/>
+    <sequential>
+    <!--echo message="compile-css-file :: compiling @{input-file-path}/@{input-file-name}"/-->
+    
+    <var name="output-file-name" value="ERROR"/>
+    <propertyregex 
+      property="output-file-name" input="@{input-file-name}"  
+      regexp="([.])*\.css$" 
+      replace="\1.swf"
+      override="true"/>
+                
+    <echo message="compile-css-file :: output to ${build.dir.output.css}/${output-file-name}"/>
+    
+    <compile-mxmlc 
+      main-file="@{input-file-path}/@{input-file-name}"
+      output-file="${build.dir.output.css}/${output-file-name}"
+      flex-dir-home="${flex.dir.home}"
+      config-name="${css.sdk.config}"
+      compiler-args="${build.dir.output}/generated-compile-config.xml"/>
+      <!--compiler-args="${config.compiler.css}"/ -->
+    
+    <echo message="compile-css-file :: finished compiling ${output-file-name} to ${build.dir.output.css}"/>
+    </sequential>
+  </macrodef>
+  
+  
+  <macrodef name="compile-css-directory">
+    <sequential>
+       <echo message="compile-css-directory :: css directory is: ${css.files.dir}"/>
+       <echo message="compile-css-directory :: starting loop..."/>
+       <fileset id="css-files" dir="${css.files.dir}" includes="*.css"/>
+        <pathconvert property="file-list" refid="css-files" targetos="unix">
+           <mapper><flattenmapper/></mapper>
+        </pathconvert>
+        <!-- loop the file names -->
+        <for param="css-file" list="${file-list}" delimiter=":">  
+          <sequential>
+            <echo message="compile-css-directory :: calling compile-css for ${css.files.dir}/@{css-file}"/>
+            <compile-css-file input-file-name="@{css-file}"/>
+            <echo message="compile-css-directory :: done with @{css-file}"/>
+          </sequential>
+        </for>
+        <echo message="compile-css-directory :: loop finished"/>
+    </sequential>
+  </macrodef>
+  
+
+  <!-- marco to create html wrapper for web apps -->
+  <macrodef name="create-flex-html-wrapper">
+    <attribute name="swf" />
+    <attribute name="application" />
+    <attribute name="html-page-title" />
+    <attribute name="package-output-dir" default="${build.dir.output.package}"/>
+    <attribute name="output-file-name" default="index.html" />
+    <sequential>
+      <echo message="create-flex-html-wrapper :: setting FLEX_HOME to @{flex-dir-home}"/>
+      <var name="FLEX_HOME" value="${flexSDK}" />
+      <var name="player-version" value="10.1" />
+      <html-wrapper
+        application="@{application}"
+        title="@{html-page-title}"
+        swf="@{swf}"
+        output="@{package-output-dir}"
+        height="100%"
+        width="100%"
+        bgcolor="white"
+        version-detection="true"
+        version-major="${player-version}"
+        version-minor="${player-version}"
+        version-revision="${player-version}"
+        express-install="true" history="false"
+        file="@{output-file-name}" />
+    </sequential>
+  </macrodef>
+
+
+  <macrodef name="run-flexunit" description="run-flexunit : the flex unit macro ">
+    <attribute name="player" default="flash"/>
+    <attribute name="to-dir"/>
+    <attribute name="source-dir"/>
+    <attribute name="test-dir-source"/>
+    <attribute name="additional-compiler-config"/>
+    <attribute name="flex-dir-home"/>
+    <attribute name="generate-report" default="true"/>
+    <attribute name="report-dir" default="@{to-dir}/report"/>
+    <sequential>
+      <!-- WARNING: flexunit requires the flex home path to not have any spaces -->
+      <echo message="run-flexunit :: setting FLEX_HOME to @{flex-dir-home}"/>
+      <var name="FLEX_HOME" value="@{flex-dir-home}/"/>
+      <mkdir dir="@{report-dir}"/>
+      
+      <flexunit 
+        player="@{player}" 
+        toDir="@{to-dir}/" 
+        haltonfailure="false" 
+        verbose="false" 
+        localTrusted="true" 
+        headless="false" 
+        debug="true">
+        <load-config filename="@{additional-compiler-config}"/>
+        <source dir="@{source-dir}"/>
+        <testSource dir="@{test-dir-source}">
+          <include name="**/*Test.as"/>
+          <include name="**/*TestSuite.as"/>
+        </testSource>
+      </flexunit>
+      <junitreport todir="@{report-dir}">
+        <fileset dir="@{to-dir}">
+          <include name="TEST-*.xml"/>
+        </fileset>
+        <report format="frames" todir="@{report-dir}/html"/>
+      </junitreport>
+    </sequential>
+  </macrodef>
+
+
+  <macrodef name="build-run-flexunit">
+    <attribute name="flexunit-config-additional" 
+      default="${config.flexunit.additional}"/>
+    <attribute name="player" default="flash"/>
+    <sequential>
+      <var name="config.copy" 
+        value="${build.dir.output.unit}/generated-flexunit-config.xml"/>
+      <copy 
+        file="@{flexunit-config-additional}" 
+        tofile="${config.copy}" 
+        overwrite="true"/>
+      <replace file="${config.copy}" token="[buildsupport]" value="${buildsupport.dir}"/>
+      <replace file="${config.copy}" token="[project-dir]" value="${project.dir}"/>
+      <run-flexunit
+        to-dir="${unit.dir.to}"
+        player="@{player}"
+        source-dir="${unit.dir.source}"
+        test-dir-source="${unit.dir.source.test}"
+        additional-compiler-config="${config.copy}"
+        flex-dir-home="${flex.dir.home}"
+        report-dir="${unit.dir.to.report}"/>
+      <cleanup-run-flexunit/>
+      <echo message="build-run-flexunit :: finished"/>
+    </sequential>
+  </macrodef>
+
+
+    <!-- cleanup-run-flexunit -->
+    <macrodef name="cleanup-run-flexunit" description="clean up for run-flexunit">
+      <sequential>
+        <delete verbose="${delete.verbose}" failonerror="false">
+          <fileset dir="${project.dir}">
+            <include name="TestRunner**.*" />
+            <include name="flexUnitDescriptor.xml" />
+          </fileset>
+        </delete>
+      </sequential>
+    </macrodef>
+
+
+  <!-- cleanup-flexunit-reports -->
+  <macrodef name="cleanup-flexunit-reports">
+    <sequential>
+      <delete includeemptydirs="true" verbose="${delete.verbose}" failonerror="false">
+        <fileset dir="${build.dir.output.report}">
+          <include name="**/*" />
+        </fileset>
+      </delete>
+    </sequential>
+  </macrodef>
+
+
+  <!-- cleanup-generated-output -->
+  <macrodef name="cleanup-generated-output">
+    <sequential>
+      <delete includeemptydirs="true" verbose="${delete.verbose}" failonerror="false">
+        <fileset dir="${build.dir.output}">
+          <include name="**/*" />
+        </fileset>
+      </delete>
+    </sequential>
+  </macrodef>
+
+
+  <!-- cleanup-build-only-output -->
+  <macrodef name="cleanup-build">
+    <sequential>
+      <delete includeemptydirs="true" verbose="${delete.verbose}" failonerror="false">
+        <fileset dir="${build.dir.output.binary}">
+          <include name="**/*" />
+        </fileset>
+      </delete>
+    </sequential>
+  </macrodef>
+
+
+  <!-- cleanup-package-only-output -->
+  <macrodef name="cleanup-package">
+    <sequential>
+      <delete includeemptydirs="true" verbose="${delete.verbose}" failonerror="false">
+        <fileset dir="${build.dir.output.package}">
+          <include name="**/*" />
+        </fileset>
+      </delete>
+    </sequential>
+  </macrodef>
+
+  <!-- copy runtime shared libraries -->
+  <macrodef name="copy-flex-rsls">
+    <attribute name="flex-dir-home-rsl" />
+    <attribute name="output-dir" />
+    <sequential>
+      <mkdir dir="@{output-dir}" />
+      <copy todir="@{output-dir}" overwrite="true">
+        <fileset dir="@{flex-dir-home-rsl}" includes="**/*.swf" />
+      </copy>
+    </sequential>
+  </macrodef>
+
+
+  <!-- macro compc compile: difficult to make compc flexible :( -->
+  <macrodef name="compc-compile">
+    <attribute name="locale" default="en_US"/>
+    <attribute name="flex-dir-home" default="${flex.dir.home}"/>
+    <attribute name="src-path"/>
+    <attribute name="output-file"/>
+    <attribute name="framework-config-name" default="flex"/>
+    <attribute name="compiler-config"
+      default="@{flex-dir-home}/frameworks/@{framework-config-name}-config.xml"/>
+    <attribute name="compiler-args"/>
+      <sequential>
+          <echo message="compc-compile :: setting FLEX_HOME to @{flex-dir-home}"/>
+          <var name="FLEX_HOME" value="@{flex-dir-home}"/>
+          <compc locale="@{locale}"
+            output="@{output-file}">
+            <source-path path-element="@{src-path}"/>
+            <include-sources dir="@{src-path}" includes="${compc.src.includes}" />
+            <load-config filename="@{compiler-config}"/>
+            <load-config filename="@{compiler-args}"/>
+          </compc>
+      <echo message="compc-compile :: macro finished"/>
+      </sequential>
+  </macrodef>
+
+
+  <!-- run using adl -->
+  <macrodef name="run-adl">
+    <attribute name="flex-dir-home" />
+    <attribute name="app-xml" />
+    <attribute name="root-dir" />
+    <sequential>
+      <if>
+        <equals arg1="${isMac}" arg2="true" />
+        <then>
+          <property name="adl" value="@{flex-dir-home}/bin/adl" />
+        </then>
+        <elseif>
+          <equals arg1="${isWindows}" arg2="true" />
+          <then>
+            <property name="adl" value="@{flex-dir-home}/bin/adl.exe" />
+          </then>
+        </elseif>
+      </if>
+      <exec executable="${adl}">
+        <arg value="@{app-xml}" />
+        <arg value="@{root-dir}" />
+      </exec>
+    </sequential>
+  </macrodef>
+  
+  
+  <macrodef name="package-adt">
+    <attribute name="flex-dir-home" default="${flex.dir.home}"/>
+    <attribute name="package-output-dir" default="${build.dir.output.package}"/>
+    <sequential>
+      <fail unless="adt-arguments" message="package-adt :: call set-adt-arguments macro before trying adt-package"/>
+      <echo message="package-adt :: calling adt in dir ${build.dir.output.binary}"/>
+      <mkdir dir="@{package-output-dir}"/>
+      <java
+        jar="@{flex-dir-home}/lib/adt.jar"
+        dir="${build.dir.output.binary}"
+        fork="true" failonerror="true">
+        <arg line="${adt-arguments}"/>
+      </java>
+      <echo message="package-adt :: finished"/>  
+    </sequential>
+  </macrodef>
+  
+  
+  <macrodef name="set-adt-arguments">
+    <attribute name="target"/>
+    <attribute name="package-input" default="${app.file.output}"/>
+    <attribute name="package-output-dir" 
+      default="${build.dir.output.package}"/>
+    <attribute name="output-file-name"/>
+    <attribute name="app-descriptor" 
+      default="${build.dir.output.binary}/${project.name}-app.xml" />
+    <attribute name="additional-input" 
+      default="${app.assets.dir}"/>
+    <sequential>
+      <fail unless="signing-options" message="set-adt-arguments :: call set-signing-options macro before trying set-adt-arguments"/>
+      <var name="adt-arguments" value="-package"/>
+      <if>
+        <equals arg1="@{target}" arg2="air"/>
+      <then>  
+        <var name="adt-arguments" value="${adt-arguments} ${signing-options}"/>
+        <var name="adt-arguments" value="${adt-arguments} -target air"/>
+      </then>
+      <else>
+        <var name="adt-arguments" value="${adt-arguments} -target @{target}"/>
+        <var name="adt-arguments" value="${adt-arguments} ${signing-options}"/>
+      </else>
+      </if>  
+      <var name="adt-arguments" value="${adt-arguments} @{package-output-dir}/@{output-file-name}"/>
+      <var name="adt-arguments" value="${adt-arguments} @{app-descriptor}"/>
+      <var name="adt-arguments" value="${adt-arguments} @{package-input}"/>
+      <if>
+        <isset property="native.extension.includes.universal"/>
+      <then>
+        <echo message="set-adt-arguments :: setting universal -extdir entries"/>
+        <var name="adt-arguments" value="${adt-arguments} ${native.extension.includes.universal}"/>
+      </then>
+      </if>
+      <!-- start iOS specific additions -->
+      <if>
+        <equals arg1="${package.type}" arg2="IOS"/>
+      <then>
+        <!-- include ios specific -extdir entries -->
+        <if>
+          <isset property="native.extension.includes.ios"/>
+        <then>
+          <echo message="set-adt-arguments :: setting iOS -extdir entries"/>
+          <var name="adt-arguments" value="${adt-arguments} ${native.extension.includes.ios}"/>
+        </then>
+        </if>
+        <!-- set ios specific native path -->
+        <if>
+          <isset property="ios.sdk.path"/>
+        <then>
+          <var name="adt-arguments" value="${adt-arguments} -platformsdk ${ios.sdk.path}"/>
+        </then>
+        </if>
+        <!-- end of iOS specific packaging -->  
+      </then>    
+      </if>    
+      <if>
+        <equals arg1="${package.type}" arg2="ANDROID"/>
+      <then>
+        <if>  
+          <isset property="android.sdk.path"/>
+        <then>
+          <var name="adt-arguments" value="${adt-arguments} -platformsdk ${android.sdk.path}"/>
+        </then>
+        </if>
+        <!-- set Android specific -extdir entries -->
+        <if>
+          <isset property="native.extension.includes.android"/>
+        <then>
+          <echo message="set-adt-arguments :: setting Android -extdir entries"/>
+          <var name="adt-arguments" value="${adt-arguments} ${native.extension.includes.android}"/>
+        </then>
+        </if>
+        <!-- end Android specific packaging -->  
+      </then>
+      </if>    
+      <var name="adt-arguments" value="${adt-arguments} -C"/>
+      <var name="adt-arguments" value="${adt-arguments} ${build.src.dir}"/>
+      <var name="adt-arguments" value="${adt-arguments} @{additional-input}"/>
+      <!-- could override additional input with more -C args if needed -->
+      <echo message="set-adt-arguments :: complete output: args[${adt-arguments}]"/>  
+    </sequential>
+  </macrodef>
+  
+  <macrodef name="set-package-type">
+    <attribute name="target"/>
+    <sequential>
+      <echo message="set-package-type :: target: @{target}"/>
+      <if>
+         <or>
+         <equals arg1="@{target}" arg2="ipa-test"/> 
+         <equals arg1="@{target}" arg2="ipa-debug"/>
+         <equals arg1="@{target}" arg2="ipa-app-store"/>
+         <equals arg1="@{target}" arg2="ipa-ad-hoc"/>
+         <equals arg1="@{target}" arg2="ipa-debug-interpreter"/>
+         <equals arg1="@{target}" arg2="ipa-test-interpreter"/>
+          </or> 
+       <then>
+         <property name="package.type" value="IOS"/>
+         <property name="is.ipa" value="true"/> 
+       </then>
+       <elseif>
+           <equals arg1="@{target}" arg2="air"/>
+         <then>
+           <property name="package.type" value="DESKTOP"/>
+           <property name="is.ipa" value="false"/>
+         </then>
+       </elseif>   
+       <else>
+         <property name="package.type" value="ANDROID"/>
+         <property name="is.ipa" value="false"/>
+       </else>
+     </if>
+     <echo message="set-package-type :: package.type = ${package.type}"/>
+    </sequential>
+  </macrodef>
+  
+  
+  <macrodef name="set-signing-options">
+    <attribute name="target"/>
+    <attribute name="storetype"/>
+    <attribute name="keystore"/>
+    <attribute name="storepass"/>
+    <sequential>
+      <echo message="signing-options :: setting args for use by adt"/>
+      <set-package-type target="@{target}"/>
+      <var name="signing-options" value="-storetype @{storetype}"/>
+      <var name="signing-options" value="${signing-options} -keystore @{keystore}"/>
+      <var name="signing-options" value="${signing-options} -storepass @{storepass}"/>
+      <if>
+         <equals arg1="${package.type}" arg2="IOS"/>
+       <then>
+         <echo message="signing-options :: setting args specific to ${package.type} package type"/>
+         <fail unless="provisioning.profile" message="signing-options :: provisioning.profile required for ios packaging"/>
+         <var name="signing-options" value="${signing-options} -provisioning-profile ${provisioning.profile}"/>
+       </then>
+     </if>
+     
+    </sequential>
+  </macrodef>
+
+
+  <!-- create an app descriptor -->
+  <macrodef name="generate-app-descriptor">
+    <attribute name="descriptor-template" default="${app.descriptor}"/>
+    <attribute name="descriptor-tofile" default="${build.dir.output.binary}/${project.name}-app.xml"/>
+    <attribute name="token-binary" default="${app.descriptor.token.default}"/>
+    <attribute name="token-version" default="${app.version.token}"/>
+    <attribute name="replace-binary" default="${app.binary.name}"/>
+    <attribute name="replace-version" default="${build.number}"/>
+    <sequential>
+      <echo message="generate-app-descriptor :: @{descriptor-tofile}"/>
+      <copy file="@{descriptor-template}" tofile="@{descriptor-tofile}" overwrite="true"/>
+      <echo message="generate-app-descriptor :: trying to replace @{token-binary} with @{replace-binary}"/>
+      <replace file="@{descriptor-tofile}" token="@{token-binary}" value="@{replace-binary}" />
+      <echo message="generate-app-descriptor :: trying to replace @{token-version} with @{replace-version}"/>
+      <replace file="@{descriptor-tofile}" token="@{token-version}" value="@{replace-version}"/>
+    </sequential>
+  </macrodef>
+
+   
+   
+  <!-- OMG - perforce -->
+  <!-- TODO: similar for git -->
+  <!-- macro run-p4label
+  <macrodef name="run-p4label">
+    <attribute name="build-label" />
+    <attribute name="label-view" />
+    <attribute name="build-desc" default="@{build-label}" />
+    <sequential>
+      <p4label 
+      port="${p4.port}" 
+      user="${p4.user}" 
+      client="${p4.workspace}" 
+      view="@{label-view}" 
+      name="@{build-label}" 
+      desc="@{build-desc}" />
+    </sequential>
+  </macrodef -->
+  
+  
+  <macrodef name="stage-package-contents">
+    <sequential>
+      <echo message="stage-package-contents :: currently not implemented :)"/>
+    </sequential>
+  </macrodef>
+
+
+</project>

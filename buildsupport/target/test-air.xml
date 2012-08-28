@@ -1,0 +1,7 @@
+<project name="target.test.air">
+
+  <target name="test-air">
+    <build-run-flexunit player="air"/>
+  </target>
+  
+</project>

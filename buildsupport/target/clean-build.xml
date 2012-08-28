@@ -1,0 +1,20 @@
+<project name="target.clean.build">
+
+  <!-- clean entire output directory -->
+  <target name="clean-all">
+    <cleanup-generated-output/>
+  </target>
+
+
+  <!-- clean up build output -->
+  <target name="clean-build">
+    <cleanup-build/>
+  </target>
+
+
+  <!-- clean packaging artifacts-->
+  <target name="clean-for-package">
+    <cleanup-package/>
+  </target>
+  
+</project>

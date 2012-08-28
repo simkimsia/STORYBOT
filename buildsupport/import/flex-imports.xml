@@ -1,0 +1,12 @@
+<project name="flex-imports">
+
+  <import file="${buildsupport.dir}/import/base-imports.xml"/>
+  
+  <import file="${buildsupport.dir}/target/clean-build.xml"/>
+  <import file="${buildsupport.dir}/target/clean-tests.xml"/>  
+  <import file="${buildsupport.dir}/target/compile-swc-flex.xml"/>
+  <import file="${buildsupport.dir}/target/build-flex.xml"/>
+  <import file="${buildsupport.dir}/target/test-flex.xml"/>
+  <import file="${buildsupport.dir}/target/package-flex.xml"/>
+  
+</project>

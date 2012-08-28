@@ -1,0 +1,16 @@
+<project name="target.clean.tests">
+
+  <!-- clean up artifacts from flexunit -->
+  <target name="clean-flexunit-reports">
+    <cleanup-flexunit-reports/>
+  </target>
+
+
+  <!-- clean flexunit artifacts and reports -->
+  <target name="clean-flexunit-all">
+    <cleanup-flexunit-reports/>
+    <cleanup-run-flexunit/>
+  </target>
+
+
+</project>

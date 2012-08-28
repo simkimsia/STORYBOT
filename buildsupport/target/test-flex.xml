@@ -1,0 +1,7 @@
+<project name="target.test.flex">
+
+  <target name="test-flex">
+    <build-run-flexunit />
+  </target>
+  
+</project>

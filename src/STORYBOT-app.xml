@@ -126,15 +126,14 @@
 	<!-- The icon the system uses for the application. For at least one resolution,
 	specify the path to a PNG file included in the AIR package. Optional. -->
 	<icon>
-		<image16x16>storybot-icon-16.png</image16x16>
-        <image128x128>storybot-icon-128.png</image128x128>
-		<image32x32>storybot-icon-32.png</image32x32>
-		<image36x36>storybot-icon-36.png</image36x36>
-		<image48x48>storybot-icon-48.png</image48x48>
-		<image57x57>storybot-icon-57.png</image57x57>
-		<image72x72>storybot-icon-72.png</image72x72>
-		<image114x114>storybot-icon-114.png</image114x114>
-
+		<image16x16>assets/storybot-icon-16.png</image16x16>
+		<image32x32>assets/storybot-icon-32.png</image32x32>
+		<image36x36>assets/storybot-icon-36.png</image36x36>
+		<image48x48>assets/storybot-icon-48.png</image48x48>
+		<image57x57>assets/storybot-icon-57.png</image57x57>
+		<image72x72>assets/storybot-icon-72.png</image72x72>
+		<image114x114>assets/storybot-icon-114.png</image114x114>
+        <image128x128>assets/storybot-icon-128.png</image128x128>
 	</icon>
 
 	<!-- Whether the application handles the update when a user double-clicks an update version

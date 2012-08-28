@@ -1,0 +1,12 @@
+<project name="target.compile.swc.flex">
+
+  <target name="compile-swc-flex">
+    <copy-config/>
+    <compc-compile flex-dir-home="${flex.dir.home}" 
+      src-path="${lib.dir.input}" 
+      output-file="${lib.file.output}" 
+      framework-config-name="flex" 
+      compiler-args="${build.dir.output}/generated-compile-config.xml"/>
+  </target>
+  
+</project>
