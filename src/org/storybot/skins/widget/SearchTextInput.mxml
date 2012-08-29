@@ -248,6 +248,8 @@
     <s:Label id="promptDisplay" maxDisplayedLines="1"
                 verticalAlign="middle"
 				fontStyle="normal"
+				fontFamily="Arial"
+				fontSize="13.5"
                 mouseEnabled="false" mouseChildren="false"
                 includeIn="normalWithPrompt,disabledWithPrompt" 
                 includeInLayout="false"

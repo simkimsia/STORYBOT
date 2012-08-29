@@ -152,6 +152,11 @@
 				plusNewCallout.close();
 			}
 			
+			protected function btnClose_clickHandler(event:MouseEvent):void
+			{
+				exit(null);
+			}
+			
 		]]>
 	</fx:Script>
 	<fx:Declarations>
@@ -176,7 +181,7 @@
 			</s:stroke>
 		</s:Rect>
 		
-		<s:Image id="imgStorybot" left="7" top="7" source="@Embed('/../assets/storybot-face.png')"/>
+		<s:Image id="imgStorybot" left="7" top="10" source="@Embed('/../assets/storybot-face.png')"/>
 		<controls1:BalanceIndicator x="65" y="18">
 		</controls1:BalanceIndicator>
 		<controls1:Search y="65" horizontalCenter="-1">
@@ -184,7 +189,7 @@
 		<controls1:InfoBox 
 			id="infoLibrary"
 			x="9" 
-			y="100" 
+			y="98" 
 			info="09"
 			iconSelectedSource="@Embed('/../assets/widget-library-icon-selected.png')"
 			iconSource="@Embed('/../assets/widget-library-icon.png')">
@@ -192,35 +197,37 @@
 		<controls1:InfoBox 
 			id="infoWorks"
 			x="77" 
-			y="100"
+			y="98"
 			info="10"
 			iconSelectedSource="@Embed('/../assets/widget-work-icon-selected.png')"
 			iconSource="@Embed('/../assets/widget-work-icon.png')">
 		</controls1:InfoBox>
-		<controls1:InfoBox 
-			id="infoFolio"
-			x="145" 
-			y="100"
-			info="999+"
-			iconSelectedSource="@Embed('/../assets/widget-folio-icon-selected.png')"
-			iconSource="@Embed('/../assets/widget-folio-icon.png')">
+		<controls1:InfoBox id="infoFolio" x="145" y="98"
+						   iconSelectedSource="@Embed('/../assets/widget-folio-icon-selected.png')"
+						   iconSource="@Embed('/../assets/widget-folio-icon.png')" info="999+">
 		</controls1:InfoBox>
 		<buttons:ActionButton 
 			id="btnActionAddNew"
 			mouseOver="btnAdd_HoverHandler(event)"
             mouseOut="window1_deactivateHandler(event)"
             click="btnAdd_clickHandler(event)"
-			left="10" bottom="5"
+			left="10" bottom="8"
 			skinClass="org.storybot.skins.widget.AddActionButtonSkin"
 			/>
 		<buttons:ActionButton 
 			id="btnActionSynch"
-			left="33" bottom="5"
+			left="33" bottom="8"
 			skinClass="org.storybot.skins.widget.SynchActionButtonSkin"/>
 		<buttons:StoryzerButton 
 			id="btnApp"
 			right="10" 
-			bottom="5"/>
+			bottom="9"/>
 		<buttons:LoginButton id="btnLogin" y="18" right="10"/>
+		<s:Button 
+			id="btnClose"
+			skinClass="org.storybot.skins.button.WidgetCloseButtonSkin"
+			click="btnClose_clickHandler(event)"
+			right="6" top="6" 
+			width="8" height="8" />
 	</s:Group>
 </s:Window>

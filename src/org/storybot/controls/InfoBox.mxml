@@ -29,7 +29,7 @@
 		bottom="3" 
 		color="#FFFFFF"
 		color.selected="#FFC20E"
-		fontSize="14" 
+		fontSize="16" 
 		fontWeight="bold"
 		text="{_info}"/>
 	

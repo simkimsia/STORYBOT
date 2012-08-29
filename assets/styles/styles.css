@@ -1,4 +1,34 @@
+@namespace s "library://ns.adobe.com/flex/spark";
 global
 {
 	modalTransparency: 0;
 }
+
+@font-face 
+{
+	src: url("../fonts/Arial.ttf");
+	fontFamily: Arial;
+	fontStyle: normal;
+	fontWeight: normal;
+	embedAsCFF: true;
+	advancedAntiAliasing: true;
+}
+
+@font-face 
+{
+	src: url("../fonts/ArialBold.ttf");
+	fontFamily: Arial;
+	fontStyle: normal;
+	fontWeight: bold;
+	embedAsCFF: true;
+	advancedAntiAliasing: true;
+}
+
+s|Application{
+	fontFamily: Arial;
+}
+
+s|Window{
+	fontFamily: Arial;
+}
+

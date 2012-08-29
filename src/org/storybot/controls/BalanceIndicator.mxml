@@ -25,9 +25,11 @@
 			color="#FFFFFF" 
 			trackingRight="1"
 			fontSize="15" 
+			alpha="0.8"
 			fontWeight="bold" 
 			text="$00,000.00"/>
 		<s:Label 
+			alpha="0.8"
 			id="lblUnit" 
 			color="#FFFFFF" 
 			fontWeight="bold" 
