@@ -42,12 +42,36 @@
                 if(NativeApplication.supportsSystemTrayIcon){
                     iconMenu.addItem(showCommand);
                     showCommand.addEventListener(Event.SELECT, undock);
+                    iconMenu.addSubmenu(createTasksMenu(),"Tasks");
+
+                    iconMenu.addSubmenu(createRecentMenu(),"Recent");
                     iconMenu.addItem(new NativeMenuItem("", true));//Separator
-                    var exitCommand: NativeMenuItem = iconMenu.addItem(new NativeMenuItem("Exit"));
-                    exitCommand.addEventListener(Event.SELECT, exit);
+
                 }
 
                 return iconMenu;
+            }
+
+            private function createRecentMenu():NativeMenu
+            {
+                      return new NativeMenu();
+            }
+
+            private function createTasksMenu():NativeMenu {
+                var temp:NativeMenuItem;
+                var menu:NativeMenu = new NativeMenu();
+                temp = menu.addItem(new NativeMenuItem("Sign Out"));
+                temp.keyEquivalent = 's';
+
+
+                temp = menu.addItem(new NativeMenuItem("Quit STORYBOT"));
+                temp.keyEquivalent = 'q';
+                temp.addEventListener(Event.SELECT, exit);
+
+                menu.addItem(new NativeMenuItem("",true));//separator
+
+
+                return menu;
             }
 
             private function exit(event:Event):void
@@ -62,13 +86,11 @@
 				if(NativeApplication.supportsDockIcon){
                     var dockIcon:DockIcon = NativeApplication.nativeApplication.icon as DockIcon;
 					_trayIcon = _icon128;
-					//NativeApplication.nativeApplication.addEventListener(InvokeEvent.INVOKE, undock);
                     dockIcon.menu = createIconMenu();
 				} else if (NativeApplication.supportsSystemTrayIcon){
 					_trayIcon = _icon16;
 					var sysTrayIcon:SystemTrayIcon = NativeApplication.nativeApplication.icon as SystemTrayIcon;
 					sysTrayIcon.tooltip = "STORYBOT";
-					//sysTrayIcon.addEventListener(MouseEvent.CLICK,undock);
                     sysTrayIcon.menu = createIconMenu();
 				}
 
