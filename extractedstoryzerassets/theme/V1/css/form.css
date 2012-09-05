@@ -1,0 +1,15 @@
+.outtaHere {
+	position:absolute;
+	left:-3000px;
+}
+/* radio buttons */
+.checkboxArea, .checkboxAreaChecked {
+	float:left;
+	width:14px;
+	height:14px;
+	background: url(../img/bg-radio.png) no-repeat;
+	overflow: hidden;
+	margin:3px 9px 0 0;
+}
+.checkboxAreaChecked {background-position:0 -28px;}
+.checkboxAreaCheckedLabel{color:#ffc20e;}

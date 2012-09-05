@@ -1,0 +1,27 @@
+div#cart table{width:100%;}
+div#cart th{font-size:14px;font-weight:bold;text-align:center;padding:10px 15px;border-top:1px solid #e4e4e4;border-bottom:1px solid #e4e4e4;}
+div#cart th.start{text-align:left;padding-left:0;}
+div#cart td{font-size:13px;text-align:center;vertical-align:middle;padding:15px;border-bottom:1px solid #e4e4e4;}
+div#cart td.pic{width:50px;padding-right:5px;padding-left:0;}
+div#cart td.pic img{float:left;}div#cart td.title{text-align:left;}
+div#cart td input.field{text-align:center;width:40px;padding:3px;}
+div#complete{padding-top:25px;}
+div#notes{width:410px;padding-top:15px;float:left;}
+div#notes label{font-size:13px;display:block;}
+div#notes textarea{width:380px;height:100px;padding:3px;margin-top:4px;}
+div#total{width:360px;float:right;}
+div#total h3{font-size:30px;text-align:right;padding-bottom:25px;}
+div#total div#checkout input{float:right;margin-left:10px;}
+div.entry{padding:10px 0 25px;border-bottom:1px solid #e4e4e4;}
+div#total div#checkout input{float:right;margin-left:10px;width:auto;padding: 0px; clear:none;}
+
+input#add {
+	width: auto;
+	background:url('../img/button.png') no-repeat;width:170px;height:0;
+	padding-top:55px;
+	padding-bottom:0px;
+	display:block;overflow:hidden;
+}
+input#add:hover {
+	background-position:-170px 0;
+}
