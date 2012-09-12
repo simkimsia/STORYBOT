@@ -1,0 +1,204 @@
+body, html {
+	height: 100%;
+}
+body {
+	margin: 10px,auto;
+	margin-bottom: 10px;
+	text-align: center;
+	font-family: Arial;
+}
+#genre .titleText, #sneaks .titleText, #info .titleText, #covers .titleText, #type-price .titleText{
+	font-family:Century Gothic;
+	font-size: 13px;
+	color:BCBEC0;
+	font-weight: bold;
+	text-transform: uppercase;	
+}
+#info, #covers, #sneaks, #genre, #type-price, #author{
+	padding: 5px 12px 0px 12px;
+}
+#genre #star, #info #star, #covers #star, #type-price #star{
+	color: #ff0000;
+	font-size:14px;
+	font-family: Century Gothic;
+	font-weight: bold;
+}
+.headerBackground{
+	background-image: url('../images/headerBack.png');
+	height: 47px;
+	width: 899px;
+	float: right;
+	
+}
+.title{
+	color: #FFC20E;
+	font-size: 25px;
+	line-height: 45px;
+	padding-left: 25px;
+}
+#buttonPanel {
+	float: right; 
+	padding:13px 13px;
+	
+}
+#spacer {
+	background-image: url('../images/spacer.png');
+	height: 7px;
+	
+}
+/******************************* Layout Start *************************/
+#wrapper { 
+	width: 960px; 
+	margin: 0 auto; 
+}
+#header, #footer, #content-wrapper { 
+	float: left; 
+	width: 960px; 
+	margin: 5px; 
+	display: block; 
+	text-align: left;
+	clear: both;
+}
+#sidebar-left { 
+	float: left; 
+	width: 296px; 
+
+	border: 1px solid #dcddde;
+	border-radius: 8px;
+}
+#content {
+	float: left;
+	width: 644px;
+	margin-left: 16px;
+	border: 1px solid #dcddde;
+	border-radius: 8px;
+}
+
+/********************** Layout End **************************/
+
+div {
+	border: 0px solid green;
+}
+input, textarea{
+	border: 1px solid #bcbdc0;
+	width: 100%;
+	color: #58595B;
+	font-family: Arial;
+	font-size: 12px;
+}
+#genre .orangeTitle, #info .orangeTitle {
+	color:#FFC20E;
+	font-size: 13px;
+	font-weight: bold;
+}
+a .helpIcon { 
+	float: right;
+	background: url('../images/help.png') no-repeat;
+	display: block;
+    height: 15px;
+	width: 13px;
+}
+a .helpIcon:hover {
+	float: right;
+	color: red;
+	background: url('../images/helpOver.png') no-repeat;
+	height: 15px;
+	width: 13px;
+}
+a.helpIcon:active {
+   background: url('../images/helpOver.png') no-repeat;
+}
+
+hr {
+	border: 1px solid #bcbdc0;
+	height: 1px;
+	
+}
+
+.box {
+	height: 184px;
+	border: 1px solid #bcbdc0;
+	width: 130px;
+}
+#sneaksCollection div{
+	display: inline; 
+	float: left; 
+	width: 22%; 
+	margin-left: 3%;
+	height: 88px;
+	border: 1px solid #c7c8ca;
+	background-image: -moz-linear-gradient(top, #eaebec, #f8f8f8); 
+	background: -webkit-linear-gradient(top, #eaebec, #f8f8f8);
+
+}
+#pagesCollection div{
+	display: inline; 
+	float: left; 
+	width: 23%;
+	margin-left: 2.6%;
+	height: 212px;
+}
+#horizonalRow{
+	background-image: url('../images/rule.png');
+	width: 100%;
+	height: 17px;
+}
+#pagesCollection #pagesDiv{
+	text-align: center;
+	width: 98%;
+	border: none;
+	margin:0px;
+	border: 1px solid #c7c8ca;
+	background-image: -moz-linear-gradient(top, #eaebec, #f8f8f8); 
+	background: -webkit-linear-gradient(top, #eaebec, #f8f8f8);
+}
+#pagesCollection  #pagesText{
+	text-align: center;
+	width: 98%;
+	border:0px solid red;
+	height: auto;
+	background-image: none;
+	line-height: 25px;
+	font-size:13px;
+	font-weight: bold;
+	color: #939598;
+}
+#pagesCollection  #pagesGroup{
+	margin-left:0px; 
+	height: 250px;
+}
+
+#genre  span, #type-price span {
+	color: #333333;
+	font-size: 11px;
+}
+#authorName {
+	font-size: 18px;
+	color: #939598;
+	font-weight: bold;
+	margin-left: 5px;
+}
+#copyright {
+	font-size:10px;
+	color: #939598;
+	margin-left: 5px; 
+}
+
+/****************************************  Login Page Start *********************************/
+#loginContent {	
+	width: 960px;
+	border: 1px solid #dcddde;
+	border-radius: 8px;
+	height: 650px;
+	margin: 0 auto; 
+	text-align: left;	
+}
+#dragImageHere{
+	background-image: url('../images/dragImageHere.png');
+	height: 205px;
+	width: 175px;
+	margin: 200px auto;	
+	background-repeat: no-repeat;
+}
+
+/****************************************  Login Page End *********************************/
