@@ -218,10 +218,10 @@
 					pageBlockDiv.appendChild(pageImageDiv);
 					pageBlockDiv.appendChild(pageFileNameDiv);
 					
-					/*
+					
 					img = document.createElement("img");
 					img.className = "arrangeable";
-					
+					/*
 					var imgdiv = document.createElement("div");
 					imgdiv.draggable = true;
 				
@@ -285,19 +285,23 @@
 					li.appendChild(imgdiv);
 					/* add the image to supposed display area */
 					//dropArea.appendChild(img);
-					/*
+					
+					pageImageDiv.appendChild(img);
+					
 					reader = new FileReader();
 					reader.onload = (function (theImg) {
 						return function (evt) {
 							theImg.src = evt.target.result;
-							theImg.height = 212.708;
-							theImg.width = 150.361;
+							theImg.height = 214;
+							theImg.width = 141;
+							//theImg.height = 212.708;
+							//theImg.width = 150.361;
 
 						};
 						
 					}(img));
-					*/
-					//reader.readAsDataURL(file);
+					
+					reader.readAsDataURL(file);
 					
 					$(currentRowElement).append(pageBlockDiv);
 					console.log("at this point");
