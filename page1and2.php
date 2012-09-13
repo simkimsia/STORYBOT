@@ -322,12 +322,12 @@
 					fileList.innerHTML = "No support for the File API in this web browser";
 				}	
 			}
-*/
 
+/*
 			filesUpload.addEventListener("change", function () {
 				traverseFiles(this.files);
 			}, false);
-			
+			*/
 			dropArea.addEventListener("dragleave", function (evt) {
 				var target = evt.target;
 
@@ -351,8 +351,8 @@
 
 			dropArea.addEventListener("drop", function (evt) {
 				$(dropArea).hide();
-				traverseFiles(evt.dataTransfer.files);
-				$(page2Content).show();
+				//traverseFiles(evt.dataTransfer.files);
+				//$(page2Content).show();
 								
 				this.className = "";
 				evt.preventDefault();

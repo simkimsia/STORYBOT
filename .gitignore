@@ -10,6 +10,7 @@ bin-release/
 .flexProperties
 .settings/
 .project
+*.tmproj
 
 # dropbox
 *.dropbox
