@@ -131,7 +131,7 @@ hr {
 	background: -webkit-linear-gradient(top, #eaebec, #f8f8f8);
 
 }
-#pagesCollection div{
+.pagesCollection div{
 	display: inline; 
 	float: left; 
 	width: 23%;
@@ -143,7 +143,7 @@ hr {
 	width: 100%;
 	height: 17px;
 }
-#pagesCollection #pagesDiv{
+.pagesCollection .pagesDiv{
 	text-align: center;
 	width: 98%;
 	border: none;
@@ -152,7 +152,7 @@ hr {
 	background-image: -moz-linear-gradient(top, #eaebec, #f8f8f8); 
 	background: -webkit-linear-gradient(top, #eaebec, #f8f8f8);
 }
-#pagesCollection  #pagesText{
+.pagesCollection  .pagesText{
 	text-align: center;
 	width: 98%;
 	border:0px solid red;
@@ -163,7 +163,7 @@ hr {
 	font-weight: bold;
 	color: #939598;
 }
-#pagesCollection  #pagesGroup{
+.pagesCollection  .pagesGroup{
 	margin-left:0px; 
 	height: 250px;
 }

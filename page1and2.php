@@ -111,43 +111,47 @@
 			<div id="info">
 				<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
 				<div id="horizonalRow"></div>
-				<div id="pagesCollection">
-					<div id="pagesGroup">
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+				<div class="pagesCollection" id="row1">
+					<!--
+					<div class="pagesGroup">
+						<div class="pagesDiv">
+							
+						</div>
+						<div class="pagesText">File Name</div>					
 					</div>
 					<div>
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
 					</div>
 					<div>
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
 					</div>
 					<div>
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
 					</div>					
 				</div>
 				<div style="clear:both"></div>
 
-				<div id="pagesCollection">
-					<div id="pagesGroup" >
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+				<div class="pagesCollection">
+					<div class="pagesGroup">
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
 					</div>
 					<div>
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
 					</div>
 					<div>
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
 					</div>
 					<div>
-						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
-					</div>					
+						<div class="pagesDiv"></div>
+						<div class="pagesText">File Name</div>					
+					</div>	
+					-->				
 				</div>
 				
 			</div>	
@@ -168,31 +172,42 @@
 			$("#loginContent").show();			
 		});
 		
+		var pageCounter = 0;
 		
 		(function () {
 			
 			 // var filesUpload = document.getElementById("files-upload"),
 			var	dropArea = document.getElementById("loginContent"),
-				page2Content = document.getElementById("page2content");
-			//	fileList = document.getElementById("file-list");
-/*
+				page2Content = document.getElementById("page2content"),
+				row1 = document.getElementById("row1");
+
 			function uploadFile (file) {
-				var li = document.createElement("li"),
-					div = document.createElement("div"),
+				var pageBlockDiv = document.createElement("div"),
+					pageImageDiv = document.createElement("div"),
+					pageFileNameDiv = document.createElement("div"),
 					img,
 					reader,
 					xhr,
 					fileInfo;
 
-				li.appendChild(div);
-				
+				$(pageImageDiv).addClass("pagesDiv");
+				$(pageFileNameDiv).addClass("pagesText");
+				pageFileNameDiv.innerHTML = "File Name " + (pageCounter + 1);
 
 				/*
 					If the file is an image and the web browser supports FileReader,
 					present a preview in the file list
 				*/
-				/*
+				
 				if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
+					
+					if ((pageCounter % 4) == 0) {
+						pageBlockDiv.className = "pagesGroup";
+					}
+					pageBlockDiv.appendChild(pageImageDiv);
+					pageBlockDiv.appendChild(pageFileNameDiv);
+					
+					/*
 					img = document.createElement("img");
 					img.className = "arrangeable";
 					
@@ -201,7 +216,9 @@
 				
 					
 					imgdiv.className = "brick";
-					imgdiv.className = imgdiv.className + " photo";
+					imgdiv.classList.add("photo");
+					imgdiv.classList.add("pagesDiv");
+					
 					
 					imgdiv.addEventListener('mousedown', function grab(ev) {
 						this.classList.add("grabbed");
@@ -266,13 +283,16 @@
 							theImg.width = 150.361;
 
 						};
+						
 					}(img));
+					*/
+					//reader.readAsDataURL(file);
 					
-					reader.readAsDataURL(file);
+					row1.appendChild(pageBlockDiv);
 				}
 
 				// Uploading - for Firefox, Google Chrome and Safari
-				
+				/*
 				xhr = new XMLHttpRequest();
 
 				// Update progress bar
@@ -310,6 +330,8 @@
 				div.innerHTML = fileInfo;
 
 				fileList.appendChild(li);
+				*/
+				pageCounter++;
 			}
 
 			function traverseFiles (files) {
@@ -319,7 +341,8 @@
 					}
 				}
 				else {
-					fileList.innerHTML = "No support for the File API in this web browser";
+					// show no support error message here
+					alert("No support for the File API in this web browser");
 				}	
 			}
 
@@ -351,8 +374,9 @@
 
 			dropArea.addEventListener("drop", function (evt) {
 				$(dropArea).hide();
-				//traverseFiles(evt.dataTransfer.files);
-				//$(page2Content).show();
+				// we will parse all the dropped files into page2Content area
+				traverseFiles(evt.dataTransfer.files);
+				$(page2Content).show();
 								
 				this.className = "";
 				evt.preventDefault();
