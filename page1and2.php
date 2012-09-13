@@ -40,7 +40,7 @@
 	<div id="content-wrapper">
 		
 		<div id="loginContent"> 
-			<div id="info">
+			<div class="info">
 				<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
 				<div id="horizonalRow"></div> 
 				<div id="dragImageHere"></div>
@@ -48,118 +48,119 @@
 		</div>
 		
 		<div id="page2content">
-		<!-- Left Panel Start -->
-		<div id="sidebar-left">
-			<div id="info">
-				<span class="titleText">INFO</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
-				<div id="spacer"></div>
-				<input type="text" name="description" /><br />
-				<div id="spacer"></div>
-				<textarea rows="5" name="description"></textarea><br />
-				<div id="spacer"></div>
-				<input type="radio" style="width:auto;" /><span class="orangeTitle">Discussion Enabled</span><br />
-			</div>	
-			<div id="horizonalRow"></div> 
+			<!-- Left Panel Start -->
+			<div id="sidebar-left">
+				<div class="info">
+					<span class="titleText">INFO</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
+					<div id="spacer"></div>
+					<input type="text" name="description" /><br />
+					<div id="spacer"></div>
+					<textarea rows="5" name="description"></textarea><br />
+					<div id="spacer"></div>
+					<input type="radio" style="width:auto;" /><span class="orangeTitle">Discussion Enabled</span><br />
+				</div>	
+				<div id="horizonalRow"></div> 
 				
-			<div id="covers">
-				<span class="titleText">Covers</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
-				<div id="spacer"></div>
-				<div class="box" style="float: left"></div> <div class="box" style="margin-left: 140px"></div>
-			</div>
-			<div id="horizonalRow"></div>
-				
-			<div id="sneaks">
-				<span class="titleText">Sneaks</span><span id="star"> </span><a href="#"><div class="helpIcon"></div></a><br />
-				<div id="spacer"></div>
-				<div id="sneaksCollection">
-					<div style="margin-left:0px"></div>
-					<div></div>
-					<div></div>
-					<div></div>
+				<div id="covers">
+					<span class="titleText">Covers</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
+					<div id="spacer"></div>
+					<div class="box" style="float: left"></div> <div class="box" style="margin-left: 140px"></div>
 				</div>
-				<div style="clear: both"></div>							
-			</div>
-			<div id="horizonalRow"></div>
+				<div id="horizonalRow"></div>
+				
+				<div id="sneaks">
+					<span class="titleText">Sneaks</span><span id="star"> </span><a href="#"><div class="helpIcon"></div></a><br />
+					<div id="spacer"></div>
+					<div id="sneaksCollection">
+						<div style="margin-left:0px"></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<div style="clear: both"></div>							
+				</div>
+				<div id="horizonalRow"></div>
 			
-			<div id="genre">
-				<span class="titleText">Genre</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
-				<div id="spacer"></div>				
-				<span>Adventure - Martial Arts - Supernatural</span> <span class="orangeTitle" style="float:right">Edit</span>
-			</div>
-			<div id="horizonalRow"></div>
+				<div id="genre">
+					<span class="titleText">Genre</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
+					<div id="spacer"></div>				
+					<span>Adventure - Martial Arts - Supernatural</span> <span class="orangeTitle" style="float:right">Edit</span>
+				</div>
+				<div id="horizonalRow"></div>
 			
-			<div id="type-price">
-				<span class="titleText">Type - Price</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
-				<div id="spacer"></div>
-				<input type="text" /><br />
-				<div id="spacer"></div>
-				<span id="star">*</span><span>Required Fields</span>
-			</div>
-			<div id="horizonalRow"></div>
+				<div id="type-price">
+					<span class="titleText">Type - Price</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
+					<div id="spacer"></div>
+					<input type="text" /><br />
+					<div id="spacer"></div>
+					<span id="star">*</span><span>Required Fields</span>
+				</div>
+				<div id="horizonalRow"></div>
 
-			<div id="author">
-				<img src="images/thumb.png" style="display:inline; float: left" />
-				<span id="authorName">Name of Author</span><br />
-				<span id="copyright">2012 - ALL RIGHTS RESERVED</span><br />				
+				<div id="author">
+					<img src="images/thumb.png" style="display:inline; float: left" />
+					<span id="authorName">Name of Author</span><br />
+					<span id="copyright">2012 - ALL RIGHTS RESERVED</span><br />				
+				</div>
+				<div id="horizonalRow"></div>			
 			</div>
-			<div id="horizonalRow"></div>			
-		</div>
-		<!-- Left Panel End -->
+			<!-- Left Panel End -->
 
 		<!-- Body Content Start -->
-		<div id="content">
-			<div id="info">
-				<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
-				<div id="horizonalRow"></div>
-				<div class="pagesCollection" id="row1">
-					<!--
-					<div class="pagesGroup">
-						<div class="pagesDiv">
-							
-						</div>
-						<div class="pagesText">File Name</div>					
-					</div>
-					<div>
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
-					</div>
-					<div>
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
-					</div>
-					<div>
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
-					</div>					
-				</div>
-				<div style="clear:both"></div>
+			<div id="content">
+				<div id="pagesCollectionRightPanel" class="info">
+					<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
+					<div id="horizonalRow"></div>
+										<!--
+					<div class="pagesCollection" id="row1">
 
-				<div class="pagesCollection">
-					<div class="pagesGroup">
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
+						<div class="pagesGroup">
+							<div class="pagesDiv">
+							
+							</div>
+							<div class="pagesText">File Name</div>					
+						</div>
+						<div>
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>
+						<div>
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>
+						<div>
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>					
 					</div>
-					<div>
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
-					</div>
-					<div>
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
-					</div>
-					<div>
-						<div class="pagesDiv"></div>
-						<div class="pagesText">File Name</div>					
-					</div>	
-					-->				
-				</div>
+					<div style="clear:both"></div>
+
+					<div class="pagesCollection">
+						<div class="pagesGroup">
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>
+						<div>
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>
+						<div>
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>
+						<div>
+							<div class="pagesDiv"></div>
+							<div class="pagesText">File Name</div>					
+						</div>	
+			
+					</div> 					-->	
 				
-			</div>	
+				</div>	
 	
-		</div>
+			</div>
 		<!-- Body Content End -->
-	</div>
-	</div> <!-- page 2 content -->
+		</div> <!-- page 2 content -->
+	</div> 
 	<!-- Footer Start -->
 	 <div id="footer">  </div> 
 	<!-- Footer End -->
@@ -167,12 +168,18 @@
 
 
 	<script>
+	
+	var pageCounter = 0;
+	var parentOfRows ;
+	
 		$(document).ready(function() {
 			$("#page2content").hide();
-			$("#loginContent").show();			
+			$("#loginContent").show();	
+			parentOfRows = document.getElementById("pagesCollectionRightPanel");
+
+			
 		});
 		
-		var pageCounter = 0;
 		
 		(function () {
 			
@@ -200,10 +207,14 @@
 				*/
 				
 				if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
-					
+					console.log(pageCounter);
 					if ((pageCounter % 4) == 0) {
 						pageBlockDiv.className = "pagesGroup";
 					}
+					
+					var currentRowId = getCurrentRowId();
+					var currentRowElement = getCurrentRowElement(currentRowId);
+					
 					pageBlockDiv.appendChild(pageImageDiv);
 					pageBlockDiv.appendChild(pageFileNameDiv);
 					
@@ -288,7 +299,9 @@
 					*/
 					//reader.readAsDataURL(file);
 					
-					row1.appendChild(pageBlockDiv);
+					$(currentRowElement).append(pageBlockDiv);
+					console.log("at this point");
+					console.log(currentRowElement);
 				}
 
 				// Uploading - for Firefox, Google Chrome and Safari
@@ -389,7 +402,26 @@
 												
 		})();
 		
+		/**
+		 * find id of current row based on page counter
+		 */
+		function getCurrentRowId() {
+			var quotient = Math.floor(pageCounter / 4); // since each row max 4 
+			return "row" + (quotient + 1);
+		}
 		
+		function getCurrentRowElement(rowid) {
+
+			if ($("#" + rowid).length == 0) {
+				var newRow = document.createElement("div");
+				newRow.id = rowid;
+				newRow.className = "pagesCollection";
+				$(parentOfRows).append('<div style="clear:both"></div>');
+				parentOfRows.appendChild(newRow);
+			} 
+			var isit = document.getElementById(rowid);
+			return isit;
+		}
 	</script>
 
 </body>

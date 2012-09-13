@@ -7,17 +7,17 @@ body {
 	text-align: center;
 	font-family: Arial;
 }
-#genre .titleText, #sneaks .titleText, #info .titleText, #covers .titleText, #type-price .titleText{
+#genre .titleText, #sneaks .titleText, .info .titleText, #covers .titleText, #type-price .titleText{
 	font-family:Century Gothic;
 	font-size: 13px;
 	color:BCBEC0;
 	font-weight: bold;
 	text-transform: uppercase;	
 }
-#info, #covers, #sneaks, #genre, #type-price, #author{
+.info, #covers, #sneaks, #genre, #type-price, #author{
 	padding: 5px 12px 0px 12px;
 }
-#genre #star, #info #star, #covers #star, #type-price #star{
+#genre #star, .info #star, #covers #star, #type-price #star{
 	color: #ff0000;
 	font-size:14px;
 	font-family: Century Gothic;
@@ -86,7 +86,7 @@ input, textarea{
 	font-family: Arial;
 	font-size: 12px;
 }
-#genre .orangeTitle, #info .orangeTitle {
+#genre .orangeTitle, .info .orangeTitle {
 	color:#FFC20E;
 	font-size: 13px;
 	font-weight: bold;
