@@ -31,7 +31,7 @@
 				<img src="images/but_pages.png" />
 				<img src="images/but_save.png" />
 				<img src="images/but_preview.png" />
-				<img src="images/but_publish.png" />
+				<a id="publishButton" href="#"><img src="images/but_publish.png" /></a>
 			</div>
 		</div>
 	</div>
@@ -51,6 +51,7 @@
 			<!-- Left Panel Start -->
 			<div id="sidebar-left">
 				<div class="info">
+					<input id="files-upload" type="file" multiple style="display:none;" name="files" />
 					<span class="titleText">INFO</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
 					<div id="spacer"></div>
 					<input type="text" name="description" /><br />
@@ -172,11 +173,16 @@
 	var pageCounter = 0;
 	var parentOfRows ;
 	
+	var filesToBeUploaded = new Array();
+	
 		$(document).ready(function() {
 			$("#page2content").hide();
 			$("#loginContent").show();	
 			parentOfRows = document.getElementById("pagesCollectionRightPanel");
-
+			$("#publishButton").on("click", function() {
+				alert("hihi");
+				uploadFiles();
+			});
 			
 		});
 		
@@ -188,7 +194,8 @@
 				page2Content = document.getElementById("page2content"),
 				row1 = document.getElementById("row1");
 
-			function uploadFile (file) {
+
+			function presentFile (file) {
 				var pageBlockDiv = document.createElement("div"),
 					pageImageDiv = document.createElement("div"),
 					pageFileNameDiv = document.createElement("div"),
@@ -196,7 +203,8 @@
 					reader,
 					xhr,
 					fileInfo;
-
+				
+				pageBlockDiv.id = getPageId(pageCounter + 1);
 				$(pageImageDiv).addClass("pagesDiv");
 				$(pageFileNameDiv).addClass("pagesText");
 				pageFileNameDiv.innerHTML = "File Name " + (pageCounter + 1);
@@ -206,7 +214,17 @@
 					present a preview in the file list
 				*/
 				
-				if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
+				/**
+				 * check file is an image
+				 */
+				var validFile = isFileValid(file);
+				
+				
+				if (validFile) {
+					
+					// add file to array filesToBeUploaded
+					filesToBeUploaded[pageBlockDiv.id] = file;
+					
 					console.log(pageCounter);
 					if ((pageCounter % 4) == 0) {
 						pageBlockDiv.className = "pagesGroup";
@@ -218,9 +236,9 @@
 					pageBlockDiv.appendChild(pageImageDiv);
 					pageBlockDiv.appendChild(pageFileNameDiv);
 					
-					
 					img = document.createElement("img");
 					img.className = "arrangeable";
+					
 					/*
 					var imgdiv = document.createElement("div");
 					imgdiv.draggable = true;
@@ -280,11 +298,9 @@
 
 					imgdiv.addEventListener('drop', handleDrop, false);
 
-					
 					imgdiv.appendChild(img);
 					li.appendChild(imgdiv);
 					/* add the image to supposed display area */
-					//dropArea.appendChild(img);
 					
 					pageImageDiv.appendChild(img);
 					
@@ -306,40 +322,13 @@
 					$(currentRowElement).append(pageBlockDiv);
 					console.log("at this point");
 					console.log(currentRowElement);
+					
+					pageCounter++;
 				}
 
-				// Uploading - for Firefox, Google Chrome and Safari
+				
+				
 				/*
-				xhr = new XMLHttpRequest();
-
-				// Update progress bar
-				xhr.upload.addEventListener("progress", function (evt) {
-					if (evt.lengthComputable) {
-						progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
-					}
-					else {
-						// No data to calculate on
-					}
-				}, false);
-
-				// File uploaded
-				xhr.addEventListener("load", function () {
-					progressBarContainer.className += " uploaded";
-					progressBar.innerHTML = "Uploaded!";
-				}, false);
-
-				xhr.open("post", "upload/upload.php", true);
-
-				// Set appropriate headers
-				xhr.setRequestHeader("Content-Type", "multipart/form-data");
-				xhr.setRequestHeader("X-File-Name", file.fileName);
-				xhr.setRequestHeader("X-File-Size", file.fileSize);
-				xhr.setRequestHeader("X-File-Type", file.type);
-
-				// Send the file (doh)
-				xhr.send(file);
-				
-				
 				// Present file info and append it to the list of files
 				fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
 				fileInfo += "<div><strong>Size:</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
@@ -348,13 +337,20 @@
 
 				fileList.appendChild(li);
 				*/
-				pageCounter++;
+
+			}
+
+			
+
+			function isFileValid(file) {
+				// this tests to ensure the file type is image/xxxx
+				return (typeof FileReader !== "undefined" && (/image/i).test(file.type));
 			}
 
 			function traverseFiles (files) {
 				if (typeof files !== "undefined") {
 					for (var i=0, l=files.length; i<l; i++) {
-						uploadFile(files[i]);
+						presentFile(files[i]);
 					}
 				}
 				else {
@@ -406,12 +402,86 @@
 												
 		})();
 		
+		// this will upload all the files in the array 
+		function uploadFiles() {
+
+			for(key in filesToBeUploaded)
+			{
+				
+			
+			   var file = filesToBeUploaded[key];
+				// Uploading - for Firefox, Google Chrome and Safari
+				xhr = new XMLHttpRequest();
+				/*
+				// Update progress bar
+				xhr.upload.addEventListener("progress", function (evt) {
+					if (evt.lengthComputable) {
+						progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
+					}
+					else {
+						// No data to calculate on
+					}
+				}, false);
+
+				// File uploaded
+				xhr.addEventListener("load", function () {
+					progressBarContainer.className += " uploaded";
+					progressBar.innerHTML = "Uploaded!";
+				}, false);
+				*/
+				
+				fileUpload = xhr.upload,
+				fileUpload.onload = function() {
+					console.log("Sent!");
+				}
+				xhr.open("post", "upload.php", true);
+
+				// Set appropriate headers
+		        xhr.setRequestHeader("Content-Type", "multipart/form-data");				
+				xhr.setRequestHeader("Cache-Control", "no-cache");
+		        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+		        xhr.setRequestHeader("X-File-Name", file.name);
+		        xhr.setRequestHeader("X-File-Size", file.size);
+				xhr.setRequestHeader("X-File-Type", file.type);
+
+
+//				xhr.send(reader.readAsBinaryString(file));
+		        /*
+				xhr.setRequestHeader("Content-Type", "multipart/form-data");
+				xhr.setRequestHeader("X-File-Name", file.fileName);
+				xhr.setRequestHeader("X-File-Size", file.fileSize);
+				xhr.setRequestHeader("X-File-Type", file.type);
+
+				// Send the file (doh)*/
+				xhr.send(file);
+				
+			}
+			alert('all uploaded!');
+		}
+		
+		
 		/**
 		 * find id of current row based on page counter
 		 */
 		function getCurrentRowId() {
 			var quotient = Math.floor(pageCounter / 4); // since each row max 4 
 			return "row" + (quotient + 1);
+		}
+		
+		function getPageId(page) {
+			if (page < 10) {
+				return "page_000" + page;
+			} 
+			
+			if (page < 100) {
+				return "page_00" + page;
+			}
+			
+			if (page < 1000) {
+				return "page_0" + page;
+			}
+			
+			return "page_" + page;
 		}
 		
 		function getCurrentRowElement(rowid) {
