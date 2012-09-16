@@ -1,0 +1,38 @@
+{
+	"folders":
+	[
+		{
+			"path": ".git"
+		},
+		{
+			"path": ".idea"
+		},
+		{
+			"path": ".settings"
+		},
+		{
+			"path": "assets"
+		},
+		{
+			"path": "CSS"
+		},
+		{
+			"path": "extractedstoryzerassets"
+		},
+		{
+			"path": "images"
+		},
+		{
+			"path": "js"
+		},
+		{
+			"path": "pages"
+		},
+		{
+			"path": "turnjs4"
+		},
+		{
+			"path": "uploads"
+		}
+	]
+}

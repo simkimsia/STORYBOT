@@ -9,6 +9,9 @@
 		
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
+
+
 		<script type="text/javascript">
 		if (typeof jQuery == 'undefined')
 		{
@@ -16,6 +19,13 @@
 			document.write(unescape("%3Cscript src='js/jquery.1.8.1.min.js' type='text/javascript'%3E%3C/script%3E"));
 		}
 		</script>		
+
+		<script type="text/javascript" src="js/turnjs/lib/turn.js"></script>
+		<link href="CSS/jquery.ui.css" rel="stylesheet" type="text/css">
+
+		<script type="text/javascript" src="js/turnjs/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="js/turnjs/modernizr.2.5.3.min.js"></script>
+		<script type="text/javascript" src="js/turnjs/lib/hash.js"></script>
 
 </head>
 
@@ -30,7 +40,7 @@
 			<div id="buttonPanel">
 				<img src="images/but_pages.png" />
 				<img src="images/but_save.png" />
-				<img src="images/but_preview.png" />
+				<a id="previewButton" href="#"><img src="images/but_preview.png" /></a>
 				<a id="publishButton" href="#"><img src="images/but_publish.png" /></a>
 			</div>
 		</div>
@@ -104,6 +114,9 @@
 					<span id="copyright">2012 - ALL RIGHTS RESERVED</span><br />				
 				</div>
 				<div id="horizonalRow"></div>			
+			
+
+
 			</div>
 			<!-- Left Panel End -->
 
@@ -112,76 +125,155 @@
 				<div id="pagesCollectionRightPanel" class="info">
 					<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
 					<div id="horizonalRow"></div>
-										<!--
-					<div class="pagesCollection" id="row1">
-
-						<div class="pagesGroup">
-							<div class="pagesDiv">
-							
-							</div>
-							<div class="pagesText">File Name</div>					
-						</div>
-						<div>
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>
-						<div>
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>
-						<div>
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>					
-					</div>
-					<div style="clear:both"></div>
-
-					<div class="pagesCollection">
-						<div class="pagesGroup">
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>
-						<div>
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>
-						<div>
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>
-						<div>
-							<div class="pagesDiv"></div>
-							<div class="pagesText">File Name</div>					
-						</div>	
-			
-					</div> 					-->	
-				
 				</div>	
 	
 			</div>
 		<!-- Body Content End -->
-		</div> <!-- page 2 content -->
+		</div>
 	</div> 
+
+	<div id="turnjs-preview" class="overlay-wrapper shrink">
+		<a href="#" id="fsButton">Full screen</a>
+		<div id="canvas">
+			<div id="book-zoom">
+				<div class="sample-docs">
+					 <div class="hard"> Turn.js </div> 
+				</div>
+			</div>
+
+
+			<div id="slider-bar" class="turnjs-slider">
+				<div id="slider"></div>
+			</div>
+		</div>
+
+	</div>
+
 	<!-- Footer Start -->
 	 <div id="footer">  </div> 
 	<!-- Footer End -->
 </div><br /><br />
-
+	
 
 	<script>
 	
 	var pageCounter = 0;
 	var parentOfRows ;
-	
+
 	var filesToBeUploaded = new Array();
+
+
+
+function readPage(file, pageNumber) {
+
+	var flipbook = $('.sample-docs');
+
+    var reader = new FileReader();
+    reader.onload = (function (theImg) {
+        return function (evt) {
+            var newImg = $("<img />");
+            newImg.attr("src", evt.target.result);
+            newImg.attr("width", "100%");
+            newImg.attr("height", "100%");
+
+            var divPage = $('<div>');
+
+            newImg.appendTo(divPage);
+console.log(pageNumber);
+            flipbook.turn("addPage", divPage, pageNumber);
+        };
+    }(img));
+
+    reader.readAsDataURL(file);
+}
+
+function removePreviousPages() {
+
+	var flipbook = $('.sample-docs');
+
+
+
+    for (var page = 1; page <= flipbook.turn('pages'); page++) {
+
+    	console.log(flipbook.turn('pages'));
+
+    	if (flipbook.turn('pages') > 0) {
+       		flipbook.turn('removePage', 1);	
+		} else {
+			break;
+		}
+ 
+    }
+
+}
+
+  function previewFiles (files) {
+
+	var flipbook = $('.sample-docs');
+
+    if (typeof files !== "undefined") {
+
+    	console.log(flipbook.turn('pages'));
+
+    	console.log(files);
+
+    	Object.size = function(obj) {
+		    var size = 0, key;
+		    for (key in obj) {
+		        if (obj.hasOwnProperty(key)) size++;
+		    }
+		    return size;
+		};
+
+    	console.log(Object.size(files));
+
+        removePreviousPages();
+
+        flipbook.turn("pages",  Object.size(files));
+
+        console.log(flipbook.turn('pages'));
+
+        var counter = 0;
+
+        // we anticipate files may or may not be associative array so 
+        // we assume that it is, to reduce chances of calling wrong files.
+        for (var page in files) {
+
+            readPage(files[page], counter+1);
+            counter++;
+        }
+
+    } else {
+        // show no support error message here
+        alert("No support for the File API in this web browser");
+    }    
+}
+
 	
 		$(document).ready(function() {
+
+
+			var flipbook = $('.sample-docs');
+
 			$("#page2content").hide();
+
 			$("#loginContent").show();	
 			parentOfRows = document.getElementById("pagesCollectionRightPanel");
 			$("#publishButton").on("click", function() {
-				alert("hihi");
+				
 				uploadFiles();
+			});
+
+			$("#previewButton").on("click", function() {
+				
+				$("#turnjs-preview").removeClass('shrink');
+				previewFiles(filesToBeUploaded);
+			});
+
+
+			flipbook.turn({
+				
+				autoCenter: true
 			});
 			
 		});
@@ -496,7 +588,9 @@
 			var isit = document.getElementById(rowid);
 			return isit;
 		}
-	</script>
 
+
+	</script>
+	
 </body>
 </html>
