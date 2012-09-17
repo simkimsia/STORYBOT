@@ -1,5 +1,5 @@
 body, html {
-	height: 100%;
+	
 }
 body {
 	margin: 10px,auto;
@@ -44,6 +44,7 @@ body {
 #spacer {
 	background-image: url('../images/spacer.png');
 	height: 7px;
+	position: relative;
 	
 }
 /******************************* Layout Start *************************/
@@ -61,8 +62,7 @@ body {
 }
 #sidebar-left { 
 	float: left; 
-	width: 296px; 
-
+	width: 296px;
 	border: 1px solid #dcddde;
 	border-radius: 8px;
 }
@@ -202,3 +202,64 @@ hr {
 }
 
 /****************************************  Login Page End *********************************/
+
+/* Landing page*/
+#landingContent{
+	text-align: center;	
+	padding-top: 200px;	
+	background-repeat: no-repeat;
+}
+#landingText{
+	font-family: Century Gothic;
+	color:#58595B;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#contentWraper {
+	width: 650px;
+	margin:0px auto;
+}
+#contentArea{
+	border: 1px solid #e0e1e2;
+	border-radius: 8px;
+	background-color: #fff;
+	width: 520px;
+	padding: 10px;
+	margin-left: 90px;
+}
+#landingTextOne{
+	font-size:13px;
+	color: #58595B;
+}
+#faceSmile {
+	width:47px; 
+	float:left;
+	padding-top: 20px;
+	padding-left: 20px;
+}
+#arrowRight{
+	width: 9px;
+	height: 9px;	
+	background-image: url('../images/arrowRight.png');
+	position: absolute;
+	margin: 40px 0px 0px 82px;
+}
+/*Landing page end*/
+
+.rememberPassword{
+	color: #808080;
+}
+a:link {
+	color: #FFCF01;	
+}
+a:active {
+	color: #FFCF01;	
+}
+a:visited {
+	color: #FFCF01;	
+}
+a:hover {
+	color: #FFC20E;	
+}
+

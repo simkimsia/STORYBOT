@@ -1,0 +1,94 @@
+#screen {
+	/* background: rgba(0, 0, 0,0.8); */
+	left: 0px; 
+	top: 0px; 
+	position: absolute;
+	background: -webkit-gradient(radial, center center, 0, center center, 50, from(#a8aaad), to(#000)); 
+	background: -moz-radial-gradient(circle, #a8aaad, #000);
+}
+#box {
+	background: rgba(255, 255, 255, 0.5);
+	border: 1px solid #fff; 
+	left: 50%; 
+	top: 50%; 
+	width: 315px; 
+	height: 214px; 
+	text-align: center; 
+	margin-top: -107px; 
+	margin-left: -160px; 
+	display: none; 
+	position: fixed; 
+	z-index: 999;
+	border-radius: 8px;
+}
+#box #title{
+	font-family:Arial;
+	font-size:28px;
+	text-align: left;
+	color: #fff;
+	float:left;
+	line-height:60px;
+	font-weight: bold;
+	padding-left: 10px;
+	
+}
+#box #face {
+	width:40px; 
+	height: 40px;
+	margin: 10px 0px 0px 10px; 
+	display:inline; 
+	float: left;
+	clear: both;
+}
+#box #contentArea{
+	background-color: #fff;
+	border-radius: 8px;
+	width:85%;
+	clear: both;
+	margin:0px auto;
+	padding:10px;
+}
+#box #contentArea{
+	background-color: #fff;
+	border-radius: 8px;
+	width:85%;
+	clear: both;
+	margin:0px auto;
+	padding:10px;
+}
+#box #contentArea1{
+	font-size: 11px;
+	color: #959398;
+
+}
+
+/****************************** Menu **********************************/
+ul#menu {
+	list-style:none;
+	width:350px;
+	padding-left:10px;
+}
+ul#menu li a {	
+	float:left;
+	height:22px;
+	background-image:url('../images/alertButtons.png');
+	text-indent:-999px;
+}
+ul#menu li a.join {
+	width:143px;
+	background-position:0 0;
+}
+ul#menu li a.proceed {
+	width:146px;
+	background-position:-140px 0;
+}
+ul#menu li a.join:hover {
+	width:143px;
+	background-position:0 23px;
+}
+ul#menu li a.proceed:hover {
+	width:146px;
+	background-position:-140px 23px;
+}
+
+/****************************** Menu End **********************************/

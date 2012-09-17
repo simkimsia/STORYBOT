@@ -1,0 +1,122 @@
+/****************************** Menu **********************************/
+ul#menuLanding {
+	list-style:none;
+	width:600px;
+}
+ul#menuLanding li a {	
+	float:left;
+	height:29px;
+	background-image:url('../images/landingButtons.png');
+	text-indent:-999px;
+}
+ul#menuLanding li a.newAccount {
+	width:189px;
+	background-position:0 0;
+}
+ul#menuLanding li a.login {
+	width:410px;
+	background-position:-189px 0;
+}
+ul#menuLanding li a.newAccount:hover {
+	width:189px;
+	background-position:0 29px;
+}
+ul#menuLanding li a.login:hover {
+	width:410px;
+	background-position:-189px 29px;
+}
+/****************************** Menu End **********************************/
+
+/****************************** Lofin Menu End **********************************/
+
+ul#menuLogin {
+	list-style:none;
+	width:350px;
+	padding-left:10px;
+}
+ul#menuLogin li a {	
+	float:left;
+	height:22px;
+	/*background-image:url('../images/alertButtons.png');*/
+	text-indent:-999px;
+}
+ul#menuLogin li a.join {
+	width:143px;
+	background-position:0 0;
+}
+ul#menuLogin li a.proceed {
+	width:146px;
+	background-position:-140px 0;
+}
+ul#menuLogin li a.join:hover {
+	width:143px;
+	background-position:0 23px;
+}
+ul#menuLogin li a.proceed:hover {
+	width:146px;
+	background-position:-140px 23px;
+}
+/****************************** Lofin Menu End **********************************/
+
+/****************************** menuLoginPopup Menu End **********************************/
+
+ul#menuLoginPopup {
+	list-style:none;
+	width:294px;
+	padding-left:10px;
+}
+ul#menuLoginPopup li a {	
+	float:left;
+	height:25px;
+	background-image:url('../images/loginPopupButtons.png');
+	text-indent:-999px;
+}
+ul#menuLoginPopup li a.login {
+	width:294px;
+	background-position:0 0;
+}
+ul#menuLoginPopup li a.plusNewAccount {
+	width:294px;
+	background-position: 0px -50;
+}
+ul#menuLoginPopup li a.login:hover {
+	width:294px;
+	background-position:0 -25px;
+}
+ul#menuLoginPopup li a.plusNewAccount:hover {
+	width:294px;
+	background-position:0px -75px;
+}
+/****************************** menuLoginPopup Menu End **********************************/
+
+/****************************** menuLoginPopupNewAccount Menu End **********************************/
+
+ul#menuLoginPopupNewAccount {
+	list-style:none;
+	width:294px;
+	padding-left:10px;
+}
+ul#menuLoginPopupNewAccount li a {	
+	float:left;
+	height:25px;
+	background-image:url('../images/loginPopupNewAccountButton.png');
+	text-indent:-999px;
+}
+ul#menuLoginPopupNewAccount li a.login {
+	width:294px;
+	background-position:0 0;
+}
+ul#menuLoginPopupNewAccount li a.login:hover {
+	width:294px;
+	background-position:0 -24px;
+}
+ul#menuLoginPopupNewAccount li a.proceed {
+	width:294px;
+	background-position: 0px -48;
+}
+ul#menuLoginPopupNewAccount li a.proceed:hover {
+	width:294px;
+	background-position:0px -72px;
+}
+
+/****************************** menuLoginPopup Menu End **********************************/
