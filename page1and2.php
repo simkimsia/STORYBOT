@@ -3,6 +3,7 @@
 <title>STORYZER - Login</title>
 <link href="CSS/styleSheet.css" rel="stylesheet" type="text/css">
 
+
 <!--		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 		-->
@@ -19,6 +20,9 @@
 			document.write(unescape("%3Cscript src='js/jquery.1.8.1.min.js' type='text/javascript'%3E%3C/script%3E"));
 		}
 		</script>		
+
+		<script type="text/javascript" src="js/turnjs/docs.js"></script>
+		<link href="CSS/docs.css" rel="stylesheet" type="text/css">
 
 		<script type="text/javascript" src="js/turnjs/lib/turn.js"></script>
 		<link href="CSS/jquery.ui.css" rel="stylesheet" type="text/css">
@@ -162,10 +166,10 @@
 
 	var filesToBeUploaded = new Array();
 
-
-
 function readPage(file, pageNumber) {
-
+	console.log('this is read page');
+	console.log(file);
+	console.log(pageNumber);
 	var flipbook = $('.sample-docs');
 
     var reader = new FileReader();
@@ -179,10 +183,10 @@ function readPage(file, pageNumber) {
             var divPage = $('<div>');
 
             newImg.appendTo(divPage);
-console.log(pageNumber);
+
             flipbook.turn("addPage", divPage, pageNumber);
         };
-    }(img));
+    }(file));
 
     reader.readAsDataURL(file);
 }
