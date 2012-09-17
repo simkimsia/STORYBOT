@@ -37,7 +37,7 @@
 
 <div id="wrapper">
 	<!-- Header Start -->
-	<div id="header" style="dispay: inline">
+	<div id="header" style="display: inline">
 		<img src="images/face.png" />
 		<div class="headerBackground">
 			<span class="title">untitled new work...</span>
