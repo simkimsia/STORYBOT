@@ -129,15 +129,6 @@
 		<div class="flipbook-viewport">
 			<div class="container">
 				<div class="flipbook">
-					<div>
-						<img src="pages/1.jpg" width="100%" height="100%" />
-					</div>		
-					<div>
-						<img src="pages/2.jpg" width="100%" height="100%" />
-					</div>		
-					<div>
-						<img src="pages/3.jpg" width="100%" height="100%" />
-					</div>		
 				</div>
 			</div>
 		</div>
@@ -261,10 +252,9 @@ yepnope({
 			});
 
 			$("#previewButton").on("click", function() {
-				//previewFiles(filesToBeUploaded);
+				previewFiles(filesToBeUploaded);
 				$(".flipbook-viewport").show();
 				$("#page2content").hide();
-				//$("#turnjs-preview").removeClass('shrink');
 				
 			});
 			
