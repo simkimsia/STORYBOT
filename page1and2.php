@@ -21,15 +21,6 @@
 		}
 		</script>		
 
-		<script type="text/javascript" src="js/turnjs/docs.js"></script>
-		<link href="CSS/docs.css" rel="stylesheet" type="text/css">
-
-		<script type="text/javascript" src="js/turnjs/lib/turn.js"></script>
-		<link href="CSS/jquery.ui.css" rel="stylesheet" type="text/css">
-
-		<script type="text/javascript" src="js/turnjs/jquery.mousewheel.min.js"></script>
-		<script type="text/javascript" src="js/turnjs/modernizr.2.5.3.min.js"></script>
-		<script type="text/javascript" src="js/turnjs/lib/hash.js"></script>
 
 </head>
 
@@ -136,22 +127,6 @@
 		</div>
 	</div> 
 
-	<div id="turnjs-preview" class="overlay-wrapper shrink">
-		<a href="#" id="fsButton">Full screen</a>
-		<div id="canvas">
-			<div id="book-zoom">
-				<div class="sample-docs">
-					 <div class="hard"> Turn.js </div> 
-				</div>
-			</div>
-
-
-			<div id="slider-bar" class="turnjs-slider">
-				<div id="slider"></div>
-			</div>
-		</div>
-
-	</div>
 
 	<!-- Footer Start -->
 	 <div id="footer">  </div> 
@@ -257,8 +232,6 @@ function removePreviousPages() {
 		$(document).ready(function() {
 
 
-			var flipbook = $('.sample-docs');
-
 			$("#page2content").hide();
 
 			$("#loginContent").show();	
@@ -270,15 +243,11 @@ function removePreviousPages() {
 
 			$("#previewButton").on("click", function() {
 				
-				$("#turnjs-preview").removeClass('shrink');
-				previewFiles(filesToBeUploaded);
+				//$("#turnjs-preview").removeClass('shrink');
+				//previewFiles(filesToBeUploaded);
 			});
 
 
-			flipbook.turn({
-				
-				autoCenter: true
-			});
 			
 		});
 		
@@ -422,17 +391,6 @@ function removePreviousPages() {
 					pageCounter++;
 				}
 
-				
-				
-				/*
-				// Present file info and append it to the list of files
-				fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
-				fileInfo += "<div><strong>Size:</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
-				fileInfo += "<div><strong>Type:</strong> " + file.type + "</div>";
-				div.innerHTML = fileInfo;
-
-				fileList.appendChild(li);
-				*/
 
 			}
 
