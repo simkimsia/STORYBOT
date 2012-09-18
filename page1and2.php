@@ -7,7 +7,7 @@
 <!--		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 		-->
-		
+		<meta name="viewport" content="width = 1050, user-scalable = no" />
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 		<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
@@ -20,7 +20,7 @@
 			document.write(unescape("%3Cscript src='js/jquery.1.8.1.min.js' type='text/javascript'%3E%3C/script%3E"));
 		}
 		</script>		
-
+		<script type="text/javascript" src="js/turnjs/modernizr.2.5.3.min.js"></script>
 
 </head>
 
@@ -115,7 +115,7 @@
 			</div>
 			<!-- Left Panel End -->
 
-		<!-- Body Content Start -->
+		<!-- Right Panel Content Start -->
 			<div id="content">
 				<div id="pagesCollectionRightPanel" class="info">
 					<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
@@ -123,15 +123,32 @@
 				</div>	
 	
 			</div>
-		<!-- Body Content End -->
+		<!-- Right Panel Content End -->
+		</div> <!-- page 2 content end -->
+
+		<div class="flipbook-viewport">
+			<div class="container">
+				<div class="flipbook">
+					<div style="background-image:url(pages/1.jpg)"></div>
+					<div style="background-image:url(pages/2.jpg)"></div>
+					<div style="background-image:url(pages/3.jpg)"></div>
+					<div style="background-image:url(pages/4.jpg)"></div>
+					<div style="background-image:url(pages/5.jpg)"></div>
+					<div style="background-image:url(pages/6.jpg)"></div>
+					<div style="background-image:url(pages/7.jpg)"></div>				
+				</div>
+			</div>
 		</div>
-	</div> 
+
+	</div> <!-- content wrapper end -->
 
 
 	<!-- Footer Start -->
 	 <div id="footer">  </div> 
 	<!-- Footer End -->
-</div><br /><br />
+</div> <!-- wrapper end -->
+
+<br /><br />
 	
 
 	<script>
@@ -228,12 +245,55 @@ function removePreviousPages() {
     }    
 }
 
+
+
+function loadApp() {
+
+	// Create the flipbook
+console.log('loadApp');
+	$('.flipbook').turn({
+
+		// Width
+
+			width:922,
+			
+			// Height
+
+			height:600,
+
+			// Elevation
+
+			elevation: 50,
+			
+			// Hardware acceleration
+
+			acceleration: !isChrome(),
+
+			
+			// Enable gradients
+			gradients: true,
+			
+			// Auto center this flipbook
+			autoCenter: true
+
+	});
+}
+
+// Load the HTML4 version if there's not CSS transform
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['js/turnjs/lib/turn.min.js'],
+	nope: ['js/turnjs/lib/turn.html4.min.js'],
+	both: ['js/turnjs/basic.js', 'CSS/basic.css'],
+	complete: loadApp
+});
+
 	
 		$(document).ready(function() {
 
-
+			$(".flipbook-viewport").hide();
 			$("#page2content").hide();
-
 			$("#loginContent").show();	
 			parentOfRows = document.getElementById("pagesCollectionRightPanel");
 			$("#publishButton").on("click", function() {
@@ -243,6 +303,8 @@ function removePreviousPages() {
 
 			$("#previewButton").on("click", function() {
 				
+				$(".flipbook-viewport").show();
+				$("#page2content").hide();
 				//$("#turnjs-preview").removeClass('shrink');
 				//previewFiles(filesToBeUploaded);
 			});
