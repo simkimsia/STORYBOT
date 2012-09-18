@@ -129,13 +129,7 @@
 		<div class="flipbook-viewport">
 			<div class="container">
 				<div class="flipbook">
-					<div style="background-image:url(pages/1.jpg)"></div>
-					<div style="background-image:url(pages/2.jpg)"></div>
-					<div style="background-image:url(pages/3.jpg)"></div>
-					<div style="background-image:url(pages/4.jpg)"></div>
-					<div style="background-image:url(pages/5.jpg)"></div>
-					<div style="background-image:url(pages/6.jpg)"></div>
-					<div style="background-image:url(pages/7.jpg)"></div>				
+								
 				</div>
 			</div>
 		</div>
@@ -158,54 +152,11 @@
 
 	var filesToBeUploaded = new Array();
 
-function readPage(file, pageNumber) {
-	console.log('this is read page');
-	console.log(file);
-	console.log(pageNumber);
-	var flipbook = $('.sample-docs');
 
-    var reader = new FileReader();
-    reader.onload = (function (theImg) {
-        return function (evt) {
-            var newImg = $("<img />");
-            newImg.attr("src", evt.target.result);
-            newImg.attr("width", "100%");
-            newImg.attr("height", "100%");
-
-            var divPage = $('<div>');
-
-            newImg.appendTo(divPage);
-
-            flipbook.turn("addPage", divPage, pageNumber);
-        };
-    }(file));
-
-    reader.readAsDataURL(file);
-}
-
-function removePreviousPages() {
-
-	var flipbook = $('.sample-docs');
-
-
-
-    for (var page = 1; page <= flipbook.turn('pages'); page++) {
-
-    	console.log(flipbook.turn('pages'));
-
-    	if (flipbook.turn('pages') > 0) {
-       		flipbook.turn('removePage', 1);	
-		} else {
-			break;
-		}
- 
-    }
-
-}
 
   function previewFiles (files) {
 
-	var flipbook = $('.sample-docs');
+	var flipbook = $('.flipbook');
 
     if (typeof files !== "undefined") {
 
@@ -223,7 +174,7 @@ function removePreviousPages() {
 
     	console.log(Object.size(files));
 
-        removePreviousPages();
+        removeAllPages(flipbook);
 
         flipbook.turn("pages",  Object.size(files));
 
@@ -235,7 +186,7 @@ function removePreviousPages() {
         // we assume that it is, to reduce chances of calling wrong files.
         for (var page in files) {
 
-            readPage(files[page], counter+1);
+            addPage(files[page], counter+1, flipbook);
             counter++;
         }
 
@@ -302,14 +253,12 @@ yepnope({
 			});
 
 			$("#previewButton").on("click", function() {
-				
+				previewFiles(filesToBeUploaded);
 				$(".flipbook-viewport").show();
 				$("#page2content").hide();
 				//$("#turnjs-preview").removeClass('shrink');
-				//previewFiles(filesToBeUploaded);
+				
 			});
-
-
 			
 		});
 		

@@ -1,90 +1,50 @@
 /*
  * Basic sample
-*/
+ */
 
-function addPage(page, book) {
+function addPage(file, pageNumber, book) {
 
 	var id, pages = book.turn('pages');
 
-	// Create a new element for this page
-	var element = $('<div />', {});
+	var reader = new FileReader();
+    reader.onload = (function (theImg) {
+        return function (evt) {
+            var newImg = $("<img />");
+            newImg.attr("src", evt.target.result);
+            newImg.attr("width", "100%");
+            newImg.attr("height", "100%");
 
-	// Add the page to the flipbook
-	if (book.turn('addPage', element, page)) {
+            var divPage = $('<div>');
 
-		// Add the initial HTML
-		// It will contain a loader indicator and a gradient
-		element.html('<div class="gradient"></div><div class="loader"></div>');
+            newImg.appendTo(divPage);
 
-		// Load the page
-		loadPage(page, element);
-	}
+            book.turn("addPage", divPage, pageNumber);
+            console.log('adding pages');
+            console.log(pageNumber);
+        };
+    }(file));
 
-}
-
-function loadPage(page, pageElement) {
-
-	// Create an image element
-
-	var img = $('<img />');
-
-	img.mousedown(function(e) {
-		e.preventDefault();
-	});
-
-	img.load(function() {
-		
-		// Set the size
-		$(this).css({width: '100%', height: '100%'});
-
-		// Add the image to the page after loaded
-
-		$(this).appendTo(pageElement);
-
-		// Remove the loader indicator
-		
-		pageElement.find('.loader').remove();
-	});
-
-	// Load the page
-
-	img.attr('src', 'pages/' +  page + '.jpg');
-
+    reader.readAsDataURL(file);
 }
 
 
-function loadLargePage(page, pageElement) {
-	
-	var img = $('<img />');
+function removeAllPages(book) {
 
-	img.load(function() {
+	var pages = book.turn('pages');
 
-		var prevImg = pageElement.find('img');
-		$(this).css({width: '100%', height: '100%'});
-		$(this).appendTo(pageElement);
-		prevImg.remove();
-		
-	});
+    for (var page = 1; page <= book.turn('pages'); page++) {
 
-	// Loadnew page
-	
-	img.attr('src', 'pages/' +  page + '-large.jpg');
+    	console.log(flipbook.turn('pages'));
+
+    	if (flipbook.turn('pages') > 0) {
+       		flipbook.turn('removePage', 1);	
+		} else {
+			break;
+		}
+ 
+    }
+
 }
-
-
-function loadSmallPage(page, pageElement) {
-	
-	var img = pageElement.find('img');
-
-	img.css({width: '100%', height: '100%'});
-
-	img.unbind('load');
-	// Loadnew page
-
-	img.attr('src', 'pages/' +  page + '.jpg');
-}
-
-
 
 // http://code.google.com/p/chromium/issues/detail?id=128488
 function isChrome() {
