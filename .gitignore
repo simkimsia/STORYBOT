@@ -11,6 +11,8 @@ bin-release/
 .settings/
 .project
 *.tmproj
+*.sublime-project
+*.sublime-workspace
 
 # dropbox
 *.dropbox
