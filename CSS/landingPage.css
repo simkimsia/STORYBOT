@@ -1,7 +1,8 @@
 /****************************** Menu **********************************/
 ul#menuLanding {
 	list-style:none;
-	width:600px;
+	width:602px;
+	padding:0;
 }
 ul#menuLanding li a {	
 	float:left;
@@ -10,20 +11,22 @@ ul#menuLanding li a {
 	text-indent:-999px;
 }
 ul#menuLanding li a.newAccount {
-	width:189px;
+	width:190px;
 	background-position:0 0;
 }
 ul#menuLanding li a.login {
+	margin-left:2px;
 	width:410px;
-	background-position:-189px 0;
+	background-position:-190px 0;
 }
 ul#menuLanding li a.newAccount:hover {
-	width:189px;
+	width:190px;
 	background-position:0 29px;
 }
 ul#menuLanding li a.login:hover {
+	margin-left:2px;
 	width:410px;
-	background-position:-189px 29px;
+	background-position:-190px 29px;
 }
 /****************************** Menu End **********************************/
 

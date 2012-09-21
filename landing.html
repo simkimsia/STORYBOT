@@ -3,9 +3,11 @@
 <title>STORYZER - Login</title>
 <style>
 body { 
-	background-image:url('images/pageBackground.png'); 
-	background-repeat:no-repeat;
-	background-position:center;
+	background:url('images/pageBackground.png') no-repeat center center fixed; 
+	webkit-background-size: cover;
+	moz-background-size: cover;
+	o-background-size: cover; 
+	background-size: cover;
 }
 </style>
 </head>
@@ -15,27 +17,28 @@ body {
 
 <body>
 
-<div id="landingContent">
-	<img src="images/logo.png" />
-	<div id="spacer"></div>
-	<div id="spacer"></div>
-	<div id="contentWraper">
-		<div id="faceSmile">
-			<img src="images/faceSmile.png" />
+<div id="container">
+	<div id="landingContent">
+		<img src="images/logo.png" />
+		<div id="spacer" style="height:26px;"></div>
+		<div id="contentWraper">
+			<div id="faceSmile">
+				<img src="images/faceSmile.png" />
+			</div>
+			<div id="arrowRight"></div>
+			<div id="contentArea">
+				<span id="landingText">HI, I AM STORYBOT & I CAN HELP YOU PUBLISH + SELL YOUR WORK!</span>
+				<div id="spacer"></div>
+				<span id="landingTextOne" >STORYZER is now building a collection of stories for our upcoming online retail store, and we welcome all interested graphic novelists to publish and sell their works with us. <br />Sign up and login to try our intuitive self-publishing feature today; it’s FREE! </span>
+			</div>
+			<div id="spacer" style="height:13px;"></div>
+			<ul id="menuLanding">
+				<li id="loginButton"><a href="#" class="newAccount"></a></li>
+				<li><a href="#" class="login"></a></li>
+			</ul>
 		</div>
-		<div id="arrowRight"></div>
-		<div id="contentArea">
-			<span id="landingText">HI, I AM STORYBOT & I CAN HELP YOU PUBLISH + SELL YOUR WORK!</span>
-			<div id="spacer"></div>
-			<span id="landingTextOne" >STORYZER is now building a collection of stories for our upcoming online retail store, and we welcome all interested graphic novelists to publish and sell their works with us. <br />Sign up and login to try our intuitive self-publishing feature today; it’s FREE! </span>
-		</div>
-		
-		<ul id="menuLanding">
-			<li id="loginButton"><a href="#" class="newAccount"></a></li>
-			<li><a href="#" class="login"></a></li>
-		</ul>
-		
 	</div>
+	<div id="footer"><a href="#"><b>ABOUT US</b></a> · <a href="#">TERMS OF USAGE</a> · <a href="#">PRIVACY POLICY</a> · <a href="#">TERMS OF PUBLICATION</a> · <a href="#">CONTENT POLICY</a> · <a href="#">CONTACT US</a> · <span id="footerStoryzerCR">STORYZER © 2012</span></div>
 </div>
 
 

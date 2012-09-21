@@ -2,8 +2,9 @@ body, html {
 	
 }
 body {
-	margin: 10px,auto;
-	margin-bottom: 10px;
+	margin:0;
+	padding:0;
+	height:100%;
 	text-align: center;
 	font-family: Arial;
 }
@@ -52,7 +53,8 @@ body {
 	width: 960px; 
 	margin: 0 auto; 
 }
-#header, #footer, #content-wrapper { 
+
+#header, #content-wrapper { 
 	float: left; 
 	width: 960px; 
 	margin: 5px; 
@@ -204,46 +206,50 @@ hr {
 /****************************************  Login Page End *********************************/
 
 /* Landing page*/
-#landingContent{
+#container{
 	text-align: center;	
-	padding-top: 200px;	
 	background-repeat: no-repeat;
+	min-height:100%;
+	position: relative;
+}
+
+#landingContent{
+	padding-top:200px;
 }
 #landingText{
 	font-family: Century Gothic;
 	color:#58595B;
 	font-size: 15px;
+	word-spacing:2px;
 	font-weight: bold;
 }
 
 #contentWraper {
-	width: 650px;
+	width: 602px;
 	margin:0px auto;
 }
 #contentArea{
 	border: 1px solid #e0e1e2;
 	border-radius: 8px;
 	background-color: #fff;
-	width: 520px;
+	width: 514px;
 	padding: 10px;
-	margin-left: 90px;
+	margin-left: 66px;
 }
 #landingTextOne{
 	font-size:13px;
 	color: #58595B;
 }
 #faceSmile {
-	width:47px; 
 	float:left;
-	padding-top: 20px;
-	padding-left: 20px;
+	padding-top: 24px;
 }
 #arrowRight{
 	width: 9px;
 	height: 9px;	
 	background-image: url('../images/arrowRight.png');
 	position: absolute;
-	margin: 40px 0px 0px 82px;
+	margin: 45px 0px 0px 58px;
 }
 /*Landing page end*/
 

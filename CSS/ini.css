@@ -3,8 +3,12 @@
 	left: 0px; 
 	top: 0px; 
 	position: absolute;
-	background: -webkit-gradient(radial, center center, 0, center center, 50, from(#a8aaad), to(#000)); 
-	background: -moz-radial-gradient(circle, #a8aaad, #000);
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%, rgba(77,77,77,0.9) 40%, rgba(77,77,77,0.95) 100%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(77,77,77,0.7)), color-stop(40%,rgba(77,77,77,0.9)), color-stop(100%,rgba(77,77,77,0.95))); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* Opera 12+ */
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* IE10+ */
+	background: radial-gradient(ellipse at center,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* W3C */
 }
 #box {
 	background: rgba(255, 255, 255, 0.5);
@@ -92,3 +96,23 @@ ul#menu li a.proceed:hover {
 }
 
 /****************************** Menu End **********************************/
+
+#footer{
+	position:absolute;
+	bottom:0;
+	width:100%;
+	height:30px;   /* Height of the footer */
+	border-top:1px solid #DCDDDE;
+	color: #BCBEC0;
+}
+
+#footer a{
+	color: #FFC20E;
+	text-decoration:none;
+	font-size:12px;
+}
+
+#footer #footerStoryzerCR{
+	font-size:12px;
+	color:#BCBEC0;
+}
