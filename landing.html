@@ -38,7 +38,9 @@ body {
 			</ul>
 		</div>
 	</div>
-	<div id="footer"><a href="#"><b>ABOUT US</b></a> · <a href="#">TERMS OF USAGE</a> · <a href="#">PRIVACY POLICY</a> · <a href="#">TERMS OF PUBLICATION</a> · <a href="#">CONTENT POLICY</a> · <a href="#">CONTACT US</a> · <span id="footerStoryzerCR">STORYZER © 2012</span></div>
+	<div id="footer">
+		<a href="#"><b>ABOUT US</b></a> · <a href="#">TERMS OF USAGE</a> · <a href="#">PRIVACY POLICY</a> · <a href="#">TERMS OF PUBLICATION</a> · <a href="#">CONTENT POLICY</a> · <a href="#">CONTACT US</a> · <span id="footerStoryzerCR">STORYZER © 2012</span>
+	</div>
 </div>
 
 
@@ -50,19 +52,19 @@ body {
 
 
 <!-- Login Step 1 Start 
-<DIV id="box" style="height: 230px;" >	
+<DIV id="box" style="height: 250px;" >	
 	<div id="face"><img src="images/faceSmile40.png" /></div>
-	<span id="title">Login Account</span>
+	<span id="title" style="padding-left: 20px; ">Login Account</span>
 	<div style="padding-top:10px; padding-right:10px;float: right" id="close"><img src="images/close.png"></div>
 	<div id="contentArea"><img src="images/upArrow.png" style="position: absolute; margin-top: -18px;" />
-		<input type="text" placeholder="USERNAME/EMAIL" />
-		<div id="spacer"></div>
-		<input type="password" placeholder="PASSWORD" />	
-		<div id="spacer"></div>
-		<div id="contentArea1"><span style="float:left;">Remember Me </span><span>&nbsp;</span> <span style="float:right"><a href="#">Forgot Password?</a></span></div>		
+		<input class="customizedInput" type="text" placeholder="USERNAME/EMAIL" />
+		<div id="spacer" style="height: 12px;"></div>
+		<input class="customizedInput" type="password" placeholder="PASSWORD" />	
+		<div id="spacer"  style="height: 12px;"></div>
+		<div id="contentArea1"><span style="float:left; font-weight: bold">Remember Me </span><span>&nbsp;</span> <span style="float:right; font-weight:bold"><a href="#">Forgot Password?</a></span></div>		
 	</div>
 
-	<ul id="menuLoginPopup">
+	<ul id="menuLoginPopup" style="margin-top:10px">
 		<li style="height: 25px;"><a href="#" class="login"></a></li>
 		<div id="spacer">&nbsp;</div>
 		<li><a href="#" class="plusNewAccount"></a></li>
@@ -74,20 +76,19 @@ body {
 
 
 
-
-<!-- Login Step 2 Start -->
-<DIV id="box" style="height: 250px;" >	
+<!-- Login Step 2 Start 
+<DIV id="box" style="height: 275px;" >	
 	<div id="face"><img src="images/faceSmile40.png" /></div>
-	<span id="title">+ New Account</span>
+	<span id="title">&nbsp;+ New Account</span>
 	<div style="padding-top:10px; padding-right:10px;float: right" id="close"><img src="images/close.png"></div>
 	<div id="contentArea">
 		<img src="images/upArrow.png" style="position: absolute; margin-top: -18px;" />
-		<input type="text" placeholder="USERNAME" />
-		<div id="spacer">&nbsp;</div>
-		<input type="text" placeholder="EMAIL" />
-		<div id="spacer">&nbsp;</div>
-		<input type="password" placeholder="PASSWORD" />	
-		<div id="spacer">&nbsp;</div>
+		<input type="text" class="customizedInput" placeholder="USERNAME" />
+		<div id="spacer" style="height:12px;">&nbsp;</div>
+		<input type="text" class="customizedInput"  placeholder="EMAIL" />
+		<div id="spacer" style="height:12px;">&nbsp;</div>
+		<input type="password" placeholder="PASSWORD" class="customizedInput" />	
+		<div id="spacer" style="height:10px;">&nbsp;</div>
 		<div id="contentArea1" style="text-align: left">
 			I have read, understood and accepted the <b>Terms and Conditions</b> of STORYZER.
 		</div>		
@@ -103,29 +104,21 @@ body {
 
 
 
-<!-- Login Step 3 Start 
-<DIV id="box" style="height: 250px;" >	
+<!-- Login Step 3 Start -->
+<DIV id="box" style="height: 265px;" >	
 	<div id="face"><img src="images/faceSmile40.png" /></div>
-	<span id="title">+ New Account</span>
+	<span id="title">&nbsp;+ New Account</span>
 	<div style="padding-top:10px; padding-right:10px;float: right" id="close"><img src="images/close.png"></div>
-	<div id="contentArea" style="text-align: left; height: 100px;">
+	<div id="contentArea" style="text-align: left; height: 130px;">
 		<img src="images/upArrow.png" style="position: absolute; margin-top: -18px;" />
-		
-
-	
-		<div id="contentArea1" style="text-align: left; margin-top:90px;">
-			PLEASE ENTER THE WORDS ABOVE
-		</div>		
+		<input type="password" placeholder="PLEASE ENTER THE WORDS ABOVE" class="customizedInput" style="margin-top:105px;" />	
 	</div>
 
 	<ul id="menuLoginPopupNewAccount">
 		<li style="height: 25px;"><a href="#" class="proceed"></a></li>		
-	</ul>
-	
+	</ul>	
 </DIV>
 <!-- Login Step 3 End -->
-
-
 
 	
 <link href="CSS/styleSheet.css" rel="stylesheet" type="text/css">

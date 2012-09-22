@@ -3,16 +3,20 @@
 	left: 0px; 
 	top: 0px; 
 	position: absolute;
-	background: -moz-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%, rgba(77,77,77,0.9) 40%, rgba(77,77,77,0.95) 100%); /* FF3.6+ */
-	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(77,77,77,0.7)), color-stop(40%,rgba(77,77,77,0.9)), color-stop(100%,rgba(77,77,77,0.95))); /* Chrome,Safari4+ */
-	background: -webkit-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* Opera 12+ */
-	background: -ms-radial-gradient(center, ellipse cover,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* IE10+ */
-	background: radial-gradient(ellipse at center,  rgba(77,77,77,0.7) 0%,rgba(77,77,77,0.9) 40%,rgba(77,77,77,0.95) 100%); /* W3C */
+	
+	background-image:  -moz-radial-gradient(center center, circle cover,  rgba(255,255,255,0.9) 0%,rgba(50,50,50,.90) 95%); /* FF3.6+ */
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(255,255,255,0.8)), color-stop(100%,rgba(50,50,50,0.80))); /* Chrome,Safari4+ */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.7) 0%, rgba(50,50,50,0.80) 100%); /* Chrome10+,Safari5.1+ */
+	
+	/*background-image: radial-gradient(center center, circle closest-side, #ff0000 0%,#19ff30 29%) 
+	background: -o-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.7) 0%,rgba(0,255,0,0.9) 40%,rgba(0,0,255,0.95) 100%);  Opera 12+ 
+	background: -ms-radial-gradient(center, ellipse cover,  rgba(255,255,255,0.7) 0%,rgba(0,255,0,0.9) 40%,rgba(0,0,255,0.95) 100%);  IE10+ 
+	background: radial-gradient(ellipse at center,  rgba(255,255,255,0.7) 0%,rgba(0,255,0,0.9) 40%,rgba(0,0,255,0.95) 100%); /* W3C */
+	
 }
 #box {
-	background: rgba(255, 255, 255, 0.5);
-	border: 1px solid #fff; 
+	background: rgba(220, 220, 220, 0.75);
+	border: 1px solid #f8f8f8; 
 	left: 50%; 
 	top: 50%; 
 	width: 315px; 
@@ -58,10 +62,10 @@
 	width:85%;
 	clear: both;
 	margin:0px auto;
-	padding:10px;
+	padding:12px;
 }
 #box #contentArea1{
-	font-size: 11px;
+	font-size: 12px;
 	color: #959398;
 
 }

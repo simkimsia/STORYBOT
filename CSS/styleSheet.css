@@ -257,15 +257,30 @@ hr {
 	color: #808080;
 }
 a:link {
-	color: #FFCF01;	
+	color: #ffcf06;	
 }
 a:active {
-	color: #FFCF01;	
+	color: #ffcf06;	
 }
 a:visited {
-	color: #FFCF01;	
+	color: #ffcf06;	
 }
 a:hover {
 	color: #FFC20E;	
 }
 
+.customizedInput {
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	font-size: 13px;
+	height: 24px;
+	background-image: -moz-linear-gradient(top, #f4f4f4, #fafafa); 
+	background: -webkit-linear-gradient(top, #f4f4f4, #fafafa);
+	border: 1px solid #dadbdd;
+	padding-left: 10px; 
+	
+}
+input:-moz-placeholder {  
+  color: #bcbdc0;  
+}  
