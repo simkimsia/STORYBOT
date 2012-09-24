@@ -1,0 +1,135 @@
+body {
+	background: #595A5C;
+	margin:0 auto;
+	padding:0;
+	height:100%;
+	text-align: center;
+	font-family: Arial;
+}
+div {
+	border: 0px solid red;
+}
+#readingPaneLeft {
+	height: 90%;
+	width: 48%;
+	background-image: -moz-linear-gradient(left, #fff 97%,#eeeeef 99%); 
+	background: -webkit-linear-gradient(left, #fff 97%,#eeeeef 99%);
+	float: left;
+	border-right:1px solid white;	
+}
+#readingPaneRight {
+	height: 90%;
+	width: 48%;
+	background-image: -moz-linear-gradient(left, #eeeeef 0%,#fff 4%); 
+	background: -webkit-linear-gradient(left, #eeeeef 0%,#fff 4%);
+	float: left;
+	border-left:1px solid white;	
+}
+#dummy {
+	height:90%;
+	width:0px;
+}
+#leftArrow{
+	float: left;
+	width: 20px;
+	margin-top: 25%;
+}
+#rightArrow{
+display: inline;
+	width: 20px;
+	position: absolute;
+}
+#wrapper { 
+	width: 960px; 
+	margin: 0 auto; 
+}
+#txtTitle {
+	color: #b5b7b9;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 50px;
+}
+#title {
+	height: 50px;
+}
+#main{
+	width: 90%;
+	margin: 0px auto;
+}
+a:link {
+	color: #b5b7b9;
+	font-size:11px;
+}
+a:active {
+	color: #b5b7b9;
+}
+a:visited {
+	color: #b5b7b9;
+}
+a:hover {
+	color: #fff;
+}
+
+
+/****************************** Menu **********************************/
+ul#menu {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+ul#menu li a {	
+	float:left;
+	height:22px;
+	background-image:url('../images/readingPaneButtons.png');
+	background-repeat: no-repeat;
+	
+}
+ul#menu li a.close {
+	width:12px;
+	background-position:-137 0;
+}
+ul#menu li a.close:hover {
+	width:12px;
+	background-position:-137 -22px;
+}
+ul#menu li a.navigateLeft {
+	width:20px;
+	background-position:0 0;
+}
+ul#menu li a.navigateLeft:hover {
+	width:20px;
+	background-position:0 23px;
+}
+ul#menu li a.navigateRight {
+	width:20px;
+	background-position:0 0;
+}
+ul#menu li a.navigateRight:hover {
+	width:20px;
+	background-position:0 23px;
+}
+ul#menu li a.fitScreen {
+	width:24px;
+	background-position:-43px 2;
+}
+ul#menu li a.fitScreen:hover {
+	width:24px;
+	background-position:-43px -21px;
+}
+ul#menu li a.originalSize {
+	width:24px;
+	background-position:-70px 2;
+}
+ul#menu li a.originalSize:hover {
+	width:24px;
+	background-position:-70px -21px;
+}
+ul#menu li a.fullScreen {
+	width:30px;
+	background-position:-95px 2;
+}
+ul#menu li a.fullScreen:hover {
+	width:30px;
+	background-position:-95px -21px;
+}
+/****************************** Menu End **********************************/

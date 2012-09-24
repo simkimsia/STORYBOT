@@ -236,6 +236,10 @@ hr {
 	padding: 10px;
 	margin-left: 66px;
 }
+.checkoutProcess {
+	font-size:15px;
+	color: #58585a;
+}
 #landingTextOne{
 	font-size:13px;
 	color: #58595B;
@@ -278,9 +282,39 @@ a:hover {
 	background-image: -moz-linear-gradient(top, #f4f4f4, #fafafa); 
 	background: -webkit-linear-gradient(top, #f4f4f4, #fafafa);
 	border: 1px solid #dadbdd;
-	padding-left: 10px; 
-	
+	padding-left: 10px; 	
 }
 input:-moz-placeholder {  
   color: #bcbdc0;  
 }  
+.nameofStories{
+	color: #58595B;	
+}
+
+/* Pulish popup start */
+.titleOfNewWork {
+	font-size: 18px;
+	font-weight: bold;
+}
+.thisActionisIrreversible {
+	color: #959398;
+	font-size:12px;
+}
+.termsAndConditions{
+	color: #58595B;
+	font-weight: bold;
+}
+/* Pulish popup End */
+
+
+.checkboxArea, .checkboxAreaChecked {
+    background: url("../images/bg-radio.png") no-repeat scroll 0 0 transparent;
+    float: left;
+    height: 14px;
+    margin: 3px 9px 0 0;
+    overflow: hidden;
+    width: 14px;
+}
+.checkboxAreaChecked {
+    background-position: 0 -28px;
+}

@@ -1,7 +1,8 @@
 /****************************** Menu **********************************/
 ul#menuLanding {
 	list-style:none;
-	width:600px;
+	width:602px;
+	padding:0;
 }
 ul#menuLanding li a {	
 	float:left;
@@ -10,20 +11,22 @@ ul#menuLanding li a {
 	text-indent:-999px;
 }
 ul#menuLanding li a.newAccount {
-	width:189px;
+	width:190px;
 	background-position:0 0;
 }
 ul#menuLanding li a.login {
+	margin-left:2px;
 	width:410px;
-	background-position:-189px 0;
+	background-position:-190px 0;
 }
 ul#menuLanding li a.newAccount:hover {
-	width:189px;
+	width:190px;
 	background-position:0 29px;
 }
 ul#menuLanding li a.login:hover {
+	margin-left:2px;
 	width:410px;
-	background-position:-189px 29px;
+	background-position:-190px 29px;
 }
 /****************************** Menu End **********************************/
 
@@ -69,34 +72,24 @@ ul#menuLoginPopup li a {
 	float:left;
 	height:25px;
 	background-image:url('../images/loginPopupButtons.png');
-	background-repeat: no-repeat;
 	text-indent:-999px;
 }
 ul#menuLoginPopup li a.login {
 	width:294px;
 	background-position:0 0;
 }
-ul#menuLoginPopup li a.login:hover {
-	width:294px;
-	background-position:0 -25px;
-}
 ul#menuLoginPopup li a.plusNewAccount {
 	width:294px;
 	background-position: 0px -50;
+}
+ul#menuLoginPopup li a.login:hover {
+	width:294px;
+	background-position:0 -25px;
 }
 ul#menuLoginPopup li a.plusNewAccount:hover {
 	width:294px;
 	background-position:0px -75px;
 }
-ul#menuLoginPopup li a.close {
-	width:294px;
-	background-position:0 -100;
-}
-ul#menuLoginPopup li a.close:hover {
-	width:294px;
-	background-position:0px -129px;
-}
-
 /****************************** menuLoginPopup Menu End **********************************/
 
 /****************************** menuLoginPopupNewAccount Menu End **********************************/
