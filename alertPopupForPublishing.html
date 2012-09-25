@@ -11,6 +11,7 @@
 <!-- Content Start -->
 <DIV id="box" style="height: 250px;">
 	<div id="face"><img src="images/popupFace.png" /></div>
+	<div style="padding-top:10px; padding-right:10px;float: right" id="close"><img src="images/close.png"></div>
 	<span id="title" style="padding-left:30px">Publish now?</span>	
 	<div id="contentArea"><img src="images/upArrow.png" style="position: absolute; margin-top: -18px;" />You are about to publish a new work:
 		<div id="spacer"></div>
@@ -19,7 +20,13 @@
 		<div class="thisActionisIrreversible">* This action is irreversible.</div>
 			<div id="spacer"></div>
 		<div id="contentArea1" style="text-align: left">
-			<input id="lbl01" class="checkboxArea" type="radio" name="radio" />I have read, understood and accepted the <span class="termsAndConditions">Terms and Conditions</span> of STORYZER.
+			<div class="checkboxArea" style="display:inline; float: left;">
+				<form  class="gf-forms gf-checkbox">
+					<input type="checkbox" id="checkbox-1" />
+					<label for="checkbox-1"></label>
+				</form>
+			</div>
+			<div style="padding-left: 22px;">I have read, understood and accepted the <span class="termsAndConditions">Terms and Conditions</span> of STORYZER.</div>
 		</div>	
 	</div>
 

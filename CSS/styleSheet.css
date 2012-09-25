@@ -307,14 +307,43 @@ input:-moz-placeholder {
 /* Pulish popup End */
 
 
-.checkboxArea, .checkboxAreaChecked {
-    background: url("../images/bg-radio.png") no-repeat scroll 0 0 transparent;
-    float: left;
-    height: 14px;
-    margin: 3px 9px 0 0;
-    overflow: hidden;
-    width: 14px;
+
+
+.gf-checkbox input[type="checkbox"] {
+position: absolute;
+opacity: 0;
 }
-.checkboxAreaChecked {
-    background-position: 0 -28px;
+.gf-checkbox input[type="checkbox"] + label::before {
+content: "";
+display: inline-block;
+width: 15px;
+height: 15px;
+background: url("../images/bg-radio.png") no-repeat 0 0;
+background-position: 0 2px;
+}
+/* hovered (but not selected) checkbox */
+.gf-checkbox input[type="checkbox"]:not(:checked):hover + label::before {
+background-position: 0 -12px;
+}
+ 
+/* selected checkbox */
+.gf-checkbox input[type="checkbox"]:checked + label::before {
+background-position: 0 -27px;
+}
+ 
+/* selected radio */
+.gf-radio input[type="radio"]:checked + label::before {
+background-position: -13px -26px;
+}
+ 
+/* focused checkbox */
+.gf-form input[type="checkbox"]:focus + label
+{
+outline: dotted 0px;
+}
+ 
+/* disabled checkbox */
+.gf-form input[type="checkbox"]:disabled + label {
+opacity: .5;
+cursor: default;
 }

@@ -1,0 +1,9 @@
+.ui-widget-content { background:  url(images/track.png) 50% top repeat-x; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {background: url(images/circle.png) 50% 50% repeat-x; }
+
+.ui-slider { position: relative; text-align: left; width:850px; }
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 1.2em; height: 1.2em; cursor: default; }
+
+.ui-slider-horizontal { height: 8px; }
+.ui-slider-horizontal .ui-slider-handle {width:20px; height: 20px; top: -4px; margin-left: -.6em;  }	
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }

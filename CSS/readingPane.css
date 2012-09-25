@@ -48,10 +48,13 @@ display: inline;
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 50px;
+	height:50px;
+	margin-top:-20px;
 }
 #title {
 	height: 50px;
 }
+
 #main{
 	width: 90%;
 	margin: 0px auto;
@@ -110,7 +113,7 @@ ul#menu li a.navigateRight:hover {
 }
 ul#menu li a.fitScreen {
 	width:24px;
-	background-position:-43px 2;
+	background-position:-43px 1;
 }
 ul#menu li a.fitScreen:hover {
 	width:24px;
@@ -118,7 +121,7 @@ ul#menu li a.fitScreen:hover {
 }
 ul#menu li a.originalSize {
 	width:24px;
-	background-position:-70px 2;
+	background-position:-70px 1;
 }
 ul#menu li a.originalSize:hover {
 	width:24px;
@@ -126,7 +129,7 @@ ul#menu li a.originalSize:hover {
 }
 ul#menu li a.fullScreen {
 	width:30px;
-	background-position:-95px 2;
+	background-position:-95px 1;
 }
 ul#menu li a.fullScreen:hover {
 	width:30px;
