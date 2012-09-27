@@ -2,11 +2,12 @@
 <project name="Storybot" basedir="." default="deploy">
 
     <property environment="env"/>
-    <property name="flex.dir.home" value="${env.FLEX_HOME}"/>
-    <property name="FLEX_HOME" value="${env.FLEX_HOME}"/>
-    <echo>FLEX_HOME=${env.FLEX_HOME}</echo>
 
     <property file="${basedir}/build/build.properties"/>
+
+    <condition property="flex.dir.home" value="${env.FLEX_HOME}">
+        <isset property="env.FLEX_HOME"/>
+    </condition>
 
     <condition property="build.number" value="${env.BUILD_NUMBER}">
         <isset property="env.BUILD_NUMBER"/>
