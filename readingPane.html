@@ -10,7 +10,7 @@
 		// Slider
 		$('#slider').slider({
 			range: false,
-			values: [0],
+			values: [10]
 		});
 
 		//hover states on the static widgets
@@ -24,10 +24,27 @@
 
 </head>
 <body>
+
+
 <div id="main">
+	<div style="margin-top: 520px; position: absolute; width: 1470px">
+		<div style="text-align: left; display: inline; float: left">
+			<ul id="menu">		
+				<li><a href="#" class="navigateLeft"></a></li>			
+			</ul>
+		</div>
+		<div>
+			<ul id="menu" style="float: right">
+				<li><a href="#" class="navigateRight"></a></li>			
+			</ul>
+		</div>
+	</div>
 	<div id="title">
-		<img src="images/book.png" />
-		<span id="txtTitle">&nbsp;Title of Story Currently Reading</span>
+		<div style="display: inline; float: left; padding-left: 570px; padding-top: 10px; text-align: center">
+			<img src="images/book.png"  style="display: inline; float: left" />
+			<div id="txtTitle" style="display: inline; float: left; margin-top: -12px">&nbsp;Title of Story Currently Reading</div>
+		</div>
+		
 		<div style="float:right; padding:10px;">
 			<ul id="menu">		
 				<li><a href="#" class="close"></a></li>			
@@ -35,25 +52,29 @@
 		</div>
 		
 	</div>
-		
-	<div id="wrapper">
-		<div id="readingPaneLeft" ></div>
-		<div id="readingPaneRight"></div>		
-		<div id="dummy"></div>
+	
+	<div>
+		<div id="wrapper" style=" margin-left: 50px; width: 1368px; " >		
+			<div id="readingPaneLeft" style="display: inline; float:left" ></div>
+			<div id="readingPaneRight" style="margin-left: 684px"></div>
+		</div>
 	</div>
+	
 	<br />
 	<div>
-		<span style="display:inline; float:left; height:30px; font-size:16px;font-weight:bold;">Name of Author © 2012</span>
-		<span style="display:inline; margin:auto 0;"><div id="slider"></div></span>
+		<div style="display:inline; float:left; height: 20px; line-height:30px;"><a class="author" href="#">Name of Author © 2012</a></div>
+		<div style="text-align: center; float:left; width:842px; padding-left:200px;padding-top:10px;"><div id="slider"></div></div>
 		
-		<span style="display:inline; width:90px; float:right;">			
+		<div style="width:90px; float:right; display: block">			
 			<ul id="menu">		
 				<li><a href="#" class="fitScreen"></a></li>
 				<li><a href="#" class="originalSize"></a></li>
 				<li><a href="#" class="fullScreen"></a></li>
 			</ul>
-		</span>	
+		</div>	
+		
 	</div>
 </div>
+<br /><br /><br />
 </body>
 </html>

@@ -11,28 +11,34 @@
 	<div id="header" style="dispay: inline">
 		<img src="images/face.png" />
 		<div class="headerBackground">
-			<span class="title">untitled new work...</span>
+			<span class="title">Untitled New Work...</span>
 			<div id="buttonPanel">
 				<img src="images/but_pages.png" />
 				<img src="images/but_save.png" />
 				<img src="images/but_preview.png" />
 				<img src="images/but_publish.png" />
 			</div>
+
 		</div>
 	</div>
+	
 	<!-- Header End -->
 	 
 	<div id="content-wrapper">
 		<!-- Left Panel Start -->
-		<div id="sidebar-left">
+		<div id="sidebar-left" style="background-color: #fdfdfd">
+		<div id="spacer"></div>
 			<div id="info">
 				<span class="titleText">INFO</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
 				<div id="spacer"></div>
-				<input type="text" name="description" /><br />
+				<input type="text" name="description" class="inputHeight" /><br />
 				<div id="spacer"></div>
-				<textarea rows="5" name="description"></textarea><br />
+				<textarea style="resize:none;" rows="9" name="description"></textarea><br />
 				<div id="spacer"></div>
-				<input type="radio" style="width:auto;" /><span class="orangeTitle">Discussion Enabled</span><br />
+				<div  class="gf-forms gf-checkbox">
+					<input type="checkbox" id="checkbox-1" />
+					<label for="checkbox-1" class="orangeTitle">&nbsp;Discussion Enabled</label>
+				</div>
 			</div>	
 			<div id="horizonalRow"></div> 
 				
@@ -59,16 +65,16 @@
 			<div id="genre">
 				<span class="titleText">Genre</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
 				<div id="spacer"></div>				
-				<span>Adventure - Martial Arts - Supernatural</span> <span class="orangeTitle" style="float:right">Edit</span>
+				<span>Adventure - Martial Arts - Supernatural</span> <span class="orangeTitle" style="float:right">EDIT</span>
 			</div>
 			<div id="horizonalRow"></div>
 			
 			<div id="type-price">
 				<span class="titleText">Type - Price</span><span id="star">*</span><a href="#"><div class="helpIcon"></div></a><br />
 				<div id="spacer"></div>
-				<input type="text" /><br />
+				<input type="text" class="inputHeight" /><br />
 				<div id="spacer"></div>
-				<span id="star">*</span><span>Required Fields</span>
+				<div style="text-align:center"><span id="star">*</span><span style="font-size:10px;">Required Fields</span></div>
 			</div>
 			<div id="horizonalRow"></div>
 
@@ -82,46 +88,50 @@
 		<!-- Left Panel End -->
 
 		<!-- Body Content Start -->
+		
 		<div id="content">
-			<div id="info">
-				<span class="titleText">Pages - 999,999,999</span><span class="orangeTitle" style="float: right">FLIP LEFT TO RIGHT</span><br />
+			<div id="info"><div id="spacer"></div>
+				<span class="titleText setFont" >Pages - </span><span class="setFontArial">999,999,999</span><span class="setFontCentury" style="float: right">FLIP LEFT TO RIGHT</span><br />
 				<div id="horizonalRow"></div>
+				<div id="spacer"></div>
 				<div id="pagesCollection">
 					<div id="pagesGroup">
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText"  style="font-size:11px;	font-weight: normal;">BACK OF FRONT COVER
+</div>					
 					</div>
 					<div>
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText">File Name<br />P1</div>					
 					</div>
 					<div>
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText">File Name<br />P1</div>					
 					</div>
 					<div>
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText">File Name<br />P1</div>					
 					</div>					
 				</div>
-				<div style="clear:both"></div>
+				<div style="clear:both"></div> <br />
 
 				<div id="pagesCollection">
 					<div id="pagesGroup" >
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText">File Name<br />P1</div>					
 					</div>
 					<div>
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText">File Name<br />P1</div>					
 					</div>
 					<div>
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText">File Name<br />P1</div>					
 					</div>
 					<div>
 						<div id="pagesDiv"></div>
-						<div id="pagesText">File Name</div>					
+						<div id="pagesText" style="	font-size:11px;	font-weight: normal;">BACK OF BACK COVER
+</div>					
 					</div>					
 				</div>
 				

@@ -2,28 +2,28 @@
 ul#menuLanding {
 	list-style:none;
 	width:600px;
-	padding-left:3;
 }
 ul#menuLanding li a {	
 	float:left;
 	height:29px;
 	background-image:url('../images/landingButtons.png');
+	text-indent:-999px;
 }
 ul#menuLanding li a.newAccount {
-	width:190px;
+	width:189px;
 	background-position:0 0;
 }
 ul#menuLanding li a.login {
 	width:410px;
-	background-position:-190px 0;
+	background-position:-189px 0;
 }
 ul#menuLanding li a.newAccount:hover {
-	width:190px;
+	width:189px;
 	background-position:0 29px;
 }
 ul#menuLanding li a.login:hover {
 	width:410px;
-	background-position:-190px 29px;
+	background-position:-189px 29px;
 }
 /****************************** Menu End **********************************/
 

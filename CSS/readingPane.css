@@ -10,19 +10,18 @@ div {
 	border: 0px solid red;
 }
 #readingPaneLeft {
-	height: 90%;
-	width: 48%;
+	height: 968px;
+	width: 684px;
 	background-image: -moz-linear-gradient(left, #fff 97%,#eeeeef 99%); 
-	background: -webkit-linear-gradient(left, #fff 97%,#eeeeef 99%);
-	float: left;
-	border-right:1px solid white;	
+	background: -webkit-linear-gradient(left, #fff 97%,#eeeeef 99%);	
+	border-right:1px solid white;
+	
 }
 #readingPaneRight {
-	height: 90%;
-	width: 48%;
-	background-image: -moz-linear-gradient(left, #eeeeef 0%,#fff 4%); 
-	background: -webkit-linear-gradient(left, #eeeeef 0%,#fff 4%);
-	float: left;
+	height: 968px;
+	width: 684px;
+	background-image: -moz-linear-gradient(left, #eeeeef 0%,#fff 3%); 
+	background: -webkit-linear-gradient(left, #eeeeef 0%,#fff 3%);
 	border-left:1px solid white;	
 }
 #dummy {
@@ -35,33 +34,33 @@ div {
 	margin-top: 25%;
 }
 #rightArrow{
-display: inline;
+	display: inline;
 	width: 20px;
 	position: absolute;
 }
 #wrapper { 
-	width: 960px; 
-	margin: 0 auto; 
+	
+	text-align: center;
+	margin: 0px auto;
+
 }
 #txtTitle {
 	color: #b5b7b9;
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 50px;
-	height:50px;
-	margin-top:-20px;
 }
 #title {
 	height: 50px;
 }
-
 #main{
-	width: 90%;
+	width: 1470px;
 	margin: 0px auto;
 }
 a:link {
 	color: #b5b7b9;
-	font-size:11px;
+	font-size:16px;
+	text-decoration: none;
 }
 a:active {
 	color: #b5b7b9;
@@ -101,38 +100,38 @@ ul#menu li a.navigateLeft {
 }
 ul#menu li a.navigateLeft:hover {
 	width:20px;
-	background-position:0 23px;
+	background-position:0 -22px;
 }
 ul#menu li a.navigateRight {
 	width:20px;
-	background-position:0 0;
+	background-position:-22 0;
 }
 ul#menu li a.navigateRight:hover {
 	width:20px;
-	background-position:0 23px;
+	background-position:-22 -22px;
 }
 ul#menu li a.fitScreen {
 	width:24px;
-	background-position:-43px 1;
+	background-position:-43px 2;
 }
 ul#menu li a.fitScreen:hover {
 	width:24px;
-	background-position:-43px -21px;
+	background-position:-43px -20px;
 }
 ul#menu li a.originalSize {
 	width:24px;
-	background-position:-70px 1;
+	background-position:-70px 2;
 }
 ul#menu li a.originalSize:hover {
 	width:24px;
-	background-position:-70px -21px;
+	background-position:-70px -20px;
 }
 ul#menu li a.fullScreen {
 	width:30px;
-	background-position:-95px 1;
+	background-position:-96px 2;
 }
 ul#menu li a.fullScreen:hover {
 	width:30px;
-	background-position:-95px -21px;
+	background-position:-96px -20px;
 }
 /****************************** Menu End **********************************/

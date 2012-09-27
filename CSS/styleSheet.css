@@ -1,5 +1,5 @@
 body, html {
-	
+	font-family: Arial;
 }
 body {
 	margin:0;
@@ -16,26 +16,33 @@ body {
 	text-transform: uppercase;	
 }
 #info, #covers, #sneaks, #genre, #type-price, #author{
-	padding: 5px 12px 0px 12px;
+	padding: 0px 12px 0px 12px;
 }
 #genre #star, #info #star, #covers #star, #type-price #star{
 	color: #ff0000;
 	font-size:14px;
 	font-family: Century Gothic;
 	font-weight: bold;
+	margin-left:5px;
 }
+
+#type-price #star{
+margin-right:5px;
+}
+
 .headerBackground{
 	background-image: url('../images/headerBack.png');
-	height: 47px;
-	width: 899px;
+	height: 48px;
+	width: 900px;
 	float: right;
 	
 }
 .title{
 	color: #FFC20E;
-	font-size: 25px;
+	font-size: 28px;
 	line-height: 45px;
 	padding-left: 25px;
+	font-weight: bold;
 }
 #buttonPanel {
 	float: right; 
@@ -87,6 +94,9 @@ input, textarea{
 	color: #58595B;
 	font-family: Arial;
 	font-size: 12px;
+}
+.inputHeight {
+	height: 25px;
 }
 #genre .orangeTitle, #info .orangeTitle {
 	color:#FFC20E;
@@ -143,11 +153,11 @@ hr {
 #horizonalRow{
 	background-image: url('../images/rule.png');
 	width: 100%;
-	height: 17px;
+	height: 14px;
 }
 #pagesCollection #pagesDiv{
 	text-align: center;
-	width: 98%;
+	width: 100%;
 	border: none;
 	margin:0px;
 	border: 1px solid #c7c8ca;
@@ -156,23 +166,24 @@ hr {
 }
 #pagesCollection  #pagesText{
 	text-align: center;
-	width: 98%;
+	width: 100%;
 	border:0px solid red;
 	height: auto;
 	background-image: none;
-	line-height: 25px;
+	line-height: 22px;
+	vertical-align:bottom;
 	font-size:13px;
 	font-weight: bold;
 	color: #939598;
 }
 #pagesCollection  #pagesGroup{
 	margin-left:0px; 
-	height: 250px;
+	height: 260px;
 }
 
 #genre  span, #type-price span {
 	color: #333333;
-	font-size: 11px;
+	font-size: 13px;
 }
 #authorName {
 	font-size: 18px;
@@ -184,6 +195,23 @@ hr {
 	font-size:10px;
 	color: #939598;
 	margin-left: 5px; 
+}
+.backFrontText {
+	font-size:12px;
+	font-weight: normal;
+	
+}
+.setFontCentury{
+	font-family:Century Gothic;
+	font-size: 13px;
+	color: #ffc20e;
+	font-weight: bold;
+}
+.setFontArial{
+	font-family:Arial;
+	font-size: 13px;
+	color: #BCBEC0;
+	font-weight: bold;
 }
 
 /****************************************  Login Page Start *********************************/
@@ -199,7 +227,7 @@ hr {
 	background-image: url('../images/dragImageHere.png');
 	height: 205px;
 	width: 175px;
-	margin: 200px auto;	
+	margin: 185px auto;	
 	background-repeat: no-repeat;
 }
 
@@ -295,6 +323,7 @@ input:-moz-placeholder {
 .titleOfNewWork {
 	font-size: 18px;
 	font-weight: bold;
+	color: #58585a;
 }
 .thisActionisIrreversible {
 	color: #959398;
