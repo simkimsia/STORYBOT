@@ -4,6 +4,7 @@
     <property environment="env"/>
     <property name="flex.dir.home" value="${env.FLEX_HOME}"/>
     <property name="FLEX_HOME" value="${env.FLEX_HOME}"/>
+    <echo>FLEX_HOME=${env.FLEX_HOME}</echo>
 
     <property file="${basedir}/build/build.properties"/>
 
