@@ -1,0 +1,129 @@
+div {
+	border: 0px solid red;
+}
+.greentitle{
+	color: #59B947;
+	font-family: Century Gothic;
+	font-size:15px;
+	font-weight: bold;
+}
+.greyTitle{
+	color: #BCBEC0;
+	font-family: Century Gothic;
+	font-size:15px;
+	font-weight: bold;
+}
+.titlepublishSuccessfully {
+	color: #FFC20E;
+	font-size: 27px;
+	line-height: 45px;
+	padding-left: 25px;
+	font-weight: bold;
+}
+#productPage{
+	width: 264px;
+	padding-left: 30px;
+}
+
+#productPage li{
+	color: #58595B;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: left;
+	
+}
+#leftPanel{
+	float: left; 
+	width: 608px;
+	border: 1px solid #dcddde;
+	border-radius: 6px;
+	background-color: #fcfcfc;
+}
+#rightPanel {
+	float: left;
+	width: 334px;
+	margin-left: 16px;
+	border: 1px solid #dcddde;
+	border-radius: 6px;
+}
+#content-wrapper { 
+	float: left; 
+	width: 962px; 
+	margin: 5px; 
+	display: block; 
+	text-align: left;
+	clear: both;
+}
+#hRow{
+	background-image: url('../images/ruleSmall.png');
+	width: 100%;
+	height: 1px;
+}
+#storyBox{		
+	margin: 15px 40px 5px;
+	padding-left: 40px;
+	
+}
+#storyPic{
+	width: 131px;
+	height: 186px;
+	background-color: #f3f3f4;	
+	float: left;
+	display: inline;
+}
+#storyContents {
+	margin-left: 140px;
+	
+}
+#titleOfStory{
+	color: #58585a;
+	font-size: 18px;
+	font-weight: bold;
+	vertical-align: top;
+	line-height: 18px;
+	
+}
+#nameOfAuthor{
+	color: #808080;
+	font-size: 13px;
+	font-weight: bold;
+}
+#date{
+	font-size: 9px;
+	color: #808080;
+}
+#description{
+	color: 58595B;
+	font-size:12px;
+	padding-top: 4px;
+	width: 95%;
+}
+#links a:link{
+	font-size:11px;
+	color: #ffc20e;
+	text-decoration: none;
+}
+
+/************************* Menu *********************/
+
+
+ul#menuPublishSuccessfully {
+	list-style:none;
+	width:250px;
+}
+ul#menuPublishSuccessfully li a {	
+	float:left;
+	height:20px;
+	background-image:url('../images/publishSuccessfullyButtons.png');
+	text-indent:-999px;
+}
+ul#menuPublishSuccessfully li a.goToMyAccount {
+	width:250px;
+	background-position: 0 0;
+}
+ul#menuPublishSuccessfully li a.goToMyAccount:hover {
+	width:250px;
+	background-position:0px -21;
+}
+
+/********************** Menu End ***********************/
