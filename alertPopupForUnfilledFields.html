@@ -1,7 +1,13 @@
 <HTML>
 <HEAD>
+
+<script type="text/javascript">
+
+	function closeAlert(){
+		window.parent.closeAlert();
+	}
+</script>
 <BODY>
-<INPUT id="button" value="Open Popup" type="button">
 <!-- Blocker Start -->
 <DIV id="screen"></DIV>
 <!-- Blocker End -->
@@ -21,7 +27,7 @@
 
 	
 	<ul id="menuLoginPopup">
-		<li style="height: 20px;"><a href="#" class="close"></a></li>
+		<li style="height: 20px;"><a href="#" class="close" onclick="closeAlert();"></a></li>
 		
 	</ul>
 	

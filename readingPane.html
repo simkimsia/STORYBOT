@@ -4,7 +4,12 @@
 <link type="text/css" href="CSS/ui-lightness/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
 <script type="text/javascript" src="JS/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="JS/jquery-ui-1.8.23.custom.min.js"></script>
+<script type="text/javascript" src="JS/ini.js"></script>
 <script type="text/javascript">
+
+	function closeReadingPane(){
+		window.parent.closeReadingPane();
+	}
 	$(function(){
 
 		// Slider
@@ -47,7 +52,7 @@
 		
 		<div style="float:right; padding:10px;">
 			<ul id="menu">		
-				<li><a href="#" class="close"></a></li>			
+				<li><a href="#" class="close" onclick="closeReadingPane();"></a></li>			
 			</ul>
 		</div>
 		

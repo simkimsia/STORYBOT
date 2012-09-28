@@ -1,7 +1,66 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>STORYZER - Login</title>
 <link href="CSS/styleSheet.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="CSS/base/jquery.ui.all.css" />
+<script type="text/javascript" src="JS/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.core.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.widget.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.mouse.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.button.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.draggable.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.position.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.resizable.js"></script>
+<script type="text/javascript" src="JS/jquery.ui.dialog.js"></script>
+<script type="text/javascript">
+	
+	function launchReadingPane(){
+		$("#dialog-readingpane").siblings(".ui-dialog-titlebar").hide();
+
+		$("#dialog-readingpane").html('<iframe id="modalIframeId" width="100%" height="100%" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto" />').dialog("open");
+		$("#modalIframeId").attr("src", "readingPane.html");
+	}
+	
+	function closeReadingPane(){
+		$("#dialog-readingpane").dialog("close");
+	}
+	
+	function launchAlert(){
+		$("#dialog-alert").siblings(".ui-dialog-titlebar").hide();
+
+		$("#dialog-alert").html('<iframe id="alertmodalIframeId" width="100%" height="100%" marginWidth="0" marginHeight="0" frameBorder="0" scrolling="auto" />').dialog("open");
+		$("#alertmodalIframeId").attr("src", "alertPopupForUnfilledFields.html");
+	}
+	
+	function closeAlert(){
+		$("#dialog-alert").dialog("close");
+	}
+	
+	$(function () {
+		$("#dialog-readingpane").dialog({
+			width: window.innerWidth,
+			height: window.innerHeight,
+			autoOpen: false,
+			closeOnEscape: true,
+			resizable: false,
+			modal: true,
+			close: function () {
+				//$("#dialog-diagnostic").empty();
+			}
+		});
+		$("#dialog-alert").dialog({
+			width: window.innerWidth,
+			height: window.innerHeight,
+			autoOpen: false,
+			closeOnEscape: true,
+			resizable: false,
+			modal: true,
+			close: function () {
+				//$("#dialog-diagnostic").empty();
+			}
+		});
+	});
+</script>
 </head>
 
 <body>
@@ -14,8 +73,8 @@
 			<span class="title">Untitled New Work...</span>
 			<div id="buttonPanel">
 				<img src="images/but_pages.png" />
-				<img src="images/but_save.png" />
-				<img src="images/but_preview.png" />
+				<img src="images/but_save.png" onclick="launchAlert();" style="cursor:pointer;"/>
+				<img src="images/but_preview.png" onclick="launchReadingPane();" style="cursor:pointer;" />
 				<img src="images/but_publish.png" />
 			</div>
 
@@ -136,7 +195,12 @@
 				</div>
 				
 			</div>	
-	
+			 <div id="dialog-readingpane" title="Reading Pane" style="overflow: auto;overflow-y:hidden;">
+				<div id="readingpane" />
+			</div>
+			<div id="dialog-alert" title="Alert" style="overflow: auto;overflow-y:hidden;">
+				<div id="alert" />
+			</div>
 		</div>
 		<!-- Body Content End -->
 	</div>
