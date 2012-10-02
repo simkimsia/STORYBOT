@@ -1,136 +1,177 @@
-body {
+#readingPane {
 	background: #595A5C;
-	margin:0 auto;
-	padding:0;
-	height:100%;
-	text-align: center;
-	font-family: Arial;
+	left: 0px; 
+	top: 0px; 
+	position: absolute;
+	width : 100%;
+	height : 100%;
+	opacity: 0.75;
 }
-div {
+#readingPane div {
 	border: 0px solid red;
 }
-#readingPaneLeft {
-	height: 968px;
-	width: 684px;
+#readingPane #wrapper { 
+	width:100%;
+	margin: 0px auto;
+}
+
+#wrapper #readingPaneLeft {
+	position:absolute;
+	top:50px;
+	bottom:50px;
+	right:50%;
+	width: 40%;
 	background-image: -moz-linear-gradient(left, #fff 97%,#eeeeef 99%); 
 	background: -webkit-linear-gradient(left, #fff 97%,#eeeeef 99%);	
 	border-right:1px solid white;
 	
 }
-#readingPaneRight {
-	height: 968px;
-	width: 684px;
+#wrapper #readingPaneRight {
+	position:absolute;
+	top:50px;
+	bottom:50px;
+	width: 40%;
+	margin-left:50%;
 	background-image: -moz-linear-gradient(left, #eeeeef 0%,#fff 3%); 
 	background: -webkit-linear-gradient(left, #eeeeef 0%,#fff 3%);
 	border-left:1px solid white;	
 }
-#dummy {
+#readingPane #dummy {
 	height:90%;
 	width:0px;
 }
-#leftArrow{
-	float: left;
+#readingPane #leftArrow{
+	top:50%;
 	width: 20px;
-	margin-top: 25%;
 }
-#rightArrow{
-	display: inline;
+#readingPane #rightArrow{
 	width: 20px;
-	position: absolute;
 }
-#wrapper { 
-	
-	text-align: center;
-	margin: 0px auto;
-
-}
-#txtTitle {
+#readingPane #txtTitle {
 	color: #b5b7b9;
 	font-size: 18px;
 	font-weight: bold;
 	line-height: 50px;
 }
-#title {
+#readingPane #title {
 	height: 50px;
 }
-#main{
-	width: 1470px;
+#readingPane #main{
+	width: 100%;
 	margin: 0px auto;
 }
-a:link {
+#readingPane a:link {
 	color: #b5b7b9;
 	font-size:16px;
 	text-decoration: none;
 }
-a:active {
+#readingPane a:active {
 	color: #b5b7b9;
 }
-a:visited {
+#readingPane a:visited {
 	color: #b5b7b9;
 }
-a:hover {
+#readingPane a:hover {
 	color: #fff;
 }
 
+#readingPane a.author {
+	color: #b5b7b9;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	opacity:0.4;
+}
+
+#readingPane a.author:hover{
+	color: #b5b7b9;
+	font-family:Arial;
+	font-size:16px;
+	font-weight:bold;
+	opacity:1;
+}
+
+#readingPane #slider{
+position:absolute;
+bottom:22px;
+width:844px;
+left:50%;
+margin-left:-422px;
+}
 
 /****************************** Menu **********************************/
-ul#menu {
+#readingPane ul#menu {
 	list-style:none;
 	margin:0px;
 	padding:0px;
 }
-ul#menu li a {	
+#readingPane ul#menu li a {	
 	float:left;
 	height:22px;
 	background-image:url('../images/readingPaneButtons.png');
 	background-repeat: no-repeat;
 	
 }
-ul#menu li a.close {
+#readingPane ul#menu li a.close {
+	position:absolute;
+	right:10px;top:10px;
 	width:12px;
 	background-position:-137 0;
 }
-ul#menu li a.close:hover {
+#readingPane ul#menu li a.close:hover {
 	width:12px;
 	background-position:-137 -22px;
 }
-ul#menu li a.navigateLeft {
+#readingPane ul#menu li a.navigateLeft {
+	position:absolute;
+	left:100px;
 	width:20px;
 	background-position:0 0;
 }
-ul#menu li a.navigateLeft:hover {
+#readingPane ul#menu li a.navigateLeft:hover {
 	width:20px;
 	background-position:0 -22px;
 }
-ul#menu li a.navigateRight {
+#readingPane ul#menu li a.navigateRight {
+	position:absolute;
+	right:100px;
 	width:20px;
 	background-position:-22 0;
 }
-ul#menu li a.navigateRight:hover {
+#readingPane ul#menu li a.navigateRight:hover {
 	width:20px;
 	background-position:-22 -22px;
 }
-ul#menu li a.fitScreen {
+#readingPane ul#menu li a.fitScreen {
+	position:absolute;
+	right:80px;
+	bottom:18px;
 	width:24px;
 	background-position:-43px 2;
 }
-ul#menu li a.fitScreen:hover {
+#readingPane ul#menu li a.fitScreen:hover {
 	width:24px;
 	background-position:-43px -20px;
 }
-ul#menu li a.originalSize {
+#readingPane ul#menu li a.originalSize {
+	position:absolute;
+	right:50px;
+	bottom:18px;
 	width:24px;
 	background-position:-70px 2;
 }
-ul#menu li a.originalSize:hover {
+#readingPane ul#menu li a.originalSize:hover {
 	width:24px;
 	background-position:-70px -20px;
 }
-ul#menu li a.fullScreen {
+#readingPane ul#menu li a.fullScreen {
+	position:absolute;
+	right:18px;
+	bottom:18px;
 	width:30px;
 	background-position:-96px 2;
 }
-ul#menu li a.fullScreen:hover {
+#readingPane ul#menu li a.fullScreen:hover {
 	width:30px;
 	background-position:-96px -20px;
 }
